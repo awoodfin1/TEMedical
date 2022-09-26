@@ -67,7 +67,7 @@ CREATE TABLE office (
 );
 
 CREATE TABLE provider_office (
-             provider_id int NOT NULL,
+             provider_id int NOT NULL UNIQUE,
              office_id int NOT NULL,
 
 			 CONSTRAINT pk_provider_office PRIMARY KEY(provider_id, office_id),
