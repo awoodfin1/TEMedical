@@ -2,7 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Provider;
 
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 public interface ProviderDao {
@@ -12,9 +12,9 @@ public interface ProviderDao {
     // read
     List<Provider> getAllProviders();
 
-    Time getProviderAvailStartTime();
+    LocalTime getProviderAvailStartTime(int providerId);
 
-    Time getProviderAvailEndTime();
+    LocalTime getProviderAvailEndTime(int providerId);
 
     // update
 

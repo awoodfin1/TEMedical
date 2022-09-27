@@ -1,7 +1,7 @@
 package com.techelevator.model;
 
-import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,19 +9,19 @@ public class HandleTimeSlots {
 
     private LocalDate date;
     private int providerId;
-    private Time officeOpenTime;
-    private Time officeCloseTime;
-    private Time slotDuration;
+    private LocalTime officeOpenTime;
+    private LocalTime officeCloseTime;
+    private int slotDurationMins;
     List<Appointment> allApptsByDate = new ArrayList<>();
 
-//    public HandleTimeslots() {
-//        this.slotDuration =
-//    }
+    public HandleTimeSlots() {
+        this.slotDurationMins = 30;
+    }
 
-    public List<TimeSlot> createTimeSlotsList(LocalDate date, int providerId,Time slotDuration) {
+    public List<TimeSlot> createTimeSlotsList(LocalDate date, int providerId, int slotDurationMins) {
         List<TimeSlot> timeSlotsList = new ArrayList<>();
         setDate(date);
-        setSlotDuration(slotDuration);
+        setSlotDuration(slotDurationMins);
 
         return null;
     }
@@ -30,8 +30,8 @@ public class HandleTimeSlots {
         this.date = date;
     }
 
-    private void setSlotDuration(Time slotDuration) {
-        this.slotDuration = slotDuration;
+    private void setSlotDuration(int slotDurationMins) {
+        this.slotDurationMins = slotDurationMins;
     }
 
 }

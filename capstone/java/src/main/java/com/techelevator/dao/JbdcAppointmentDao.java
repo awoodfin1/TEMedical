@@ -8,6 +8,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import javax.sql.DataSource;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,10 +79,10 @@ public class JbdcAppointmentDao implements AppointmentDao {
             appointment.setAppointmentDate(rowSet.getDate("appointment_date").toLocalDate());
         }
         if(rowSet.getTime("appt_start_time") != null) {
-            appointment.setApptStartTime(Time.valueOf(rowSet.getTime("appt_start_time").toLocalTime()));
+            appointment.setApptStartTime(rowSet.getTime("appt_start_time").toLocalTime());
         }
         if(rowSet.getTime("appt_end_time") != null) {
-            appointment.setApptEndTime(Time.valueOf(rowSet.getTime("appt_end_time").toLocalTime()));
+            appointment.setApptEndTime(rowSet.getTime("appt_end_time").toLocalTime());
         }
         appointment.setStatus(rowSet.getString("status"));
         appointment.setAppointmentReason(rowSet.getString("appointment_reason"));

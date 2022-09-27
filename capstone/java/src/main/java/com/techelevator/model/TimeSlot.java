@@ -2,14 +2,14 @@ package com.techelevator.model;
 
 import org.apache.tomcat.jni.Local;
 
-import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class TimeSlot {
 
     private LocalDate date;
-    private Time startTime;
-    private Time endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private int providerId;
 
     public TimeSlot() { }
@@ -22,19 +22,19 @@ public class TimeSlot {
         this.date = appointmentDate;
     }
 
-    public Time getStartTime() {
+    public LocalTime getStartTime() {
         return this.startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public Time getEndTime() {
+    public LocalTime getEndTime() {
         return this.endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 

@@ -1,7 +1,7 @@
 package com.techelevator.model;
 
-import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Appointment {
 
@@ -9,8 +9,8 @@ public class Appointment {
     private int patientId;
     private int providerId;
     private LocalDate appointmentDate;
-    private Time apptStartTime;
-    private Time apptEndTime;
+    private LocalTime apptStartTime;
+    private LocalTime apptEndTime;
     private String status;            //Appointment is (confirmed, rescheduled, cancelled, completed).
     private String appointmentReason;
     private String appointmentDetails;
@@ -50,19 +50,19 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
     }
 
-    public Time getApptStartTime() {
+    public LocalTime getApptStartTime() {
         return apptStartTime;
     }
 
-    public void setApptStartTime(Time apptStartTime) {
+    public void setApptStartTime(LocalTime apptStartTime) {
         this.apptStartTime = apptStartTime;
     }
 
-    public Time getApptEndTime() {
+    public LocalTime getApptEndTime() {
         return apptEndTime;
     }
 
-    public void setApptEndTime(Time apptEndTime) {
+    public void setApptEndTime(LocalTime apptEndTime) {
         this.apptEndTime = apptEndTime;
     }
 
