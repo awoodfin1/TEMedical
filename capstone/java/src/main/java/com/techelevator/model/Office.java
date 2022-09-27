@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.sql.Time;
 
@@ -12,7 +13,8 @@ public class Office {
     private int zipcode;
     private Time openTime;
     private Time closeTime;
-    private int phoneNumber;
+    private String phoneNumber;
+    @Min(0)
     private BigDecimal costPerHour;
     private boolean hasApptDelay;
 
@@ -74,11 +76,11 @@ public class Office {
         this.closeTime = closeTime;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return this.phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
