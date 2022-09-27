@@ -9,6 +9,8 @@ public class HandleTimeSlots {
 
     private LocalDate date;
     private int providerId;
+    private Time officeOpenTime;
+    private Time officeCloseTime;
     private Time slotDuration;
     List<Appointment> allApptsByDate = new ArrayList<>();
 
