@@ -1,11 +1,14 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Appointment;
+import com.techelevator.model.HandleTimeSlots;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JbdcAppointmentDao implements AppointmentDao {
@@ -24,17 +27,46 @@ public class JbdcAppointmentDao implements AppointmentDao {
 
     @Override
     public List<Appointment> getAllAppointments() {
+        List<Appointment> allAppts = new ArrayList<>();
+        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details" +
+                "FROM appointments;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            allAppts.add(mapRowToAppointment(results));
+        }
+        return allAppts;
+    }
+
+    @Override
+    public Appointment getApptById(int apptId) {
         return null;
     }
 
     @Override
-    public Appointment getApptById() {
-        return null;
+    public List<Appointment> getAllApptsByDate(LocalDate date) {
+        List<Appointment> allApptsByDate = new ArrayList<>();
+        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details" +
+                     "FROM appointments" +
+                     "WHERE appointment_date = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date);
+        while (results.next()) {
+            allApptsByDate.add(mapRowToAppointment(results));
+        }
+        return allApptsByDate;
     }
 
     @Override
-    public List<Appointment> getAllApptsByDate() {
-        return null;
+    public List<Appointment> getAllApptsByDateByProviderId(LocalDate date, int providerId) {
+        List<Appointment> allApptsByDate = new ArrayList<>();
+        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details" +
+                "FROM appointments" +
+                "WHERE appointment_date = ? AND provider_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date, providerId);
+        while (results.next()) {
+            allApptsByDate.add(mapRowToAppointment(results));
+        }
+        // TODO: handle the population of time slots based on the now populated appointments list
+        return allApptsByDate;
     }
 
     private Appointment mapRowToAppointment(SqlRowSet rowSet) {

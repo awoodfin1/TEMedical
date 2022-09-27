@@ -1,22 +1,24 @@
 package com.techelevator.model;
 
-import java.sql.Date;
+import org.apache.tomcat.jni.Local;
+
 import java.sql.Time;
+import java.time.LocalDate;
 
 public class TimeSlot {
 
-    private Date date;
+    private LocalDate date;
     private Time startTime;
     private Time endTime;
     private int providerId;
 
     public TimeSlot() { }
 
-    public Date getAppointmentDate() {
+    public LocalDate getAppointmentDate() {
         return this.date;
     }
 
-    public void setAppointmentDate(Date appointmentDate) {
+    public void setAppointmentDate(LocalDate appointmentDate) {
         this.date = appointmentDate;
     }
 
