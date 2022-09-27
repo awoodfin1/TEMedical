@@ -9,7 +9,7 @@ import java.util.List;
 public interface AppointmentDao {
 
     // create
-    boolean createAppointment();
+    Appointment createAppointment(Appointment newAppointment);
 
     // read
     List<Appointment> getAllAppointments();
