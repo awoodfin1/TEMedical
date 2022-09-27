@@ -1,7 +1,8 @@
 <template>
   <div class="appointments-info">
-    <h1>Appointments</h1>
-    <h2>Your next scheduled appointment is ... </h2>
+    <h1>Your next scheduled appointment is ... </h1>
+    <h2>Your Doctor's Availability for Today</h2>
+    <h4> {{ appointment }} </h4>
     <h2>Click HERE to Schedule An Appointment</h2>
   </div>
 </template>
