@@ -1,23 +1,33 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Appointment;
-import com.techelevator.model.HandleTimeSlots;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JbdcAppointmentDao implements AppointmentDao {
 
     private JdbcTemplate jdbcTemplate;
+    private List<LocalTime> allPotentialApptStartTimes;
 
     public JbdcAppointmentDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        allPotentialApptStartTimes = new ArrayList<>();
+        populateStartTimesList();
+    }
+
+    private void populateStartTimesList() {
+        allPotentialApptStartTimes.add(LocalTime.of(9, 0));
+        for (int i = 1; i < 16; i++) {
+            allPotentialApptStartTimes.add(allPotentialApptStartTimes.get(i-1).plusMinutes(30));
+        }
     }
 
 
@@ -66,8 +76,33 @@ public class JbdcAppointmentDao implements AppointmentDao {
         while (results.next()) {
             allApptsByDate.add(mapRowToAppointment(results));
         }
-        // TODO: handle the population of time slots based on the now populated appointments list
         return allApptsByDate;
+    }
+
+    @Override
+    public List<LocalTime> getApptStartTimes(LocalDate date, int providerId) {
+        List<LocalTime> allApptStartTimes = new ArrayList<>();
+        String sql = "SELECT appt_start_time" +
+                     "FROM appointments" +
+                     "WHERE appointment_date = ? AND provider_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date, providerId);
+
+        while(results.next()) {
+            allApptStartTimes.add(results.getTime("appt_start_time").toLocalTime());
+        }
+        return allApptStartTimes;
+    }
+
+    @Override
+    public List<LocalTime> getAvailability(LocalDate date, int providerId) {
+        List<LocalTime> temp = this.allPotentialApptStartTimes;
+        List<LocalTime> allApptStartTimes = getApptStartTimes(date, providerId);
+        for (LocalTime eachStartTime : allApptStartTimes) {
+            if (temp.contains(eachStartTime)) {
+                temp.remove(temp.indexOf(eachStartTime));
+            }
+        }
+        return temp;
     }
 
     private Appointment mapRowToAppointment(SqlRowSet rowSet) {

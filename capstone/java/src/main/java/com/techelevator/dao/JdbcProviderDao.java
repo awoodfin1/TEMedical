@@ -52,5 +52,4 @@ public class JdbcProviderDao implements ProviderDao{
 
         return providerAvailEndTime;
     }
-    }
 }
