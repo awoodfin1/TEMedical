@@ -25,7 +25,8 @@ public class AppointmentController {
     @RequestMapping(value = "/appointment", method = RequestMethod.GET)
     public List<LocalTime> viewMyProviderAvailability() {
         int providerId = 1;
-        LocalDate today = java.time.LocalDate.now();
-        return appointmentDao.getAvailability(today, providerId);
+//        LocalDate today = java.time.LocalDate.now();
+        LocalDate date = LocalDate.of(2022, 10, 31);
+        return appointmentDao.getAvailability(date, providerId);
     }
 }
