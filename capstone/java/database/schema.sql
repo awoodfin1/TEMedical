@@ -110,7 +110,7 @@ CREATE TABLE appointments (
              appointment_date DATE,
              appt_start_time TIME,
              appt_end_time TIME,
-             status varchar(3),
+             status varchar(15) DEFAULT ('Confirmed'),
              appointment_reason varchar(70),
              appointment_details varchar(100),
 
