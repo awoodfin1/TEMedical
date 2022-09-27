@@ -7,17 +7,17 @@ import java.util.List;
 public interface AppointmentDao {
 
     // create
+    boolean createAppointment();
 
     // read
     List<Appointment> getAllAppointments();
 
     Appointment getApptById();
 
-    Appointment getApptByProviderId();
-
-    Appointment getApptByDate();
+    List<Appointment> getAllApptsByDate();
     
     // update
+
 
     // delete
 }
