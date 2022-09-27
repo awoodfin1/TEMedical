@@ -11,7 +11,7 @@ public class Appointment {
     private LocalDate appointmentDate;
     private Time apptStartTime;
     private Time apptEndTime;
-    private char status;            //Appointment is (confirmed, rescheduled, cancelled, completed).
+    private String status;            //Appointment is (confirmed, rescheduled, cancelled, completed).
     private String appointmentReason;
     private String appointmentDetails;
 
@@ -66,11 +66,11 @@ public class Appointment {
         this.apptEndTime = apptEndTime;
     }
 
-    public char getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(char status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
