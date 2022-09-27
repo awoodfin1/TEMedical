@@ -39,7 +39,7 @@ public class JbdcAppointmentDao implements AppointmentDao {
     @Override
     public List<Appointment> getAllAppointments() {
         List<Appointment> allAppts = new ArrayList<>();
-        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details" +
+        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details " +
                 "FROM appointments;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -56,8 +56,8 @@ public class JbdcAppointmentDao implements AppointmentDao {
     @Override
     public List<Appointment> getAllApptsByDate(LocalDate date) {
         List<Appointment> allApptsByDate = new ArrayList<>();
-        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details" +
-                     "FROM appointments" +
+        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details " +
+                     "FROM appointments " +
                      "WHERE appointment_date = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date);
         while (results.next()) {
@@ -69,8 +69,8 @@ public class JbdcAppointmentDao implements AppointmentDao {
     @Override
     public List<Appointment> getAllApptsByDateByProviderId(LocalDate date, int providerId) {
         List<Appointment> allApptsByDate = new ArrayList<>();
-        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details" +
-                "FROM appointments" +
+        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details " +
+                "FROM appointments " +
                 "WHERE appointment_date = ? AND provider_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date, providerId);
         while (results.next()) {
@@ -82,8 +82,8 @@ public class JbdcAppointmentDao implements AppointmentDao {
     @Override
     public List<LocalTime> getApptStartTimes(LocalDate date, int providerId) {
         List<LocalTime> allApptStartTimes = new ArrayList<>();
-        String sql = "SELECT appt_start_time" +
-                     "FROM appointments" +
+        String sql = "SELECT appt_start_time " +
+                     "FROM appointments " +
                      "WHERE appointment_date = ? AND provider_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date, providerId);
 
