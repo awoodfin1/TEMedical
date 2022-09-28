@@ -12,44 +12,53 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-  </template>
-  <script>
-  import ApptService from '../services/ApptService';
-  export default {
-      data() {
-          return {
-              newApptRequest: {
-                  date: '2022-10-31',
-                  startTime: '09:00:00'
-              },
-              apptTimes: []
-          }
-      },
-      methods: {
-          getTimes() {
-              ApptService.getApptStartTimeByDate(this.newApptRequest.date)
-              .then((response) => {
-                  if (response.status === 200) {
-                      this.apptTimes = response.data;
-                  }
-              })
-          },
-          addAppointment() {
-              ApptService.createAppointment(this.newApptRequest)
-              .then(response => {
-                  if(response.status === 201) {
-                      this.resetForm();
-                  }
-              })
-          },
-          resetForm() {
-              this.newApptRequest = {
-                  date: '',
-                  startTime: ''
-              }
-          }
-      }
-  }
-  </script>
-  <style>
-  </style>
+</template>
+
+<script>
+import ApptService from '../services/ApptService';
+export default {
+    data() {
+        return {
+            newApptRequest: {
+                date: '2022-10-31',
+                startTime: '09:00:00'
+            },
+            apptTimes: []
+        }
+    },
+    methods: {
+        getTimes() {
+            ApptService.getApptStartTimeByDate(this.newApptRequest.date)
+            .then((response) => {
+                if (response.status === 200) {
+                    this.apptTimes = response.data;
+                }
+            })
+        },
+        addAppointment() {
+            ApptService.createAppointment(this.newApptRequest)
+            .then(response => {
+                if(response.status === 201) {
+                    this.resetForm();
+                }
+            })
+        },
+        resetForm() {
+            this.newApptRequest = {
+                date: '',
+                startTime: ''
+            }
+        }
+    }
+}
+</script>
+
+<style>
+.apptSelect{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 10vw;
+}
+
+</style>

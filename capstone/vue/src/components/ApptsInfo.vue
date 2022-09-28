@@ -1,9 +1,7 @@
 <template>
   <div class="appointments-info">
-    <h1>Your next scheduled appointment is ... </h1>
-    <h2>Your Doctor's Availability for Today</h2>
-    <h4> {{ appointment }} </h4>
-    <h2>Click HERE to Schedule An Appointment</h2>
+    <h1>Schedule An Appointment </h1>
+    <h4>Please Complete the following form:</h4>
   </div>
 </template>
 
@@ -28,5 +26,9 @@ export default {
 </script>
 
 <style>
+
+.appointments-info{
+  text-align: center;
+}
 
 </style>
