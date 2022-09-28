@@ -57,7 +57,7 @@ public class JbdcAppointmentDao implements AppointmentDao {
 
     @Override
     public Appointment getApptById(int apptId) {
-        Appointment appointment = null;
+        Appointment appointment = new Appointment();
         String sql = "SELECT * FROM appointment WHERE appointment_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, apptId);
         if(results.next()) {
