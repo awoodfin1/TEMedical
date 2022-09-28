@@ -15,10 +15,6 @@ export default {
     ApptsInfo,
     AppointmentForm
   },
-  data() {
-
-  }
-
 }
 </script>
 

@@ -33,9 +33,9 @@ public class JbdcAppointmentDao implements AppointmentDao {
 
     @Override
     public Appointment createAppointment(Appointment newAppointment) {
-        String sql = "INSERT INTO appointment (patient_id, provider_id, appointment_date, " +
+        String sql = "INSERT INTO appointments (patient_id, provider_id, appointment_date, " +
                 "appt_start_time, appt_end_time) VALUES (?,?,?,?,?) RETURNING appointment_id;";
-        Integer newId = jdbcTemplate.update(sql, Integer.class, newAppointment.getPatientId(),
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, newAppointment.getPatientId(),
                 newAppointment.getProviderId(), newAppointment.getAppointmentDate(),
                 newAppointment.getApptStartTime(), newAppointment.getApptEndTime());
         return getApptById(newId);
@@ -58,7 +58,7 @@ public class JbdcAppointmentDao implements AppointmentDao {
     @Override
     public Appointment getApptById(int apptId) {
         Appointment appointment = new Appointment();
-        String sql = "SELECT * FROM appointment WHERE appointment_id = ?;";
+        String sql = "SELECT * FROM appointments WHERE appointment_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, apptId);
         if(results.next()) {
             appointment = mapRowToAppointment(results);

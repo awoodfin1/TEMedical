@@ -14,11 +14,12 @@ export default {
   name: 'appts-info',
   data(){
     return {
+      date: '2022-10-31',
       appointment: []
     }
   },
   created() {
-    ApptService.viewMyProviderAvailability().then( (response) => {
+    ApptService.getApptStartTimeByDate(this.date).then( (response) => {
       this.appointment = response.data
     });
   }

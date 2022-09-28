@@ -79,7 +79,6 @@ public class JdbcUserDao implements UserDao {
         String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
-
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 

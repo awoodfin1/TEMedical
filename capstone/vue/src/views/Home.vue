@@ -1,18 +1,19 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
-    <office-info />
+    <h1>Welcome To Our Home Page</h1>
+    <p>About Us: We do medical scheduling!</p>
   </div>
 </template>
 
 <script>
-import OfficeInfo from '../components/OfficeInfo.vue';
 
 export default {
   name: "home",
-  components: {
-    OfficeInfo
-  }
 };
 </script>
+
+<style>
+  .home{
+    text-align: center;
+  }
+</style>
