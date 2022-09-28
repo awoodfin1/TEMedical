@@ -18,6 +18,14 @@ public class Appointment {
     public Appointment(){
     }
 
+    public Appointment(int patientId, int providerId, LocalDate date, LocalTime apptStartTime) {
+        this.patientId = patientId;
+        this.providerId = providerId;
+        this.appointmentDate = date;
+        this.apptStartTime = apptStartTime;
+        this.apptEndTime = apptStartTime.plusMinutes(30);
+    }
+
     public int getId() {
         return id;
     }
