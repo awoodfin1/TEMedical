@@ -33,12 +33,14 @@ public class AppointmentController {
         return appointmentDao.getAvailability(date, providerId);
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/appointment", method = RequestMethod.GET)
-    public List<LocalTime> getAvailApptStartTimesByDate(@RequestBody LocalDate date) {
-        int providerId = 1;
-        return appointmentDao.getAvailability(date, providerId);
-    }
+    //TODO: method below breaks the system if uncommented as is.
+    //TODO: create this bean method to run either off of a different url path or by using a @RequestParams
+//    @ResponseStatus(HttpStatus.OK)
+//    @RequestMapping(value = "/appointment", method = RequestMethod.GET)
+//    public List<LocalTime> getAvailApptStartTimesByDate(@RequestBody LocalDate date) {
+//        int providerId = 1;
+//        return appointmentDao.getAvailability(date, providerId);
+//    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/appointment", method = RequestMethod.POST)

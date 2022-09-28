@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 public class JbdcAppointmentDao implements AppointmentDao {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
     private List<LocalTime> allPotentialApptStartTimes;
 
     public JbdcAppointmentDao(DataSource dataSource) {
