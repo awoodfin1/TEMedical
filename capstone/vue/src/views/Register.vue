@@ -35,6 +35,34 @@
         required
       />
       <br>
+      <input
+        type="checkbox"
+        id="isProvider"
+        class="form-control"
+        name="provider_type"
+        value= true
+        v-model="user.isProvider"
+      />
+      <label for="provider_type">Are you a Provider?</label>
+      <br>
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        placeholder="First Name"
+        v-model="user.first_name"
+        required
+      />
+      <br>
+      <input
+        type="text"
+        id="LastName"
+        class="form-control"
+        placeholder="Last Name"
+        v-model="user.last_name"
+        required
+      />
+      <br>
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
       <br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -56,6 +84,9 @@ export default {
         password: '',
         confirmPassword: '',
         role: 'user',
+        isProvider: '',
+        first_name: '',
+        last_name: '',
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',

@@ -66,7 +66,7 @@ public class AuthenticationController {
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
-            if(!newUser.isProvider()){
+            if(!newUser.getProvider()){
                 //REGISTERS PATIENT
                 patientDao.createPatient(userDao.findIdByUsername(newUser.getUsername()), newUser.getFirst_name(), newUser.getLast_name());
             }else{

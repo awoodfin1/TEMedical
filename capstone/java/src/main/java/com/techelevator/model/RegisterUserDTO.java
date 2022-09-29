@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.NotEmpty;
 
 public class RegisterUserDTO {
@@ -12,6 +14,7 @@ public class RegisterUserDTO {
     private String confirmPassword;
     @NotEmpty(message = "Please select a role for this user.")
     private String role;
+    @JsonProperty("isProvider")
     private boolean isProvider;
     private String first_name;
     private String last_name;
@@ -48,12 +51,12 @@ public class RegisterUserDTO {
         this.role = role;
     }
 
-    public boolean isProvider() {
-        return isProvider;
+    public boolean getProvider() {
+        return this.isProvider;
     }
 
     public void setProvider(boolean provider) {
-        isProvider = provider;
+        this.isProvider = provider;
     }
 
     public String getFirst_name() {
