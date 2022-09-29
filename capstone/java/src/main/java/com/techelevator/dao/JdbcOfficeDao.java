@@ -68,6 +68,8 @@ public class JdbcOfficeDao implements OfficeDao{
     private Office mapRowToOffice(SqlRowSet rs) {
         Office office = new Office();
         office.setId(rs.getInt("office_id"));
+        office.setName(rs.getString("office_name"));
+        office.setTagLine(rs.getString("tag_line"));
         office.setStreetAddress(rs.getString("street_address"));
         office.setCity(rs.getString("city"));
         office.setStateAbbr(rs.getString("state"));

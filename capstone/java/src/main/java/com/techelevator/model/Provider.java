@@ -4,9 +4,16 @@ public class Provider {
 
     private int id;
     private int userId;
+    private String title;
     private String firstName;
     private String lastName;
-    private String title;
+    private String postNominals;
+    private String gender;
+    private String language;
+    private double rating;
+    private String phoneNumber;
+    private String bio;
+    private String photoUrl;
 
     public Provider() { }
 
@@ -50,14 +57,77 @@ public class Provider {
         this.title = title;
     }
 
+    public String getPostNominals() {
+        return this.postNominals;
+    }
+
+    public void setPostNominals(String postNominals) {
+        this.postNominals = postNominals;
+    }
+
+    public String getGender() {
+        return this.gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getLanguage() {
+        return this.language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public double getRating() {
+        return this.rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getBio() {
+        return this.bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getPhotoUrl() {
+        return this.photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
     @Override
     public String toString() {
         return "Provider{" +
                 "id=" + id +
                 ", userId=" + userId +
+                ", title='" + title + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", title='" + title + '\'' +
+                ", postNominals='" + postNominals + '\'' +
+                ", gender='" + gender + '\'' +
+                ", language='" + language + '\'' +
+                ", rating=" + rating +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", bio='" + bio + '\'' +
+                ", photoUrl='" + photoUrl + '\'' +
                 '}';
     }
 }
