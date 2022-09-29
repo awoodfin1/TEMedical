@@ -67,12 +67,12 @@ public class JbdcAppointmentDao implements AppointmentDao {
     }
 
     @Override
-    public List<Appointment> getAllApptsByDate(LocalDate date) {
+    public List<Appointment> getAllApptsByDateByPatientId(LocalDate date, int patientId) {
         List<Appointment> allApptsByDate = new ArrayList<>();
         String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details " +
                      "FROM appointments " +
-                     "WHERE appointment_date = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date);
+                     "WHERE appointment_date = ? AND patient_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date, patientId);
         while (results.next()) {
             allApptsByDate.add(mapRowToAppointment(results));
         }
