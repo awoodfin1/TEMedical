@@ -107,7 +107,7 @@ public class Appointment {
                 ", appointmentDate=" + appointmentDate +
                 ", apptStartTime=" + apptStartTime +
                 ", apptEndTime=" + apptEndTime +
-                ", status=" + status +
+                ", status='" + status + '\'' +
                 ", appointmentReason='" + appointmentReason + '\'' +
                 ", appointmentDetails='" + appointmentDetails + '\'' +
                 '}';

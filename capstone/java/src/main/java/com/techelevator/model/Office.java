@@ -7,6 +7,8 @@ import java.sql.Time;
 public class Office {
 
     private int id;
+    private String name;
+    private String tagLine;
     private String streetAddress;
     private String city;
     private String stateAbbr;
@@ -100,17 +102,35 @@ public class Office {
         this.hasApptDelay = hasApptDelay;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTagLine() {
+        return this.tagLine;
+    }
+
+    public void setTagLine(String tagLine) {
+        this.tagLine = tagLine;
+    }
+
     @Override
     public String toString() {
         return "Office{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
+                ", tagLine='" + tagLine + '\'' +
                 ", streetAddress='" + streetAddress + '\'' +
                 ", city='" + city + '\'' +
                 ", stateAbbr='" + stateAbbr + '\'' +
                 ", zipcode=" + zipcode +
                 ", openTime=" + openTime +
                 ", closeTime=" + closeTime +
-                ", phoneNumber=" + phoneNumber +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", costPerHour=" + costPerHour +
                 ", hasApptDelay=" + hasApptDelay +
                 '}';

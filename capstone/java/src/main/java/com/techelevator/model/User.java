@@ -12,6 +12,7 @@ public class User {
    private String username;
    @JsonIgnore
    private String password;
+   private boolean isProvider;
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
@@ -48,6 +49,14 @@ public class User {
 
    public void setPassword(String password) {
       this.password = password;
+   }
+
+   public boolean isProvider() {
+      return this.isProvider;
+   }
+
+   public void setProvider(boolean provider) {
+      isProvider = provider;
    }
 
    public boolean isActivated() {
