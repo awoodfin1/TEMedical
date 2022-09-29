@@ -22,9 +22,9 @@ public class JdbcPatientDao implements PatientDao{
     }
 
     @Override
-    public void createPatient(int userId) {
-        String sql = "INSERT INTO patient (user_id) VALUES (?)";
-        jdbcTemplate.update(sql, userId);
+    public void createPatient(int userId, String first_name, String last_name) {
+        String sql = "INSERT INTO patient (user_id, first_name, last_name) VALUES (?,?,?)";
+        jdbcTemplate.update(sql, userId, first_name, last_name);
     }
 
 

@@ -16,6 +16,8 @@ public interface ProviderDao {
 
     LocalTime getProviderAvailEndTime(int providerId);
 
+    void createProvider(int userId, String first_name, String last_name);
+
     // update
 
     // delete

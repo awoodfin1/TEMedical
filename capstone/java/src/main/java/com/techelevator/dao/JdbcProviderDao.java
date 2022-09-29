@@ -52,4 +52,10 @@ public class JdbcProviderDao implements ProviderDao{
 
         return providerAvailEndTime;
     }
+
+    @Override
+    public void createProvider(int userId, String first_name, String last_name) {
+        String sql = "INSERT INTO provider (user_id, first_name, last_name) VALUES (?,?,?)";
+        jdbcTemplate.update(sql, userId, first_name, last_name);
+    }
 }

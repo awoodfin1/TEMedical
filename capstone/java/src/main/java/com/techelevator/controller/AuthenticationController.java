@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import javax.validation.Valid;
 
 import com.techelevator.dao.PatientDao;
+import com.techelevator.dao.ProviderDao;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,12 +31,14 @@ public class AuthenticationController {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private UserDao userDao;
     private PatientDao patientDao;
+    private ProviderDao providerDao;
 
-    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PatientDao patientDao) {
+    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PatientDao patientDao, ProviderDao providerDao) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
         this.patientDao = patientDao;
+        this.providerDao = providerDao;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -63,8 +66,13 @@ public class AuthenticationController {
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
-            //REGISTERS PATIENT ONLY
-            patientDao.createPatient(userDao.findIdByUsername(newUser.getUsername()));
+            if(!newUser.isProvider()){
+                //REGISTERS PATIENT
+                patientDao.createPatient(userDao.findIdByUsername(newUser.getUsername()), newUser.getFirst_name(), newUser.getLast_name());
+            }else{
+                //REGISTERS PROVIDER
+                providerDao.createProvider(userDao.findIdByUsername(newUser.getUsername()),  newUser.getFirst_name(), newUser.getLast_name());
+            }
         }
     }
 
