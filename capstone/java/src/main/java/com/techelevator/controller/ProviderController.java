@@ -27,8 +27,8 @@ public class ProviderController {
         return providerDao.getProviderByProviderId(providerId);
     }
 
-    @RequestMapping(value = "/providers/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/provider/my-profile/", method = RequestMethod.PUT)
     public void updateProvider(@RequestBody Provider provider) {
-        providerDao.updateProvider(provider);
+        this.providerDao.updateProvider(provider);
     }
 }

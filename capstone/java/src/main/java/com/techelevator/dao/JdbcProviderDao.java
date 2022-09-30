@@ -65,9 +65,11 @@ public class JdbcProviderDao implements ProviderDao{
         try {
             jdbcTemplate.update(sql, provider.getFirstName(), provider.getLastName(), provider.getPostNominals(), provider.getSpecialty(), provider.getGender(), provider.getLanguage(), provider.getRating(), provider.getPhoneNumber(), provider.getBio(), provider.getPhotoUrl());
         } catch (DataAccessException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Unable to update provider: " + e.getMessage());
         }
     }
+
+
 
     @Override
     public LocalTime getProviderAvailStartTime(int providerId) {
