@@ -82,6 +82,14 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole, isProvider) == 1;
     }
 
+    public boolean getIsProvider(String username){
+        boolean isProvider = false;
+        int id = findIdByUsername(username);
+        String sql = "SELECT is_provider FROM users WHERE user_id = ?;";
+        isProvider = jdbcTemplate.queryForObject(sql,Boolean.class, id);
+        return isProvider;
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));

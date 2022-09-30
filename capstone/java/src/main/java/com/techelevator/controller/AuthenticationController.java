@@ -23,6 +23,8 @@ import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.security.Principal;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -74,6 +76,11 @@ public class AuthenticationController {
                 providerDao.createProvider(userDao.findIdByUsername(newUser.getUsername()),  newUser.getFirst_name(), newUser.getLast_name());
             }
         }
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public boolean getIsProvider(Principal principal) {
+        return userDao.getIsProvider(principal.getName());
     }
 
     /**
