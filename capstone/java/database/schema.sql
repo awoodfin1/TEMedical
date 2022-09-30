@@ -1,8 +1,8 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, patient, provider, appointment, office, review, specialty, provider_office, provider_specialty CASCADE;
+DROP TABLE IF EXISTS users, patient, provider, appointment, office, review, provider_office CASCADE;
 
-DROP SEQUENCE IF EXISTS user_serial, patient_serial, provider_serial, appointment_serial, office_serial, review_serial, specialty_serial CASCADE;
+DROP SEQUENCE IF EXISTS user_serial, patient_serial, provider_serial, appointment_serial, office_serial, review_serial CASCADE;
 
 -- Sequence to start user_id values at 100,001 instead of 1
 CREATE SEQUENCE user_serial
@@ -53,6 +53,7 @@ CREATE TABLE provider (
     first_name varchar(30),
     last_name varchar(40),
 	post_nominals varchar(20),
+	specialty varchar(60),
 	gender varchar(6),
 	"language" varchar(15),
 	rating numeric(4,2),
@@ -134,19 +135,6 @@ CREATE TABLE review (
 	CONSTRAINT fk_review_provider_id FOREIGN KEY (provider_id) REFERENCES provider(provider_id)
 );
 
--- Sequence to start specialty_id values at 101 instead of 1
-CREATE SEQUENCE specialty_serial
-  INCREMENT BY 1
-  START WITH 101
-  NO MAXVALUE;
-  
-CREATE TABLE specialty (
-	specialty_id int default nextval ('specialty_serial'),
-	field_name varchar(60),
-	
-	CONSTRAINT PK_specialty PRIMARY KEY (specialty_id)
-);
-
 CREATE TABLE provider_office (
 	provider_id int NOT NULL UNIQUE,
     office_id int NOT NULL,
@@ -155,15 +143,5 @@ CREATE TABLE provider_office (
     CONSTRAINT fk_provider_office_provider_id FOREIGN KEY (provider_id) REFERENCES provider(provider_id),
     CONSTRAINT fk_provider_office_office_id FOREIGN KEY (office_id) REFERENCES office(office_id)
 );
-
-CREATE TABLE provider_specialty (
-	provider_id int NOT NULL UNIQUE,
-	specialty_id int NOT NULL,
-	
-	CONSTRAINT PK_provider_specialty PRIMARY KEY(provider_id, specialty_id),
-	CONSTRAINT FK_provider_specialty_provider_id FOREIGN KEY (provider_id) REFERENCES provider(provider_id),
-	CONSTRAINT FK_provider_specialty_specialty_id FOREIGN KEY (specialty_id) REFERENCES specialty(specialty_id)
-);
-
 
 COMMIT TRANSACTION;

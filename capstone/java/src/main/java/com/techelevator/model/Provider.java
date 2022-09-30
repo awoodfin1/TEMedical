@@ -8,6 +8,7 @@ public class Provider {
     private String firstName;
     private String lastName;
     private String postNominals;
+    private String specialty;
     private String gender;
     private String language;
     private double rating;
@@ -63,6 +64,14 @@ public class Provider {
 
     public void setPostNominals(String postNominals) {
         this.postNominals = postNominals;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    public String getSpecialty() {
+        return this.specialty;
     }
 
     public String getGender() {
