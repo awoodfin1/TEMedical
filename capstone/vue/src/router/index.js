@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import Office from '../views/Office.vue'
 import store from '../store/index'
 import Appointment from '../views/Appointment.vue'
+import Provider from '../views/Provider.vue'
 
 
 Vue.use(Router)
@@ -68,6 +69,14 @@ const router = new Router({
       path: "/appointment",
       name: "appointment",
       component: Appointment,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/provider",
+      name: "provider",
+      component: Provider,
       meta: {
         requiresAuth: true
       }
