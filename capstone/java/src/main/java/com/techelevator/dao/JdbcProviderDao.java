@@ -47,6 +47,19 @@ public class JdbcProviderDao implements ProviderDao{
     }
 
     @Override
+    public Provider getProviderByUserId(int id) {
+        Provider provider = null;
+        String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, specialty, gender, language, rating, phone_number, bio, photo_URL " +
+                "FROM provider " +
+                "WHERE user_id = ?;";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
+        if (result.next()) {
+            provider = mapRowToProvider(result);
+        }
+        return provider;
+    }
+
+    @Override
     public void updateProvider(Provider provider) {
         String sql = "UPDATE provider " +
                      "SET " +

@@ -8,7 +8,7 @@ public class Patient {
     private int userId;
     private String firstName;
     private String lastName;
-    private String phone_number;
+    private String phoneNumber;
     private String email_address;
     private LocalDate birthdate;
     private String health_issues_description;
@@ -49,12 +49,12 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail_address() {

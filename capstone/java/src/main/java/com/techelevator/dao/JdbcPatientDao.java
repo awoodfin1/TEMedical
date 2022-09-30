@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import javax.sql.RowSet;
 import java.time.LocalDate;
 
 @Component
@@ -25,6 +26,18 @@ public class JdbcPatientDao implements PatientDao{
     }
 
     @Override
+    public Patient getPatientByUserId(int userId){
+        Patient patient = null;
+        String sql = "SELECT patient_id, user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description " +
+                     "FROM patient WHERE user_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, userId);
+        if (result.next()) {
+            patient = mapRowToPatient(result);
+        }
+        return patient;
+    }
+
+    @Override
     public void createPatient(int userId, String first_name, String last_name) {
         String sql = "INSERT INTO patient (user_id, first_name, last_name) VALUES (?,?,?)";
         jdbcTemplate.update(sql, userId, first_name, last_name);
@@ -35,7 +48,7 @@ public class JdbcPatientDao implements PatientDao{
         int id = newPatient.getId();
         String firstName = newPatient.getFirstName();
         String lastName = newPatient.getLastName();
-        String phoneNumber = newPatient.getPhone_number();
+        String phoneNumber = newPatient.getPhoneNumber();
         String email_address = newPatient.getEmail_address();
         LocalDate birthdate = newPatient.getBirthdate();
         String healthText = newPatient.getHealth_issues_description();
@@ -43,12 +56,23 @@ public class JdbcPatientDao implements PatientDao{
         String sql = "UPDATE patient SET first_name = ?, last_name = ?, phone_number = ?, ";
         sql += "email_address = ?, birthdate = ?, health_issues_description = ? WHERE patient_id = ?;";
 
-        try{
+        try {
             jdbcTemplate.update(sql, firstName, lastName, phoneNumber, email_address, birthdate, healthText, id);
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             System.out.println("Unable to update patient: " + e.getMessage());
         }
     }
 
-
+    private Patient mapRowToPatient(SqlRowSet rs) {
+        Patient patient = new Patient();
+        patient.setId(rs.getInt("patient_id"));
+        patient.setId(rs.getInt("user_id"));
+        patient.setFirstName(rs.getString("first_name"));
+        patient.setLastName(rs.getString("last_name"));
+        patient.setPhoneNumber(rs.getString("phone_number"));
+        patient.setId(rs.getInt("email_address"));
+        patient.setId(rs.getInt("birthdate"));
+        patient.setId(rs.getInt("health_issues_description"));
+        return patient;
+    }
 }
