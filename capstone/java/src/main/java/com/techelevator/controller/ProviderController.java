@@ -1,13 +1,12 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.ProviderDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Provider;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -15,13 +14,30 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 public class ProviderController {
     private ProviderDao providerDao;
+    private UserDao userDao;
 
-    public ProviderController(ProviderDao providerDao) {
+    public ProviderController(ProviderDao providerDao, UserDao userDao) {
         this.providerDao = providerDao;
+        this.userDao = userDao;
     }
 
     @RequestMapping(value = "/providers", method = RequestMethod.GET)
     public List<Provider> getAllProviders() {
         return providerDao.getAllProviders();
+    }
+
+    @RequestMapping(value = "/providers/{id}", method = RequestMethod.GET)
+    public Provider getProviderByProviderId(@RequestParam int providerId) {
+        return providerDao.getProviderByProviderId(providerId);
+    }
+
+    @RequestMapping(value = "/provider/my-profile", method = RequestMethod.PUT)
+    public void updateProvider(@RequestBody Provider provider) {
+        this.providerDao.updateProvider(provider);
+    }
+
+    @RequestMapping(value = "/provider/my-profile", method = RequestMethod.GET)
+    public Provider getProviderByUsername(Principal principal) {
+        return providerDao.getProviderByUserId(userDao.findIdByUsername(principal.getName()));
     }
 }
