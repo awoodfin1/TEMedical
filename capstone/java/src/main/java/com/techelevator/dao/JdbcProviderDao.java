@@ -23,7 +23,7 @@ public class JdbcProviderDao implements ProviderDao{
     @Override
     public List<Provider> getAllProviders() {
         List<Provider> providerList = new ArrayList<>();
-        String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, gender, language, rating, phone_number, bio, photo_URL " +
+        String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, specialty, gender, language, rating, phone_number, bio, photo_URL " +
                      "FROM provider;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
@@ -76,6 +76,7 @@ public class JdbcProviderDao implements ProviderDao{
         provider.setFirstName(rs.getString("first_name"));
         provider.setLastName(rs.getString("last_name"));
         provider.setPostNominals(rs.getString("post_nominals"));
+        provider.setSpecialty(rs.getString("specialty"));
         provider.setGender(rs.getString("gender"));
         provider.setLanguage(rs.getString("language"));
         provider.setRating(rs.getDouble("rating"));

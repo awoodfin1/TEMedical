@@ -23,17 +23,11 @@ INSERT INTO office (office_name, tag_line, street_address, city, "state", zipcod
 	VALUES
 	('Memorial Hermann Physician Group', 'Quality Care, Quality Health', '1011 Washington St', 'Chicago', 'IL', 60018, '09:00:00', '17:00:00','8889794545',20.00, false);
 
-INSERT INTO specialty (field_name)
-	VALUES ('Oncology');
-
 INSERT INTO review (office_id, patient_id, provider_id, review_text, review_date, review_time, provider_rating, provider_response_text, response_date, response_time)
 	VALUES
 		(1, 2001, 1001, 'Patient provides review text here.', '2022-09-27', '10:30:00', 5, 'Provider provides review response text here.', '2022-09-28', '13:45:00');
 
 INSERT INTO provider_office (provider_id, office_id)
 	VALUES (1001, 1);
-
-INSERT INTO provider_specialty (provider_id, specialty_id)
-	VALUES (1001, 101);
 
 COMMIT TRANSACTION;

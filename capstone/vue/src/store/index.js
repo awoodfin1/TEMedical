@@ -40,7 +40,7 @@ export default new Vuex.Store({
       axios.defaults.headers.common = {};
     },
     GET_PROVIDERS(state, providers) {
-      this.providers = providers;
+      state.providers = providers;
     }
   }
 })
