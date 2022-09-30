@@ -20,7 +20,7 @@ public class ProviderController {
         this.providerDao = providerDao;
     }
 
-    @RequestMapping(value = "/provider", method = RequestMethod.GET)
+    @RequestMapping(value = "/providers", method = RequestMethod.GET)
     public List<Provider> getAllProviders() {
         return providerDao.getAllProviders();
     }

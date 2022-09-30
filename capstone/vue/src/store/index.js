@@ -20,7 +20,8 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    providers: []
+    providers: [],
+    isProvider: false
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -40,7 +41,10 @@ export default new Vuex.Store({
       axios.defaults.headers.common = {};
     },
     GET_PROVIDERS(state, providers) {
-      this.providers = providers;
+      state.providers = providers;
+    },
+    SET_ISPROVIDER(state, isProvider){
+      state.isProvider = isProvider
     }
   }
 })

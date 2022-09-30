@@ -1,0 +1,24 @@
+<template>
+  <div>
+    <ProviderCards/>
+  </div>
+</template>
+
+<script>
+import ProviderService from '../services/ProviderService';
+import ProviderCards from '../components/ProviderCards.vue';
+
+export default {
+    name: "providers",
+    created() {
+        ProviderService.getAllProviders().then((response) => {
+            this.$store.commit("GET_PROVIDERS", response.data);
+        });
+    },
+    components: { ProviderCards }
+};
+</script>
+
+<style>
+
+</style>

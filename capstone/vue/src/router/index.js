@@ -7,7 +7,7 @@ import Register from '../views/Register.vue'
 import Office from '../views/Office.vue'
 import store from '../store/index'
 import Appointment from '../views/Appointment.vue'
-import Provider from '../views/Provider.vue'
+import Providers from '../views/Providers.vue'
 
 
 Vue.use(Router)
@@ -74,9 +74,9 @@ const router = new Router({
       }
     },
     {
-      path: "/provider",
-      name: "provider",
-      component: Provider,
+      path: "/providers",
+      name: "providers",
+      component: Providers,
       meta: {
         requiresAuth: true
       }

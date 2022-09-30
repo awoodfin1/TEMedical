@@ -3,17 +3,17 @@
     <h1>Welcome To Our Home Page</h1>
     <p>About Us: We do medical scheduling!</p>
     <br>
-    <provider />
+    <providers v-if="!$store.state.isProvider"/>
   </div>
 </template>
 
 <script>
-import Provider from './Provider.vue';
+import Providers from './Providers.vue';
 
 export default {
   name: "home",
   components: {
-    Provider
+    Providers
   }
 };
 </script>

@@ -64,6 +64,7 @@ export default {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             this.$router.push("/");
+            this.getIsProvider(this.user.username)
           }
         })
         .catch(error => {
@@ -73,7 +74,10 @@ export default {
             this.invalidCredentials = true;
           }
         });
-    }
+    },
+    getIsProvider(username) {
+        this.$store.commit("GET_PROVIDERS", username);
+    },
   }
 };
 </script>
