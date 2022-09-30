@@ -1,12 +1,11 @@
 <template>
-    <div class = "office-info">
-        <h1>OFFICE INFORMATION</h1>
-        <h1>Office number: {{office.id}}</h1>
-        <h2>Located at {{office.streetAddress}}</h2>
-        <h2>{{office.city}}, {{office.stateAbbr}} {{office.zipcode}}</h2>
-        <p>Our hours are from {{office.openTime}} to {{office.closeTime}}.</p>
-        <p>Feel free to reach us at {{office.phoneNumber}}!</p>
-        <br>
+    <div class="office-container">
+        <div class = "office-info">
+            <h4 class="top-line">Address: {{office.streetAddress}}, {{office.city}}, {{office.stateAbbr}} {{office.zipcode}}</h4>
+            <h4 class="top-line">Hours: {{office.openTime}} - {{office.closeTime}}</h4>
+            <h4 class="top-line">Phone: {{office.phoneNumber}}</h4>           
+            
+        </div>
         <p>Additional information: Our current rate for seeing a provider is at ${{office.costPerHour}} per hour.</p>
     </div>
 </template>
@@ -29,7 +28,14 @@
 </script>
 
 <style>
-    .office-info{
+
+    div .office-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .office-container p {
         text-align: center;
     }
 </style>

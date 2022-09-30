@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="header">
-      <img id="snake" src="images/green snake.jpg" alt="Medical Snake Logo">
-      <img id="company" src="images/company name.jpg" alt="TE Medical">
+      <img id="snake" src="./images/green snake.jpg" alt="Medical Snake Logo">
+      <img id="company" src="./images/company name.jpg" alt="TE Medical">
     </div>
     <div id="nav">
       <menu>
@@ -23,13 +23,26 @@
     </div>
     <router-view id="view" />
     <aside>
-      <img id="doctor" src="images/doctor.png" alt="Doctor">
+      <img id="doctor" src="./images/doctor.png" alt="Doctor">
     </aside>
     <div id="footer">
-      <p>Phone and Address</p>
+      <office-info/>
     </div>
   </div>
 </template>
+
+<script>
+import OfficeInfo from "./components/OfficeInfo.vue";
+
+export default {
+  name: "footer",
+  components: { 
+    OfficeInfo 
+    },
+  
+}
+</script>
+
 
 <style>
 body {
@@ -59,7 +72,7 @@ aside {
 
 div#app {
   display: grid;
-  grid-template-columns: 180px 1fr 250px;
+  grid-template-columns: 180px 1fr 280px;
   grid-template-rows: 80px 1fr 1fr;
   gap: 15px;
   grid-template-areas:
@@ -100,10 +113,11 @@ div#app {
   }
 
 aside img {
-  height: 100%;
+  height: 500px;
 }
 
-#footer {
-  margin-left: 42px;
-}
+/* #footer {
+  flex-grow: 1;
+} */
+
 </style>
