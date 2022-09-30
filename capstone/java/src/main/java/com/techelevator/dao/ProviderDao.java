@@ -12,6 +12,10 @@ public interface ProviderDao {
     // read
     List<Provider> getAllProviders();
 
+    Provider getProviderByProviderId(int id);
+
+    void updateProvider(Provider provider);
+
     LocalTime getProviderAvailStartTime(int providerId);
 
     LocalTime getProviderAvailEndTime(int providerId);
