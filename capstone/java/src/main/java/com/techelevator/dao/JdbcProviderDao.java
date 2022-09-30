@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 @Component
 public class JdbcProviderDao implements ProviderDao{
@@ -21,7 +22,14 @@ public class JdbcProviderDao implements ProviderDao{
 
     @Override
     public List<Provider> getAllProviders() {
-        return null;
+        List<Provider> providerList = new ArrayList<>();
+        String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, gender, language, rating, phone_number, bio, photo_URL " +
+                     "FROM provider;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()) {
+            providerList.add(mapRowToProvider(results));
+        }
+        return providerList;
     }
 
     @Override
@@ -58,5 +66,22 @@ public class JdbcProviderDao implements ProviderDao{
     public void createProvider(int userId, String first_name, String last_name) {
         String sql = "INSERT INTO provider (user_id, first_name, last_name) VALUES (?,?,?)";
         jdbcTemplate.update(sql, userId, first_name, last_name);
+    }
+
+    private Provider mapRowToProvider(SqlRowSet rs) {
+        Provider provider = new Provider();
+        provider.setId(rs.getInt("provider_id"));
+        provider.setUserId(rs.getInt("user_id"));
+        provider.setTitle(rs.getString("title"));
+        provider.setFirstName(rs.getString("first_name"));
+        provider.setLastName(rs.getString("last_name"));
+        provider.setPostNominals(rs.getString("post_nominals"));
+        provider.setGender(rs.getString("gender"));
+        provider.setLanguage(rs.getString("language"));
+        provider.setRating(rs.getDouble("rating"));
+        provider.setPhoneNumber(rs.getString("phone_number"));
+        provider.setBio(rs.getString("bio"));
+        provider.setPhotoUrl(rs.getString("photo_URL"));
+        return provider;
     }
 }
