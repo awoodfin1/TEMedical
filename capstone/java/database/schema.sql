@@ -31,9 +31,9 @@ CREATE TABLE patient (
     user_id int,
     first_name varchar(30) NOT NULL,
 	last_name varchar(40) NOT NULL,
-	phone_number varchar(10) NOT NULL,
-	email_address varchar(60) NOT NULL,
-	birthdate date NOT NULL,
+	phone_number varchar(10),
+	email_address varchar(60),
+	birthdate date,
 	health_issues_description varchar(500),
 
     CONSTRAINT pk_patient PRIMARY KEY (patient_id),
