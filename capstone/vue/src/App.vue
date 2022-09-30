@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="header">
-      <img id="snake" src="green snake.jpg" alt="Medical Snake Logo">
-      <img id="company" src="company name.jpg" alt="TE Medical">
+      <img id="snake" src="images/green snake.jpg" alt="Medical Snake Logo">
+      <img id="company" src="images/company name.jpg" alt="TE Medical">
     </div>
     <div id="nav">
       <menu>
@@ -23,7 +23,7 @@
     </div>
     <router-view id="view" />
     <aside>
-      <img id="doctor" src="doctor.png" alt="Doctor">
+      <img id="doctor" src="images/doctor.png" alt="Doctor">
     </aside>
     <div id="footer">
       <p>Phone and Address</p>
