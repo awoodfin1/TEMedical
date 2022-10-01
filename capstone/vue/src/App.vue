@@ -116,8 +116,9 @@ aside img {
   height: 500px;
 }
 
-/* #footer {
-  flex-grow: 1;
-} */
+#footer {
+  margin-left: 10%;
+  margin-right: 10%;
+}
 
 </style>

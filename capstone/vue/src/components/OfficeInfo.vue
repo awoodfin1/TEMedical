@@ -1,8 +1,8 @@
 <template>
     <div class="office-container">
         <div class = "office-info">
-            <h4 class="top-line">Address: {{office.streetAddress}}, {{office.city}}, {{office.stateAbbr}} {{office.zipcode}}</h4>
-            <h4 class="top-line">Hours: {{office.openTime}} - {{office.closeTime}}</h4>
+            <h4 class="top-line">Address: {{office.streetAddress}}, {{office.city}}, {{office.stateAbbr}} {{office.zipcode}}</h4>||
+            <h4 class="top-line">Hours: {{office.openTime}} - {{office.closeTime}}</h4>||
             <h4 class="top-line">Phone: {{office.phoneNumber}}</h4>           
             
         </div>
@@ -32,7 +32,7 @@
     div .office-info {
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
 
     .office-container p {
