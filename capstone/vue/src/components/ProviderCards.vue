@@ -24,11 +24,13 @@
     width: 250px;
     height: 400px;
     margin: 20px;
+    padding-top: 20px;
 }
 .profile-pic{
     max-width: 250px;
     max-height: 100px;
     border-radius: 50%;
+    
 }
 .cards{
     display:flex;

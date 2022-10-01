@@ -78,7 +78,6 @@ div#app {
   grid-template-areas:
     "header header header"
     "nav office aside"
-    "nav office aside"
     "footer footer footer";
 }
 
@@ -94,6 +93,10 @@ div#app {
 
 #header img {
   height: 100%;
+}
+
+#nav menu {
+  box-shadow: 1px 0 0 0 rgba(0,0,0,0.25);
 }
 
 #nav menu li {
@@ -119,6 +122,11 @@ aside img {
 #footer {
   margin-left: 10%;
   margin-right: 10%;
+  
+}
+
+h1 {
+  color:rgb(0, 180, 242);
 }
 
 </style>

@@ -83,19 +83,12 @@ export default {
 </script>
 
 <style>
-  #login{
+  .text-center {
     display: flex;
     flex-direction: column;
-    /* padding: 10px;
-    border-style: solid;
-    border-color: rgb(0, 150, 255); */
-  }
-  h1{
-    color:rgb(0, 150, 255);
-  }
-  .form-signin{
-    flex-basis: 50%;
-    align-self: center;
-  }
+    align-items: center;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+    margin: 30px 220px 100px 220px;
+}
   
 </style>
