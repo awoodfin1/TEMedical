@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Appointment;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -39,8 +40,6 @@ public class JbdcAppointmentDao implements AppointmentDao {
                 newAppointment.getProviderId(), newAppointment.getAppointmentDate(),
                 newAppointment.getApptStartTime(), newAppointment.getApptEndTime());
         return getApptById(newId);
-
-
     }
 
     @Override
@@ -64,6 +63,32 @@ public class JbdcAppointmentDao implements AppointmentDao {
             appointment = mapRowToAppointment(results);
         }
         return appointment;
+    }
+
+    @Override
+    public List<Appointment> getAllApptsByPatientId(int patientId) {
+        List<Appointment> allAppts = new ArrayList<>();
+        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details " +
+                "FROM appointment " +
+                "WHERE patient_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
+        while (results.next()) {
+            allAppts.add(mapRowToAppointment(results));
+        }
+        return allAppts;
+    }
+
+    @Override
+    public List<Appointment> getAllApptsByProviderId(int providerId) {
+        List<Appointment> allAppts = new ArrayList<>();
+        String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details " +
+                "FROM appointment " +
+                "WHERE provider_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, providerId);
+        while (results.next()) {
+            allAppts.add(mapRowToAppointment(results));
+        }
+        return allAppts;
     }
 
     @Override
@@ -116,6 +141,24 @@ public class JbdcAppointmentDao implements AppointmentDao {
             }
         }
         return temp;
+    }
+
+    @Override
+    public void updateAppointment(Appointment appointment) {
+        String sql = "UPDATE appointment " +
+                     "SET " +
+                        "appointment_date = ? " +
+                        "appt_start_time = ? " +
+                        "appt_end_time = ? " +
+                        "status = ? " +
+                        "appointment_reason = ? " +
+                        "appointment_details = ? " +
+                    "WHERE appointment_id = ?;";
+        try {
+            jdbcTemplate.update(sql, appointment.getAppointmentDate(), appointment.getApptStartTime(), appointment.getApptEndTime(), appointment.getStatus(), appointment.getAppointmentReason(), appointment.getAppointmentDetails(), appointment.getId());
+        } catch (DataAccessException e) {
+            System.out.println("Unable to update appointment: " + e.getMessage());
+        }
     }
 
     private Appointment mapRowToAppointment(SqlRowSet rowSet) {

@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.AppointmentDao;
 import com.techelevator.dao.PatientDao;
+import com.techelevator.dao.ProviderDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Appointment;
 import com.techelevator.model.AppointmentRequestDTO;
@@ -21,24 +22,15 @@ public class AppointmentController {
     private AppointmentDao appointmentDao;
     private UserDao userDao;
     private PatientDao patientDao;
+    private ProviderDao providerDao;
 
-    public AppointmentController(AppointmentDao appointmentDao, UserDao userDao, PatientDao patientDao) {
+    public AppointmentController(AppointmentDao appointmentDao, UserDao userDao, PatientDao patientDao, ProviderDao providerDao) {
         this.appointmentDao = appointmentDao;
         this.userDao = userDao;
         this.patientDao = patientDao;
+        this.providerDao = providerDao;
     }
 
-//    @ResponseStatus(HttpStatus.OK)
-//    @RequestMapping(value = "/appointment", method = RequestMethod.GET)
-//    public List<LocalTime> viewMyProviderAvailability() {
-//        int providerId = 1;
-////        LocalDate today = java.time.LocalDate.now();
-//        LocalDate date = LocalDate.of(2022, 10, 31);
-//        return appointmentDao.getAvailability(date, providerId);
-//    }
-
-    //TODO: method below breaks the system if uncommented as is.
-    //TODO: create this bean method to run either off of a different url path or by using a @RequestParams
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/appointment/{dateString}", method = RequestMethod.GET)
     public List<LocalTime> getAvailApptStartTimesByDate(@PathVariable String dateString) {
@@ -52,6 +44,39 @@ public class AppointmentController {
     public Appointment createAppointment(Principal principal, @RequestBody AppointmentRequestDTO appointmentRequestDTO) {
         int providerId = 1;
         return appointmentDao.createAppointment(new Appointment(patientDao.getPatientIdByUserId(userDao.findIdByUsername(principal.getName())), providerId, appointmentRequestDTO.getDate(), appointmentRequestDTO.getStartTime()));
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/my-appointments", method = RequestMethod.GET)
+    public List<Appointment> getAppointments(Principal principal) {
+        if (userDao.getIsProvider(principal.getName())) {
+            return appointmentDao.getAllApptsByProviderId((providerDao.getProviderByProviderId(userDao.findIdByUsername(principal.getName()))).getId());
+        } else {
+            return appointmentDao.getAllApptsByPatientId(patientDao.getPatientIdByUserId(userDao.findIdByUsername(principal.getName())));
+        }
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/my-appointments/{dateString}", method = RequestMethod.GET)
+    public List<Appointment> getAppointmentsByDate(Principal principal, @PathVariable String dateString) {
+        LocalDate date = LocalDate.parse(dateString);
+        if (userDao.getIsProvider(principal.getName())) {
+            return appointmentDao.getAllApptsByDateByProviderId(date, providerDao.getProviderByProviderId(userDao.findIdByUsername(principal.getName())).getId());
+        } else {
+            return appointmentDao.getAllApptsByDateByPatientId(date, patientDao.getPatientIdByUserId(userDao.findIdByUsername(principal.getName())));
+        }
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/my-appointments/{apptId}", method = RequestMethod.GET)
+    public Appointment getAppointmentById(@PathVariable int apptId) {
+        return appointmentDao.getApptById(apptId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/my-appointments/{apptId}", method = RequestMethod.PUT)
+    public void updateAppointment(@RequestBody Appointment appointment, @PathVariable int apptId) {
+        this.appointmentDao.updateAppointment(appointment);
     }
 
 }
