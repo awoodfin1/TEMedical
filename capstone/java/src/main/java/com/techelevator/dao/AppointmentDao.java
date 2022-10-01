@@ -16,6 +16,10 @@ public interface AppointmentDao {
 
     Appointment getApptById(int apptId);
 
+    List<Appointment> getAllApptsByPatientId(int patientId);
+
+    List<Appointment> getAllApptsByProviderId(int providerId);
+
     List<Appointment> getAllApptsByDateByPatientId(LocalDate date, int patientId);
 
     List<Appointment> getAllApptsByDateByProviderId(LocalDate date, int providerId);
@@ -26,6 +30,7 @@ public interface AppointmentDao {
 
     // update
 
+    void updateAppointment(Appointment appointment);
 
     // delete
 }
