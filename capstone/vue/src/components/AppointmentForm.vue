@@ -2,10 +2,10 @@
     <div>
         <form v-on:submit.prevent="addAppointment()" class="apptSelect">
             <label for="dateInput">Please Select a Date</label>
-            <input type="date" name="date" min="2022-09-28" max="2022-12-31" v-model="newApptRequest.date" v-on:change="getTimes()">
+            <input type="date" name="date" min="2022-09-28" max="2022-12-31" v-model="newApptRequest.date" v-on:change="getTimes()" required>
             <label for="timeSelect">Please Select a Time</label>
-            <select id="timeSelect" name="timeSelect" >
-                <option v-for="time in apptTimes" v-bind:key="time" value="">
+            <select id="timeSelect" name="timeSelect" v-model="newApptRequest.startTime" required>
+                <option v-for="time in apptTimes" v-bind:key="time" >
                     {{ time }}
                 </option>
             </select>
@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             newApptRequest: {
-                date: '2022-10-31',
+                date: '',
                 startTime: '09:00:00'
             },
             apptTimes: []
