@@ -8,6 +8,7 @@ import Office from '../views/Office.vue'
 import store from '../store/index'
 import Appointment from '../views/Appointment.vue'
 import Providers from '../views/Providers.vue'
+import Provider from '../views/Provider.vue'
 
 
 Vue.use(Router)
@@ -77,6 +78,14 @@ const router = new Router({
       path: "/providers",
       name: "providers",
       component: Providers,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/providers/:providerId",
+      name: "Provider",
+      component: Provider,
       meta: {
         requiresAuth: true
       }

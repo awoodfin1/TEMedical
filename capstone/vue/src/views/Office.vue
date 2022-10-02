@@ -1,17 +1,12 @@
 <template>
     <div class = "office">
-        <office-info/>
     </div>
 </template>
 
 <script>
     import authService from "../services/AuthService";
-    import OfficeInfo from "../components/OfficeInfo.vue";
     export default {
       name: "office",
-      components: {
-        OfficeInfo
-      },
       data() {
         return {
           user: {
