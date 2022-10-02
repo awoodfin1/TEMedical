@@ -1,8 +1,10 @@
 <template>
     <div class="office-container">
         <div class = "office-info">
-            <h4 class="top-line">Address: {{office.streetAddress}}, {{office.city}}, {{office.stateAbbr}} {{office.zipcode}}</h4>||
-            <h4 class="top-line">Hours: {{office.openTime}} - {{office.closeTime}}</h4>||
+            <h4 class="top-line">Address: {{office.streetAddress}}, {{office.city}}, {{office.stateAbbr}} {{office.zipcode}}</h4>
+            <h3>||</h3>
+            <h4 class="top-line">Hours: {{office.openTime}} - {{office.closeTime}}</h4>
+            <h3>||</h3>
             <h4 class="top-line">Phone: {{office.phoneNumber}}</h4>           
             
         </div>
@@ -37,5 +39,21 @@
 
     .office-container p {
         text-align: center;
+    }
+
+    @media screen and (max-width: 1000px) {
+
+        div .office-info {
+        display: list-item;
+        align-items: center;
+        }
+
+        h3 {
+            display: none;
+        }
+
+        div .office-info::marker {
+            color: white;
+        }
     }
 </style>
