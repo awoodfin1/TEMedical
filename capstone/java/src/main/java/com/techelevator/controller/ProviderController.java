@@ -26,8 +26,8 @@ public class ProviderController {
         return providerDao.getAllProviders();
     }
 
-    @RequestMapping(value = "/providers/{id}", method = RequestMethod.GET)
-    public Provider getProviderByProviderId(@RequestParam int providerId) {
+    @RequestMapping(value = "/providers/{providerId}", method = RequestMethod.GET)
+    public Provider getProviderByProviderId(@PathVariable int providerId) {
         return providerDao.getProviderByProviderId(providerId);
     }
 

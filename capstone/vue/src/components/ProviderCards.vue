@@ -1,6 +1,6 @@
 <template>
     <div class="cards">
-        <div class="card" v-for="provider in $store.state.providers" v-bind:key="provider.id"> <!--Change To Router Link When ProviderInfo View Is Implemented-->
+        <router-link class="card" v-for="provider in $store.state.providers" v-bind:key="provider.id" v-bind:to="{name: 'Provider', params: {providerId:provider.id}}">
             <img class="profile-pic" v-bind:src="provider.photoUrl" alt="">
             <h3>{{provider.title}} {{provider.firstName}} {{provider.lastName}} {{provider.postNominals}}</h3>
             <h3>{{provider.specialty}}</h3>
@@ -8,7 +8,7 @@
             <h4 v-if="provider.rating">Provider Rating: {{provider.rating}}</h4>
             <h4 v-if="provider.phoneNumber">Contact Info:</h4>
             <h4 v-if="provider.phoneNumber">{{provider.phoneNumber}}</h4>
-        </div>
+        </router-link> 
     </div>
 </template>
 
