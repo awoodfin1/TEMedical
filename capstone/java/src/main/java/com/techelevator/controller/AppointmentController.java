@@ -44,7 +44,7 @@ public class AppointmentController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/appointment", method = RequestMethod.POST)
     public Appointment createAppointment(Principal principal, @RequestBody AppointmentRequestDTO appointmentRequestDTO) {
-        int providerId = 1;
+        int providerId = 1001;
         return appointmentDao.createAppointment(new Appointment(patientDao.getPatientIdByUserId(userDao.findIdByUsername(principal.getName())), providerId, appointmentRequestDTO.getDate(), appointmentRequestDTO.getStartTime()));
     }
 
@@ -59,7 +59,7 @@ public class AppointmentController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/my-appointments/{dateString}", method = RequestMethod.GET)
+    @RequestMapping(value = "/my-appointments/date/{dateString}", method = RequestMethod.GET)
     public List<Appointment> getAppointmentsByDate(Principal principal, @PathVariable String dateString) {
         LocalDate date = LocalDate.parse(dateString);
         if (userDao.getIsProvider(principal.getName())) {

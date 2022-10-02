@@ -11,14 +11,17 @@
             <h4>{{provider.bio}}</h4>   
             <input v-if="!bookAppointment" v-on:click.prevent="flipBoolean" type="button" name="bookAppointment" id="bookAppointment" value="Book Appointment">
             <!-- Implement Book Appointment Form HERE -->
+            <appointment-form v-if="bookAppointment"/>
         </div>
     </div>
 </template>
 
 <script>
     import ProviderService from "../services/ProviderService";
+    import AppointmentForm from "./AppointmentForm.vue";
     export default{
         name: 'provider-info',
+        components: {AppointmentForm},
         props: {
             'providerId' : Number
         },
