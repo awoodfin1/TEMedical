@@ -44,9 +44,9 @@ export default new Vuex.Store({
     GET_PROVIDERS(state, providers) {
       state.providers = providers;
     },
-    SET_ISPROVIDER(state, isProvider){
-      state.isProvider = isProvider;
-    },
+    // SET_ISPROVIDER(state, isProvider){
+    //   state.isProvider = isProvider;
+    // },
     GET_APPOINTMENTS(state, appointments){
       state.myAppointments = appointments;
     }
