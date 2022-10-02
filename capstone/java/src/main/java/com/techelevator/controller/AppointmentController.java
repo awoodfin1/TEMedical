@@ -31,6 +31,7 @@ public class AppointmentController {
         this.providerDao = providerDao;
     }
 
+    //TODO: going to have to update this method
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/appointment/{dateString}", method = RequestMethod.GET)
     public List<LocalTime> getAvailApptStartTimesByDate(@PathVariable String dateString) {
