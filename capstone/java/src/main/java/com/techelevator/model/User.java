@@ -19,12 +19,13 @@ public class User {
 
    public User() { }
 
-   public User(int id, String username, String password, String authorities) {
+   public User(int id, String username, String password, String authorities, boolean isProvider) {
       this.id = id;
       this.username = username;
       this.password = password;
       if(authorities != null) this.setAuthorities(authorities);
       this.activated = true;
+      this.isProvider = isProvider;
    }
 
    public int getId() {
@@ -57,7 +58,7 @@ public class User {
    }
 
    public void setProvider(boolean provider) {
-      isProvider = provider;
+      this.isProvider = provider;
    }
 
    public boolean isActivated() {

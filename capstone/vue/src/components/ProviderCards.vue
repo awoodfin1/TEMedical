@@ -2,8 +2,8 @@
     <div class="cards">
         <router-link class="card" v-for="provider in $store.state.providers" v-bind:key="provider.id" v-bind:to="{name: 'Provider', params: {providerId:provider.id}}">
             <img class="profile-pic" v-bind:src="provider.photoUrl" alt="">
-            <h2>{{ appointment.appointmentDate }}</h2>
-            <h3>{{ appointment.apptStartTime }} - {{ appointment.apptEndTime }}</h3>
+            <h3>{{provider.title}} {{provider.firstName}} {{provider.lastName}} {{provider.postNominals}}</h3>
+            <h3>{{provider.specialty}}</h3>
             <h4>{{provider.bio}}</h4>
             <h4 v-if="provider.rating">Provider Rating: {{provider.rating}}</h4>
             <h4 v-if="provider.phoneNumber">Contact Info:</h4>

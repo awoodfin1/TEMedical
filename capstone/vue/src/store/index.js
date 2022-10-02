@@ -21,7 +21,8 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     providers: [],
-    isProvider: false
+    // isProvider: false,
+    myAppointments: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -44,7 +45,10 @@ export default new Vuex.Store({
       state.providers = providers;
     },
     SET_ISPROVIDER(state, isProvider){
-      state.isProvider = isProvider
+      state.isProvider = isProvider;
+    },
+    GET_APPOINTMENTS(state, appointments){
+      state.myAppointments = appointments;
     }
   }
 })

@@ -40,6 +40,7 @@ public class AppointmentController {
         return appointmentDao.getAvailability(date, providerId);
     }
 
+    //TODO: going to have to update this method
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/appointment", method = RequestMethod.POST)
     public Appointment createAppointment(Principal principal, @RequestBody AppointmentRequestDTO appointmentRequestDTO) {
