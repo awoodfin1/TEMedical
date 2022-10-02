@@ -9,14 +9,14 @@
         <li>
           <router-link class="left-nav" v-bind:to="{ name: 'home' }">Home</router-link>
         </li>
-        <li>
-          <router-link class="left-nav" v-bind:to="{ name: 'office' }" v-if="$store.state.token != ''">Office Info</router-link>
+        <li v-if="$store.state.token != ''">
+          <router-link class="left-nav" v-bind:to="{ name: 'office' }">Office Info</router-link>
         </li>
-        <li>
-          <router-link class="left-nav" v-bind:to="{ name: 'appointment' }" v-if="$store.state.token != ''">Availability</router-link>
+        <li v-if="$store.state.token != ''">
+          <router-link class="left-nav" v-bind:to="{ name: 'appointment' }">Availability</router-link>
         </li>
-        <li>
-          <router-link class="left-nav" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        <li v-if="$store.state.token != ''">
+          <router-link class="left-nav" v-bind:to="{ name: 'logout' }">Logout</router-link>
         </li>
       </menu>
       
@@ -145,23 +145,28 @@ h1 {
   #app-header {
   height: auto;
   width: 100%;
-  padding: 0;
+  padding: 5;
   justify-content: space-evenly;
   }
 
   #app-header img {
-    height: 40px;
+    height: 80px;
     padding-left: 10px;
     padding-right: 10px;
   }
 
+  #med-nav {
+    padding-right: 38px;
+  }
+
   #med-nav menu {
     margin: 5px auto;
+    box-shadow: none; 
   }
 
   #med-nav menu li {
     display: inline-block;
-    padding: 0 7px;
+    padding: 0 7px; 
   }
 
   

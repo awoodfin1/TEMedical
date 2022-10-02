@@ -58,7 +58,7 @@ export default {
     text-align: center;
     display: flex;
     flex-direction: column;
-    max-width: 10vw;
+    max-width: 25vw;
 }
 
 </style>
