@@ -63,6 +63,20 @@ public class JdbcPatientDao implements PatientDao{
         }
     }
 
+    @Override
+    public Patient getPatientByApptId(int apptId) {
+        Patient patient = new Patient();
+        String sql = "SELECT patient_id, user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description " +
+                "FROM patient " +
+                "JOIN appointment ON patient.patient_id = appointment.patient_id " +
+                "WHERE appointment_id = ?;";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, apptId);
+        if (result.next()) {
+            patient = mapRowToPatient(result);
+        }
+        return patient;
+    }
+
     private Patient mapRowToPatient(SqlRowSet rs) {
         Patient patient = new Patient();
         patient.setId(rs.getInt("patient_id"));
