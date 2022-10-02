@@ -9,11 +9,14 @@
         <li>
           <router-link class="left-nav" v-bind:to="{ name: 'home' }">Home</router-link>
         </li>
-        <li v-if="$store.state.token != ''">
-          <router-link class="left-nav" v-bind:to="{ name: 'office' }">Office Info</router-link>
+        <li v-if="this.$store.state.token != '' && !this.$store.state.user.provider">
+          <router-link class="left-nav" v-bind:to="{ name: 'my-appointments' }">Appointments</router-link>
         </li>
         <li v-if="$store.state.token != ''">
-          <router-link class="left-nav" v-bind:to="{ name: 'appointment' }">Availability</router-link>
+          <router-link class="left-nav" v-bind:to="{ name: 'reviews' }">Reviews</router-link>
+        </li>
+        <li v-if="$store.state.token != ''">
+          <router-link class="left-nav" v-bind:to="{ name: 'my-profile' }">My Profile</router-link>
         </li>
         <li v-if="$store.state.token != ''">
           <router-link class="left-nav" v-bind:to="{ name: 'logout' }">Logout</router-link>
@@ -38,8 +41,7 @@ export default {
   name: "app-footer",
   components: { 
     OfficeInfo 
-    },
-  
+  }
 }
 </script>
 

@@ -34,6 +34,13 @@ public class JdbcProviderDao implements ProviderDao{
     }
 
     @Override
+    public Integer getProviderIdByUserId(int userId){
+        String sql = "SELECT provider_id FROM provider WHERE user_id = ?";
+        Integer id = jdbcTemplate.queryForObject(sql,Integer.class, userId);
+        return id;
+    }
+
+    @Override
     public Provider getProviderByProviderId(int id) {
         Provider provider = null;
         String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, specialty, gender, language, rating, phone_number, bio, photo_URL " +

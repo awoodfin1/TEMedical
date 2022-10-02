@@ -52,7 +52,7 @@ public class AppointmentController {
     @RequestMapping(value = "/my-appointments", method = RequestMethod.GET)
     public List<Appointment> getAppointments(Principal principal) {
         if (userDao.getIsProvider(principal.getName())) {
-            return appointmentDao.getAllApptsByProviderId((providerDao.getProviderByProviderId(userDao.findIdByUsername(principal.getName()))).getId());
+            return appointmentDao.getAllApptsByProviderId((providerDao.getProviderIdByUserId(userDao.findIdByUsername(principal.getName()))));
         } else {
             return appointmentDao.getAllApptsByPatientId(patientDao.getPatientIdByUserId(userDao.findIdByUsername(principal.getName())));
         }

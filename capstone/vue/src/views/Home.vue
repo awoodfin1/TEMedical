@@ -4,7 +4,7 @@
     <p>About Us: We do medical scheduling!</p>
     <br>
     <providers v-if="!$store.state.user.provider"/>
-    <my-appointments v-if="$store.state.user.Provider"/>
+    <my-appointments v-if="$store.state.user.provider"/>
   </div>
 </template>
 
