@@ -11,6 +11,7 @@
             <h4>{{provider.bio}}</h4>   
             <input v-if="!bookAppointment" v-on:click.prevent="flipBoolean" type="button" name="bookAppointment" id="bookAppointment" value="Book Appointment">
             <!-- Implement Book Appointment Form HERE -->
+            <h4 class="appt-form-title" v-if="bookAppointment">Please Fill Out This From To Book Your Appointment</h4>
             <appointment-form v-if="bookAppointment"/>
         </div>
     </div>
@@ -60,5 +61,9 @@
     .provider-pic{
         max-width: 300px;
         max-height: 250px;
+    }
+
+    .appt-form-title{
+        color: rgb(0, 180, 242);
     }
 </style>

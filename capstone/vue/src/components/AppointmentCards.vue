@@ -5,7 +5,8 @@
             <img class="appt-pic" src="@/images/Appointment.png" alt="Appointment-Image">
             <h2>{{ appointment.appointmentDate }}</h2>
             <h3>{{ appointment.apptStartTime }} - {{ appointment.apptEndTime }}</h3>
-            <h4>Appointment Id: {{ appointment.id }} | Status: {{ appointment.status }}</h4>
+            <h4>Appointment Id: {{ appointment.id }} </h4>
+            <h4>Status: {{ appointment.status }}</h4>
         <!-- </div> -->
         </router-link>
     </div>
@@ -25,6 +26,7 @@ export default {
     height: 400px;
     margin: 20px;
     padding-top: 20px;
+    text-align: center;
 }
 .appt-pic{
     max-width: 250px;

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="appointment-form">
         <form v-on:submit.prevent="addAppointment()" class="apptSelect">
             <label for="dateInput">Please Select a Date</label>
             <input type="date" name="date" min="2022-09-28" max="2022-12-31" v-model="newApptRequest.date" v-on:change="getTimes()" required>
@@ -55,10 +55,12 @@ export default {
 
 <style>
 .apptSelect{
-    text-align: center;
     display: flex;
     flex-direction: column;
-    max-width: 25vw;
+    max-width: 15vw;
 }
-
+.appointment-form{
+    display: flex;
+    justify-content: center;
+}
 </style>

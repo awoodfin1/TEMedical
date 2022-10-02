@@ -12,7 +12,7 @@
               <h3>Appointment Details (if provided):</h3>
               <p>{{ appointment.appointmentDetails }}</p>
             </div>
-            <div class="patient-info">
+            <div class="patient-info" v-if="$store.state.isProvider">
               <h1>Patient Information</h1>
               <h3>Name: {{ $store.state.apptPatient.firstName }} {{ $store.state.apptPatient.lastName }}</h3>
               <h4>DOB: {{ $store.state.apptPatient.birthdate }}</h4>
