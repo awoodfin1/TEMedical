@@ -43,7 +43,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 div .appointment-details {
     /* display: flex;
     align-items: center;
@@ -51,7 +51,7 @@ div .appointment-details {
     text-align: center;
 }
 
-.provider-container p {
+.appointment-container p {
     text-align: center;
 }
 

@@ -1,13 +1,13 @@
 <template>
   <div class="cards">
-        <!-- <router-link class="card" v-for="appointment in $store.state.myAppointments" v-bind:key="appointment.id" v-bind:to="{name: 'Appointment', params: {providerId:provider.id}}"> -->
-        <div class="card" v-for="appointment in $store.state.myAppointments" v-bind:key="appointment.id"> <!--Change To Router Link When AppointmentDetails View Is Implemented-->
+        <router-link class="card" v-for="appointment in $store.state.myAppointments" v-bind:key="appointment.id" v-bind:to="{name: 'appointment-details', params: {apptId:appointment.id}}">
+        <!-- <div class="card" v-for="appointment in $store.state.myAppointments" v-bind:key="appointment.id"> Change To Router Link When AppointmentDetails View Is Implemented -->
             <img class="appt-pic" src="@/images/Appointment.png" alt="Appointment-Image">
             <h2>{{ appointment.appointmentDate }}</h2>
             <h3>{{ appointment.apptStartTime }} - {{ appointment.apptEndTime }}</h3>
             <h4>Appointment Id: {{ appointment.id }} | Status: {{ appointment.status }}</h4>
-        </div>
-        <!-- </router-link> -->
+        <!-- </div> -->
+        </router-link>
     </div>
 </template>
 
