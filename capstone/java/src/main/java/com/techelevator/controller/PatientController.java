@@ -30,4 +30,9 @@ public class PatientController {
     public Patient getPatientByUsername(Principal principal) {
         return patientDao.getPatientByUserId(userDao.findIdByUsername(principal.getName()));
     }
+
+    @RequestMapping(value = "/patient/appointment/{apptId}", method = RequestMethod.GET)
+    public Patient getPatientByApptId(int apptId) {
+        return patientDao.getPatientByApptId(apptId);
+    }
 }

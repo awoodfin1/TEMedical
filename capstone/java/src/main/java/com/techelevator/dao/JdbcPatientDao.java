@@ -49,9 +49,9 @@ public class JdbcPatientDao implements PatientDao{
         String firstName = newPatient.getFirstName();
         String lastName = newPatient.getLastName();
         String phoneNumber = newPatient.getPhoneNumber();
-        String email_address = newPatient.getEmail_address();
+        String email_address = newPatient.getEmailAddress();
         LocalDate birthdate = newPatient.getBirthdate();
-        String healthText = newPatient.getHealth_issues_description();
+        String healthText = newPatient.getHealthIssuesDescription();
 
         String sql = "UPDATE patient SET first_name = ?, last_name = ?, phone_number = ?, ";
         sql += "email_address = ?, birthdate = ?, health_issues_description = ? WHERE patient_id = ?;";
@@ -84,9 +84,9 @@ public class JdbcPatientDao implements PatientDao{
         patient.setFirstName(rs.getString("first_name"));
         patient.setLastName(rs.getString("last_name"));
         patient.setPhoneNumber(rs.getString("phone_number"));
-        patient.setId(rs.getInt("email_address"));
-        patient.setId(rs.getInt("birthdate"));
-        patient.setId(rs.getInt("health_issues_description"));
+        patient.setEmailAddress(rs.getString("email_address"));
+        patient.setBirthdate(rs.getDate("birthdate").toLocalDate());
+        patient.setHealthIssuesDescription(rs.getString("health_issues_description"));
         return patient;
     }
 }

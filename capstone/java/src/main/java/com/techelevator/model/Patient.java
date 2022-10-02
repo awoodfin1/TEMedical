@@ -9,9 +9,9 @@ public class Patient {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String email_address;
+    private String emailAddress;
     private LocalDate birthdate;
-    private String health_issues_description;
+    private String healthIssuesDescription;
 
     public Patient() {
 
@@ -57,12 +57,12 @@ public class Patient {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail_address() {
-        return email_address;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmail_address(String email_address) {
-        this.email_address = email_address;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public LocalDate getBirthdate() {
@@ -73,12 +73,12 @@ public class Patient {
         this.birthdate = birthdate;
     }
 
-    public String getHealth_issues_description() {
-        return health_issues_description;
+    public String getHealthIssuesDescription() {
+        return this.healthIssuesDescription;
     }
 
-    public void setHealth_issues_description(String health_issues_description) {
-        this.health_issues_description = health_issues_description;
+    public void setHealthIssuesDescription(String healthIssuesDescription) {
+        this.healthIssuesDescription = healthIssuesDescription;
     }
 
     @Override

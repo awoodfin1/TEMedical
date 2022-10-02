@@ -1,14 +1,24 @@
 <template>
   <div class="appointment-container">
-        <div class = "appointment-details">
+        <div class="appointment-details">
             <h3 class="top-line">Appointment Id: {{ appointment.id }} | Status: {{ appointment.status }}</h3>
             <img class="appt-pic" src="@/images/Appointment.png" alt="Appointment-Image">
-            <h1>{{ appointment.appointmentDate }}</h1>
-            <h2>{{ appointment.apptStartTime }} - {{ appointment.apptEndTime }}</h2>
-            <h3>Reason For Appointment (if provided):</h3>
-            <p>{{ appointment.appointmentReason }}</p>
-            <h3>Appointment Details (if provided):</h3>
-            <p>{{ appointment.appointmentDetails }}</p>  
+            <div class = "appointment-info">
+              <h1>Appointment Information</h1>
+              <h3>Date: {{ appointment.appointmentDate }}</h3>
+              <h3>Time: {{ appointment.apptStartTime }} - {{ appointment.apptEndTime }}</h3>
+              <h3>Reason For Appointment (if provided):</h3>
+              <p>{{ appointment.appointmentReason }}</p>
+              <h3>Appointment Details (if provided):</h3>
+              <p>{{ appointment.appointmentDetails }}</p>
+            </div>
+            <div class="patient-info">
+              <h1>Patient Information</h1>
+              <h3>Name: {{ $store.state.apptPatient.firstName }} {{ $store.state.apptPatient.lastName }}</h3>
+              <h4>DOB: {{ $store.state.apptPatient.birthdate }}</h4>
+              <h4>Health Issues Description:</h4>
+              <p>{{ $store.state.apptPatient.healthIssuesDescription }}</p>
+            </div>
             <input v-if="!updateAppointment" v-on:click.prevent="flipBoolean" type="button" name="updateAppointment" id="updateAppointment" value="Update Appointment">
             <!-- Implement Update Appointment Form HERE -->
         </div>
@@ -17,6 +27,7 @@
 
 <script>
 import ApptService from "../services/ApptService";
+import PatientService from '../services/PatientService'
 
 export default {
   name: 'appointment-details',
@@ -26,12 +37,17 @@ export default {
   data() {
     return {
       appointment: [],
-      updateAppointment: false
+      // apptPatient: []
+      updateAppointment: false,
     }
   },
   created() {
     ApptService.getAppointmentById(this.apptId).then( (response) => {
       this.appointment = response.data
+    });
+    PatientService.getPatientByApptId(this.apptId).then( (response) => {
+      // this.apptPatient = response.data;
+      this.$store.commit('SET_APPT_PATIENT', response.data);
     });
   },
   methods: {

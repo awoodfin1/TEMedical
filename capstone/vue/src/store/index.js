@@ -22,6 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     providers: [],
     // isProvider: false,
+    apptPatient: [],
     myAppointments: []
   },
   mutations: {
@@ -41,14 +42,17 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    GET_PROVIDERS(state, providers) {
+    SET_PROVIDERS(state, providers) {
       state.providers = providers;
     },
     // SET_ISPROVIDER(state, isProvider){
     //   state.isProvider = isProvider;
     // },
-    GET_APPOINTMENTS(state, appointments){
+    SET_APPOINTMENTS(state, appointments){
       state.myAppointments = appointments;
+    },
+    SET_APPT_PATIENT(state, patient) {
+      state.apptPatient = patient;
     }
   }
 })

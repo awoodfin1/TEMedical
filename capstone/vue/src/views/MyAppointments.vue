@@ -12,7 +12,7 @@ export default {
   name: "my-appointments",
   created() {
     ApptService.getAppointments().then( (response) => {
-      this.$store.commit("GET_APPOINTMENTS", response.data);
+      this.$store.commit("SET_APPOINTMENTS", response.data);
     });
   },
   components: {
