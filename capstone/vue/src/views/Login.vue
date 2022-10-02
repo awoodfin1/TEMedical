@@ -88,7 +88,7 @@ export default {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
-    margin: 30px 220px 100px 220px;
+    margin: 3% 26% 12% 26%;
 }
   
 </style>
