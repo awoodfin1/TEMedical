@@ -11,6 +11,7 @@ import Providers from '../views/Providers.vue'
 import Provider from '../views/Provider.vue'
 import MyAppointments from '../views/MyAppointments.vue'
 import AppointmentDetail from '../views/AppointmentDetail.vue'
+import MyProfilePatient from '../views/MyProfilePatient.vue'
 
 
 Vue.use(Router)
@@ -104,6 +105,14 @@ const router = new Router({
       path: "/my-appointments/:apptId",
       name: "appointment-details",
       component: AppointmentDetail,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/patient/my-profile",
+      name: "my-profile-patient",
+      component: MyProfilePatient,
       meta: {
         requiresAuth: true
       }
