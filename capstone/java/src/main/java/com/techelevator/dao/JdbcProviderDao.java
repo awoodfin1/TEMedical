@@ -127,6 +127,17 @@ public class JdbcProviderDao implements ProviderDao{
         jdbcTemplate.update(sql, userId, first_name, last_name);
     }
 
+    @Override
+    public int getIdByProviderFullName(String fullName) {
+        String sql = "SELECT provider_id FROM provider WHERE (title ||' '|| first_name || ' ' || last_name || ' ' || post_nominals) = ?;";
+        try {
+            return jdbcTemplate.queryForObject(sql, Integer.class, fullName);
+        } catch (DataAccessException e) {
+            System.out.println("Unable to get provider: " + e.getMessage());
+        }
+        return 0;
+    }
+
     private Provider mapRowToProvider(SqlRowSet rs) {
         Provider provider = new Provider();
         provider.setId(rs.getInt("provider_id"));

@@ -32,6 +32,16 @@ public class Review {
         this.responseTime = responseTime;
     }
 
+    public Review(int officeId, int patientId, int providerId, String reviewText, LocalDate reviewDate, LocalTime reviewTime, int providerRating) {
+        this.officeId = officeId;
+        this.patientId = patientId;
+        this.providerId = providerId;
+        this.reviewText = reviewText;
+        this.reviewDate = reviewDate;
+        this.reviewTime = reviewTime;
+        this.providerRating = providerRating;
+    }
+
     public int getId() {
         return id;
     }

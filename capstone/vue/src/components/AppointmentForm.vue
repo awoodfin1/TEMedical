@@ -10,6 +10,7 @@
                 </option>
             </select>
             <button type="submit">Submit</button>
+            <br />
         </form>
     </div>
 </template>
@@ -57,10 +58,16 @@ export default {
 .apptSelect{
     display: flex;
     flex-direction: column;
-    max-width: 15vw;
+    max-width: 25vw;
 }
 .appointment-form{
     display: flex;
     justify-content: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .apptSelect {
+        max-width: 80vw;
+    }
 }
 </style>
