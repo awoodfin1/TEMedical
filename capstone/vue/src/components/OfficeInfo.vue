@@ -45,6 +45,7 @@
 
         div .office-info {
         display: list-item;
+        list-style: none;
         align-items: center;
         }
 
@@ -53,7 +54,8 @@
         }
 
         div .office-info::marker {
-            color: white;
+            display: none;
+            
         }
     }
 </style>

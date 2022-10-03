@@ -173,10 +173,10 @@ h1 {
 
   
 
-  #app-footer {
+  /* #app-footer {
     display: list-item;
     
-  }
+  } */
 }
 
 </style>

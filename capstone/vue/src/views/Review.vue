@@ -24,6 +24,14 @@ export default {
   flex-direction: column;
   align-items: center;
   box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
-  margin: 3% 14% 8% 14%;
+  padding: 0 15px 0 15px;
+  margin: 3% 2% 3% 2%;
+}
+
+@media screen and (max-width: 1000px) {
+  .review {
+    padding: 0 40px 30px 40px;
+    margin: 3% 15% 5% 15%;
+  }
 }
 </style>

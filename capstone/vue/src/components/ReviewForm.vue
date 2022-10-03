@@ -1,7 +1,7 @@
 <template>
     <form v-on:submit.prevent="submitForm" class="reviewForm">
         <div>
-            <label for="providerSelect">Please Select a Provider to Review</label>
+            <label for="providerSelect">Please Select a Provider to Review:  </label>
             <select id="providerSelect" name="providerSelect" v-model="review.provider" required>
                 <option v-for="provider in $store.state.providers" v-bind:key="provider.id" >
                     {{ provider.title }} {{ provider.firstName }} {{provider.lastName}} {{provider.postNominals}}
@@ -9,7 +9,7 @@
             </select>
         </div>
         <div class="form-element">
-            <label for="rating">Rating:</label>
+            <label for="rating">Rating:  </label>
             <select id="rating" v-model.number="review.starRating">
                 <option value="1">1 Star</option>
                 <option value="2">2 Stars</option>
@@ -20,7 +20,7 @@
         </div>
         <div>
             <label for="reviewText">Review your provider here:</label><br />
-            <textarea id="reviewText" name="reviewText" rows="8" cols="60>"></textarea>
+            <textarea id="reviewText" name="reviewText" rows="8" cols="68"></textarea>
         </div>
             <input id="reviewSubmit" class="reviewBtn" type="submit" value="Save" />
             <input id="reviewCancel" class="reviewBtn" type="button" value="Cancel" v-on:click.prevent="resetForm" />               
