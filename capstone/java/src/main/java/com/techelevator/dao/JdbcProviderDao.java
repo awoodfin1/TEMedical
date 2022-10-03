@@ -83,7 +83,7 @@ public class JdbcProviderDao implements ProviderDao{
                         "photo_URL = ? " +
                      "WHERE provider_id = ?;";
         try {
-            jdbcTemplate.update(sql, provider.getFirstName(), provider.getLastName(), provider.getPostNominals(), provider.getSpecialty(), provider.getGender(), provider.getLanguage(), provider.getRating(), provider.getPhoneNumber(), provider.getBio(), provider.getPhotoUrl());
+            jdbcTemplate.update(sql, provider.getTitle(), provider.getFirstName(), provider.getLastName(), provider.getPostNominals(), provider.getSpecialty(), provider.getGender(), provider.getLanguage(), provider.getRating(), provider.getPhoneNumber(), provider.getBio(), provider.getPhotoUrl(), provider.getId());
         } catch (DataAccessException e) {
             System.out.println("Unable to update provider: " + e.getMessage());
         }

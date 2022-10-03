@@ -12,11 +12,14 @@
         <li v-if="this.$store.state.token != '' && !this.$store.state.user.provider">
           <router-link class="left-nav" v-bind:to="{ name: 'my-appointments' }">Appointments</router-link>
         </li>
-        <li v-if="$store.state.token != ''">
+        <li v-if="$store.state.token != '' && !this.$store.state.user.provider">
           <router-link class="left-nav" v-bind:to="{ name: 'reviews' }">Reviews</router-link>
         </li>
-        <li v-if="$store.state.token != ''">
-          <router-link class="left-nav" v-bind:to="{ name: 'my-profile-patient' }">My Profile</router-link>
+        <li v-if="$store.state.token != '' && !$store.state.user.provider">
+          <router-link class="left-nav" v-bind:to="{ name: 'my-profile-patient' }">Patient Profile</router-link>
+        </li>
+        <li v-if="$store.state.token != '' && $store.state.user.provider">
+          <router-link class="left-nav" v-bind:to="{ name: 'my-profile-provider' }">Provider Profile</router-link>
         </li>
         <li v-if="$store.state.token != ''">
           <router-link class="left-nav" v-bind:to="{ name: 'logout' }">Logout</router-link>
@@ -74,7 +77,7 @@ aside {
 
 div#app {
   display: grid;
-  grid-template-columns: 180px 1fr 280px;
+  grid-template-columns: 200px 1fr 280px;
   grid-template-rows: 80px 1fr 1fr;
   gap: 15px;
   grid-template-areas:
@@ -171,12 +174,6 @@ h1 {
     padding: 0 7px; 
   }
 
-  
-
-  /* #app-footer {
-    display: list-item;
-    
-  } */
 }
 
 </style>
