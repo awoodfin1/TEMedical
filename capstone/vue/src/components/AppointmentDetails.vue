@@ -19,14 +19,14 @@
               <h4>Health Issues Description:</h4>
               <p>{{ $store.state.apptPatient.healthIssuesDescription }}</p>
             </div>
-            <input v-if="$store.state.user.provider && !updateAppointment" v-on:click.prevent="toggleUpdateAppt" type="button" name="updateAppointment" id="updateAppointment" value="Update Appointment">
+            <input v-if="$store.state.user.provider && !updateAppt" v-on:click.prevent="toggleUpdateAppt" type="button" name="updateAppt" id="updateAppt" value="Update Appointment">
             <!-- Implement Update Appointment Form HERE -->
-            <div class="update-appointment" v-if="updateAppointment">
+            <div class="update-appointment" v-if="updateAppt">
               <h5>Would you like to CANCEL or RESCHEDULE this appointment?</h5>
-                <input type="button" value="CANCEL APPOINTMENT" v-on:click.prevent="toggleCancelAppt">
+                <input type="button" value="CANCEL APPOINTMENT" v-on:click="cancelAppointment(appointment)">
                 <input type="button" value="RESCHEDULE APPOINTMENT" v-on:click.prevent="toggleReschAppt">
                 <div class="reschedule-appointment" v-if="rescheduleAppointment">
-                  <form class="reschedule-appointment-form" v-on:submit="updateAppointment">
+                  <form class="reschedule-appointment-form" v-on:submit="submitUpdatedAppointment">
                     <label for="update-appt-date">Appointment Date:</label>
                     <input type="date" v-model="appointment.appointmentDate" required>
                     <label for="update-appt-start-time">Appointment Time:</label>
@@ -34,7 +34,11 @@
                     <button type="submit">Save & Submit</button>
                   </form>
                 </div>
-                
+                <!-- <div class="confirm-cancel-appointment" v-if="cancelAppt">
+                  <h5>Are you SURE you wish to CANCEL this appointment?</h5>
+                    <input type="button" value="YES, CANCEL APPT" v-on:click="!cancelAppt">
+                    <input type="button" value="NO" v-on:click.prevent="toggleReschAppt">
+                </div> -->
             </div>
         </div>
     </div>
@@ -53,8 +57,8 @@ export default {
     return {
       appointment: {},
       // apptPatient: []
-      updateAppointment: false,
-      cancelAppointment: false,
+      updateAppt: false,
+      cancelAppt: false,
       rescheduleAppointment: false
     }
   },
@@ -69,16 +73,22 @@ export default {
   },
   methods: {
     toggleUpdateAppt() {
-      this.updateAppointment = !this.updateAppointment;
+      this.updateAppt = !this.updateAppt;
     },
-    toggleCancelAppt() {
-      this.cancelAppointment = !this.cancelAppointment;
+    cancelAppointment(appointment) {
+      appointment.status = 'Cancelled';
+      ApptService.updateAppointment(appointment);
+      this.$router.push({name: 'my-appointments'})
     },
     toggleReschAppt() {
       this.rescheduleAppointment = !this.rescheduleAppointment;
     },
     showForm() {
       
+    },
+    submitUpdatedAppointment(appointment) {
+      appointment.status = 'Rescheduled';
+      ApptService.updateAppointment(appointment);
     }
   }
 
