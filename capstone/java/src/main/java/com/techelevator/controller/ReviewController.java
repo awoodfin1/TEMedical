@@ -37,6 +37,12 @@ public class ReviewController {
         return reviewDao.getAllReviews();
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/reviews/{providerId}")
+    public List<Review> getReviewsByProviderId(@PathVariable int providerId){
+        return reviewDao.getAllReviewsByProvider(providerId);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/reviews", method = RequestMethod.POST)
     public void createReview(Principal principal, @RequestBody ReviewDTO reviewDTO) {

@@ -1,26 +1,26 @@
 <template>
     <div class="update-provider">
-        <h2>Please Update Your Profile</h2>
+        <h2  class="update-provider-title">Please Update Your Profile</h2>
         <form class="update-provider-form" v-on:submit.prevent="updateProvider()" v-if="this.showForm">
             <label for="update-title">Title: </label>
-            <input type="text" v-model="newProvider.title" id="update-title">
+            <input class="update-provider-field" type="text" v-model="newProvider.title" id="update-title">
             <label for="update-first-name">First Name: </label>
-            <input type="text" v-model="newProvider.firstName" id="update-first-name" required>
+            <input class="update-provider-field" type="text" v-model="newProvider.firstName" id="update-first-name" required>
             <label for="update-last-name">Last Name: </label>
-            <input type="text" v-model="newProvider.lastName" id="update-last-name" required>
+            <input class="update-provider-field" type="text" v-model="newProvider.lastName" id="update-last-name" required>
             <label for="update-post-nominals">Post Nominals: </label>
-            <input type="text" v-model="newProvider.postNominals" id="update-post-nominals">
+            <input class="update-provider-field" type="text" v-model="newProvider.postNominals" id="update-post-nominals">
             <label for="update-specialty">Specialty: </label>
-            <input type="text" v-model="newProvider.specialty" id="update-specialty" required>
+            <input class="update-provider-field" type="text" v-model="newProvider.specialty" id="update-specialty" required>
             <label for="update-gender">Gender: </label>
-            <input type="text" v-model="newProvider.gender" id="update-gender">
+            <input class="update-provider-field" type="text" v-model="newProvider.gender" id="update-gender">
             <label for="update-language">Language: </label>
-            <input type="text" v-model="newProvider.language" id="update-language">
+            <input class="update-provider-field" type="text" v-model="newProvider.language" id="update-language">
             <label for="update-phone-number">Phone Number: </label>
-            <input type="text" v-model="newProvider.phoneNumber" id="update-phone-number" required>
+            <input class="update-provider-field" type="text" v-model="newProvider.phoneNumber" id="update-phone-number" required>
             <label for="update-bio">Update Bio: </label>
-            <input type="text" v-model="newProvider.bio" id="update-bio">
-            <button type="submit">Submit</button>
+            <input class="update-provider-field" type="text" v-model="newProvider.bio" id="update-bio">
+            <button id="providerSubmitBtn" type="submit">Submit</button>
         </form>
         <h4 v-if="!this.showForm">Form Submitted! Thank You!</h4>
     </div>
@@ -60,6 +60,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+        padding: 0 15px 25px 15px;
+        margin: 3% 20% 3% 20%;
     }
     .update-provider-form{
         display: flex;
@@ -69,4 +72,24 @@
     .update-health-issues input{
         width: auto;
     }
+
+    .update-provider-field{
+        margin-bottom: 20px;
+    }
+
+    .update-provider-title {
+        color:rgb(0, 180, 242);
+    }
+
+    #providerSubmitBtn {
+        background-color: rgb(174, 255, 174);
+        margin-top: 10px;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .update-provider {
+            padding: 0 2px 25px 2px;
+            margin: 3% 0 3% 0;
+        }       
+     }
 </style>

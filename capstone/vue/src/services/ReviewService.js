@@ -7,6 +7,10 @@ export default {
 
     createReview(newReview) {
         return axios.post('/reviews', newReview)
+    },
+
+    getReviewByProviderId(providerId){
+        return axios.get(`/reviews/${providerId}`)
     }
     
 
