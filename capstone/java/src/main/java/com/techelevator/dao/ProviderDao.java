@@ -18,6 +18,8 @@ public interface ProviderDao {
 
     Provider getProviderByUserId(int id);
 
+    int getIdByProviderFullName(String fullName);
+
     void updateProvider(Provider provider);
 
     LocalTime getProviderAvailStartTime(int providerId);

@@ -15,8 +15,17 @@ public class Provider {
     private String phoneNumber;
     private String bio;
     private String photoUrl;
+    private String fullName;
 
     public Provider() { }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     public int getId() {
         return this.id;
