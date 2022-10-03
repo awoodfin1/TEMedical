@@ -20,7 +20,7 @@
         </div>
         <div>
             <label for="reviewText">Review your provider here:</label><br />
-            <textarea id="reviewText" name="reviewText" rows="8" cols="68"></textarea>
+            <textarea id="reviewText" name="reviewText" rows="8" cols="68" v-model="review.reviewText"></textarea>
         </div>
             <input id="reviewSubmit" class="reviewBtn" type="submit" value="Save" />
             <input id="reviewCancel" class="reviewBtn" type="button" value="Cancel" v-on:click.prevent="resetForm" />               
