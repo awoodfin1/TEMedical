@@ -80,7 +80,7 @@ public class JdbcPatientDao implements PatientDao{
     private Patient mapRowToPatient(SqlRowSet rs) {
         Patient patient = new Patient();
         patient.setId(rs.getInt("patient_id"));
-        patient.setId(rs.getInt("user_id"));
+        patient.setUserId(rs.getInt("user_id"));
         patient.setFirstName(rs.getString("first_name"));
         patient.setLastName(rs.getString("last_name"));
         patient.setPhoneNumber(rs.getString("phone_number"));
