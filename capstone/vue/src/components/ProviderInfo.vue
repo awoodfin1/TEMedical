@@ -8,7 +8,7 @@
             <h4 v-if="provider.phoneNumber">Contact Info:</h4>
             <h4 v-if="provider.phoneNumber">{{provider.phoneNumber}}</h4>
             <h4>This provider speaks {{provider.language}}.</h4>
-            <h4>{{provider.bio}}</h4>   
+            <h4>"{{provider.bio}}"</h4>   
             <input v-if="!bookAppointment" v-on:click.prevent="flipBoolean" type="button" name="bookAppointment" id="bookAppointment" value="Book Appointment">
             <!-- Implement Book Appointment Form HERE -->
             <div class="appointForm">
