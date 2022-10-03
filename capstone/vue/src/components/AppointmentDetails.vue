@@ -7,10 +7,10 @@
               <h1>Appointment Information</h1>
               <h3>Date: {{ appointment.appointmentDate }}</h3>
               <h3>Time: {{ appointment.apptStartTime }} - {{ appointment.apptEndTime }}</h3>
-              <h3>Reason For Appointment (if provided):</h3>
-              <p>{{ appointment.appointmentReason }}</p>
-              <h3>Appointment Details (if provided):</h3>
-              <p>{{ appointment.appointmentDetails }}</p>
+              <h3 v-if="appointment.appointmentReason">Reason For Appointment (if provided):</h3>
+              <p v-if="appointment.appointmentReason">{{ appointment.appointmentReason }}</p>
+              <h3 v-if="appointment.appointmentDetails">Appointment Details (if provided):</h3>
+              <p v-if="appointment.appointmentDetails">{{ appointment.appointmentDetails }}</p>
             </div>
             <div class="patient-info" v-if="$store.state.user.provider">
               <h1>Patient Information</h1>
