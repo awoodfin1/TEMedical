@@ -84,8 +84,6 @@
         .update-patient {
             padding: 0 2px 25px 2px;
             margin: 3% 0 3% 0;
-        }
-
-       
+        }       
      }
 </style>
