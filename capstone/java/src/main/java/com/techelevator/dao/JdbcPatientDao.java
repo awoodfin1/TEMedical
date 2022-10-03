@@ -66,7 +66,7 @@ public class JdbcPatientDao implements PatientDao{
     @Override
     public Patient getPatientByApptId(int apptId) {
         Patient patient = new Patient();
-        String sql = "SELECT patient_id, user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description " +
+        String sql = "SELECT patient.patient_id, user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description " +
                 "FROM patient " +
                 "JOIN appointment ON patient.patient_id = appointment.patient_id " +
                 "WHERE appointment_id = ?;";
@@ -80,7 +80,7 @@ public class JdbcPatientDao implements PatientDao{
     private Patient mapRowToPatient(SqlRowSet rs) {
         Patient patient = new Patient();
         patient.setId(rs.getInt("patient_id"));
-        patient.setId(rs.getInt("user_id"));
+        patient.setUserId(rs.getInt("user_id"));
         patient.setFirstName(rs.getString("first_name"));
         patient.setLastName(rs.getString("last_name"));
         patient.setPhoneNumber(rs.getString("phone_number"));

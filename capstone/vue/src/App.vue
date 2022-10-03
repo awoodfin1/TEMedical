@@ -16,7 +16,7 @@
           <router-link class="left-nav" v-bind:to="{ name: 'reviews' }">Reviews</router-link>
         </li>
         <li v-if="$store.state.token != ''">
-          <router-link class="left-nav" v-bind:to="{ name: 'my-profile' }">My Profile</router-link>
+          <router-link class="left-nav" v-bind:to="{ name: 'my-profile-patient' }">My Profile</router-link>
         </li>
         <li v-if="$store.state.token != ''">
           <router-link class="left-nav" v-bind:to="{ name: 'logout' }">Logout</router-link>

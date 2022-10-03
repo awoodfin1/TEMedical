@@ -12,14 +12,14 @@
               <h3>Appointment Details (if provided):</h3>
               <p>{{ appointment.appointmentDetails }}</p>
             </div>
-            <div class="patient-info" v-if="$store.state.isProvider">
+            <div class="patient-info" v-if="$store.state.user.provider">
               <h1>Patient Information</h1>
               <h3>Name: {{ $store.state.apptPatient.firstName }} {{ $store.state.apptPatient.lastName }}</h3>
               <h4>DOB: {{ $store.state.apptPatient.birthdate }}</h4>
               <h4>Health Issues Description:</h4>
               <p>{{ $store.state.apptPatient.healthIssuesDescription }}</p>
             </div>
-            <input v-if="!updateAppointment" v-on:click.prevent="flipBoolean" type="button" name="updateAppointment" id="updateAppointment" value="Update Appointment">
+            <input v-if="$store.state.user.provider && !updateAppointment" v-on:click.prevent="flipBoolean" type="button" name="updateAppointment" id="updateAppointment" value="Update Appointment">
             <!-- Implement Update Appointment Form HERE -->
         </div>
     </div>
