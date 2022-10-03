@@ -15,7 +15,11 @@
                 <h4 id="appt-form-title" v-if="bookAppointment">Please Fill Out This From To Book Your Appointment</h4>
                 <appointment-form v-if="bookAppointment"/>
             </div>
-            
+            <h4>Provider Reviews: </h4>
+            <div class="reviews" v-for="review in this.reviews" v-bind:key="review.id">
+                <h4>Provider Rating: {{review.providerRating}}/5</h4>
+                <h4>Review: {{review.reviewText}}</h4>
+            </div>
         </div>
     </div>
 </template>
@@ -23,6 +27,7 @@
 <script>
     import ProviderService from "../services/ProviderService";
     import AppointmentForm from "./AppointmentForm.vue";
+    import ReviewService from "../services/ReviewService";
     export default{
         name: 'provider-info',
         components: {AppointmentForm},
@@ -32,17 +37,24 @@
         data(){
             return {
                 bookAppointment: false,
-                provider: []
+                provider: [],
+                reviews: []
             }
         },
         created() {
             ProviderService.getProvider(this.providerId).then( (response) =>{
                 this.provider = response.data;
+                this.getReviews();
             });
         },
         methods:{
             flipBoolean(){
                 this.bookAppointment = !this.bookAppointment;
+            },
+            getReviews(){
+                ReviewService.getReviewByProviderId(this.providerId).then((response) =>{
+                    this.reviews = response.data;
+                });
             }
         }
     }
@@ -64,6 +76,11 @@
     .provider-pic{
         max-width: 300px;
         max-height: 250px;
+    }
+    .reviews{
+        border-color: black;
+        border: 1px;
+        border-style: solid;
     }
 
     #appt-form-title{
