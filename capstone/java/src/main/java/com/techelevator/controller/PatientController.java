@@ -32,7 +32,7 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/patient/appointment/{apptId}", method = RequestMethod.GET)
-    public Patient getPatientByApptId(int apptId) {
+    public Patient getPatientByApptId(@PathVariable int apptId) {
         return patientDao.getPatientByApptId(apptId);
     }
 }
