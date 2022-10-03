@@ -78,9 +78,9 @@ public class JdbcReviewDao implements ReviewDao{
         review.setReviewDate(rs.getDate("review_date").toLocalDate());
         review.setReviewTime(rs.getTime("review_time").toLocalTime());
         review.setProviderRating(rs.getInt("provider_rating"));
-        review.setProviderResponseText(rs.getString("provider_response_text"));
-        review.setResponseDate(rs.getDate("response_date").toLocalDate());
-        review.setResponseTime(rs.getTime("response_time").toLocalTime());
+//        review.setProviderResponseText(rs.getString("provider_response_text"));
+//        review.setResponseDate(rs.getDate("response_date").toLocalDate());
+//        review.setResponseTime(rs.getTime("response_time").toLocalTime());
         return review;
     }
 }
