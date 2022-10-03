@@ -19,8 +19,23 @@
               <h4>Health Issues Description:</h4>
               <p>{{ $store.state.apptPatient.healthIssuesDescription }}</p>
             </div>
-            <input v-if="$store.state.user.provider && !updateAppointment" v-on:click.prevent="flipBoolean" type="button" name="updateAppointment" id="updateAppointment" value="Update Appointment">
+            <input v-if="$store.state.user.provider && !updateAppointment" v-on:click.prevent="toggleUpdateAppt" type="button" name="updateAppointment" id="updateAppointment" value="Update Appointment">
             <!-- Implement Update Appointment Form HERE -->
+            <div class="update-appointment" v-if="updateAppointment">
+              <h5>Would you like to CANCEL or RESCHEDULE this appointment?</h5>
+                <input type="button" value="CANCEL APPOINTMENT" v-on:click.prevent="toggleCancelAppt">
+                <input type="button" value="RESCHEDULE APPOINTMENT" v-on:click.prevent="toggleReschAppt">
+                <div class="reschedule-appointment" v-if="rescheduleAppointment">
+                  <form class="reschedule-appointment-form" v-on:submit="updateAppointment">
+                    <label for="update-appt-date">Appointment Date:</label>
+                    <input type="date" v-model="appointment.appointmentDate" required>
+                    <label for="update-appt-start-time">Appointment Time:</label>
+                    <input type="time" v-model="appointment.apptStartTime" required>
+                    <button type="submit">Save & Submit</button>
+                  </form>
+                </div>
+                
+            </div>
         </div>
     </div>
 </template>
@@ -36,9 +51,11 @@ export default {
   },
   data() {
     return {
-      appointment: [],
+      appointment: {},
       // apptPatient: []
       updateAppointment: false,
+      cancelAppointment: false,
+      rescheduleAppointment: false
     }
   },
   created() {
@@ -51,8 +68,17 @@ export default {
     });
   },
   methods: {
-    flipBoolean() {
+    toggleUpdateAppt() {
       this.updateAppointment = !this.updateAppointment;
+    },
+    toggleCancelAppt() {
+      this.cancelAppointment = !this.cancelAppointment;
+    },
+    toggleReschAppt() {
+      this.rescheduleAppointment = !this.rescheduleAppointment;
+    },
+    showForm() {
+      
     }
   }
 
