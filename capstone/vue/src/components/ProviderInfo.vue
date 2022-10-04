@@ -9,13 +9,13 @@
             <h4 v-if="provider.phoneNumber">{{provider.phoneNumber}}</h4>
             <h4>This provider speaks {{provider.language}}.</h4>
             <h4>"{{provider.bio}}"</h4>   
-            <input v-if="!bookAppointment" v-on:click.prevent="flipBoolean" type="button" name="bookAppointment" id="bookAppointment" value="Book Appointment">
+            <input v-if="!bookAppointment && !$store.state.user.provider" v-on:click.prevent="flipBoolean" type="button" name="bookAppointment" id="bookAppointment" value="Book Appointment">
             <!-- Implement Book Appointment Form HERE -->
-            <div class="appointForm">
+            <div class="appointForm" v-if="!$store.state.user.provider">
                 <h4 id="appt-form-title" v-if="bookAppointment">Please Fill Out This From To Book Your Appointment</h4>
                 <appointment-form v-if="bookAppointment"/>
             </div>
-            <h4>Provider Reviews: </h4>
+            <h4 v-if="!$store.state.user.provider">Provider Reviews: </h4>
             <div class="reviews" v-for="review in this.reviews" v-bind:key="review.id">
                 <h4>Provider Rating: {{review.providerRating}}/5</h4>
                 <h4>Review: {{review.reviewText}}</h4>
@@ -38,7 +38,7 @@
             return {
                 bookAppointment: false,
                 provider: [],
-                reviews: []
+                reviews: [],
             }
         },
         created() {
@@ -46,6 +46,7 @@
                 this.provider = response.data;
                 this.getReviews();
             });
+            
         },
         methods:{
             flipBoolean(){
