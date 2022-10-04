@@ -79,6 +79,9 @@ public class AppointmentController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/my-appointments/{apptId}", method = RequestMethod.PUT)
     public void updateAppointment(@RequestBody Appointment appointment, @PathVariable int apptId) {
+        if (appointment.getStatus().equals("Rescheduled")) {
+            appointment.setApptEndTime(appointment.getApptStartTime().plusMinutes(30));
+        }
         this.appointmentDao.updateAppointment(appointment);
     }
 

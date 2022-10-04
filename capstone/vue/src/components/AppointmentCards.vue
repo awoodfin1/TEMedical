@@ -4,7 +4,7 @@
         <!-- <div class="card" v-for="appointment in $store.state.myAppointments" v-bind:key="appointment.id"> Change To Router Link When AppointmentDetails View Is Implemented -->
             <img class="appt-pic" src="@/images/Appointment.png" alt="Appointment-Image">
             <h2>{{ appointment.appointmentDate }}</h2>
-            <h3>{{ appointment.apptStartTime }} - {{ appointment.apptEndTime }}</h3>
+            <h3>Time: {{ appointment.apptStartTime }}</h3>
             <h4>Appointment Id: {{ appointment.id }} </h4>
             <h4>Status: {{ appointment.status }}</h4>
         <!-- </div> -->

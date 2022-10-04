@@ -6,7 +6,7 @@
             <div class = "appointment-info">
               <h1>Appointment Information</h1>
               <h3>Date: {{ appointment.appointmentDate }}</h3>
-              <h3>Time: {{ appointment.apptStartTime }} - {{ appointment.apptEndTime }}</h3>
+              <h3>Time: {{ appointment.apptStartTime }}</h3>
               <h3 v-if="appointment.appointmentReason">Reason For Appointment (if provided):</h3>
               <p v-if="appointment.appointmentReason">{{ appointment.appointmentReason }}</p>
               <h3 v-if="appointment.appointmentDetails">Appointment Details (if provided):</h3>
@@ -26,7 +26,7 @@
                 <input type="button" value="CANCEL APPOINTMENT" v-on:click="cancelAppointment(appointment)">
                 <input type="button" value="RESCHEDULE APPOINTMENT" v-on:click.prevent="toggleReschAppt">
                 <div class="reschedule-appointment" v-if="rescheduleAppointment">
-                  <form class="reschedule-appointment-form" v-on:submit.prevent="submitUpdatedAppointment">
+                  <form class="reschedule-appointment-form" v-on:submit.prevent="submitUpdatedAppointment(appointment)">
                     <label for="update-appt-date">Appointment Date:</label>
                     <input type="date" v-model="appointment.appointmentDate" required>
                     <label for="update-appt-start-time">Appointment Time:</label>
