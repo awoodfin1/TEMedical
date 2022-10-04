@@ -47,6 +47,7 @@
         display: list-item;
         list-style: none;
         align-items: center;
+        margin-left: 5vw;
         }
 
         h3 {

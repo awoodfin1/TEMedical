@@ -126,10 +126,12 @@ aside img {
 }
 
 #app-footer {
-  background-color: rgb(0, 180, 242);
-  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+  background: linear-gradient(40deg, rgb(0, 180, 242) 35%, white 65%);
+  box-shadow: 0 -4px 5px 0 rgba(0,0,0,0.14), 0 -1px 10px 0 rgba(0,0,0,0.12), 0 -2px 4px -1px rgba(0,0,0,0.2);
   
-  margin-bottom: 40%;
+  margin-bottom: 25%;
+  height: 20vh;
+  bottom: 0;
   
 }
 
@@ -152,11 +154,11 @@ h1 {
   }
 
   #app-header {
-  background: linear-gradient(90deg, white 80%, rgb(0, 180, 242) 20%);
+  background: linear-gradient(40deg, white 55%, rgb(0, 180, 242));
   height: auto;
   width: 100%;
   padding: 0;
-  justify-content: space-evenly;
+  
   }
 
   #app-header img {
@@ -179,6 +181,24 @@ h1 {
     padding: 0 7px; 
   }
 
+  #app-footer {
+    width: 100%;
+    height: 30vh;
+  }  
+}
+
+@media screen and (max-width: 660px) {
+  #app-header {
+    background: none;
+    background-color: white;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  #app-footer {
+    height: 40vh;
+  } 
 }
 
 </style>
