@@ -1,7 +1,7 @@
 <template>
     <form v-on:submit.prevent="submitForm" class="reviewForm">
         <div>
-            <label for="providerSelect">Please Select a Provider to Review:  </label>
+            <label for="providerSelect">Please Select a Provider to Review:  </label><br />
             <select id="providerSelect" name="providerSelect" v-model="review.provider" required>
                 <option v-for="provider in $store.state.providers" v-bind:key="provider.id" >
                     {{ provider.title }} {{ provider.firstName }} {{provider.lastName}} {{provider.postNominals}}
@@ -20,7 +20,7 @@
         </div>
         <div>
             <label for="reviewText">Review your provider here:</label><br />
-            <textarea id="reviewText" name="reviewText" rows="8" cols="68" v-model="review.reviewText"></textarea>
+            <textarea id="reviewText" name="reviewText" rows="10" cols="40" v-model="review.reviewText"></textarea>
         </div>
             <input id="reviewSubmit" class="reviewBtn" type="submit" value="Save" />
             <input id="reviewCancel" class="reviewBtn" type="button" value="Cancel" v-on:click.prevent="resetForm" />               
@@ -68,7 +68,7 @@ export default {
     }
 
     #reviewSubmit {
-        margin-right: 5px;
+        
         background-color: rgb(174, 255, 174);
     }
 </style>

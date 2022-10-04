@@ -25,12 +25,12 @@ export default {
   align-items: center;
   box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
   padding: 0 15px 0 15px;
-  margin: 3% 2% 3% 2%;
+  margin: 3% 10% 3% 10%;
 }
 
 @media screen and (max-width: 1000px) {
   .review {
-    padding: 0 40px 30px 40px;
+    padding: 0 5vw 30px 5vw;
     margin: 3% 15% 5% 15%;
   }
 }

@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <div id="app-header">
-      <img id="snake" src="./images/green snake.jpg" alt="Medical Snake Logo">
-      <img id="company" src="./images/company name.jpg" alt="TE Medical">
+      <img id="company-logo" src="./images/full logo.png" alt="Company Logo">
     </div>
     <div id="med-nav">
       <menu>
@@ -89,6 +88,7 @@ div#app {
 #app-header {
   box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
   padding: 5px;
+  background: linear-gradient(40deg, white 35%, rgb(0, 180, 242) 65%);
   
   grid-area: app-header;
   display: flex;
@@ -97,6 +97,7 @@ div#app {
 }
 
 #app-header img {
+  
   height: 100%;
 }
 
@@ -125,8 +126,10 @@ aside img {
 }
 
 #app-footer {
-  margin-left: 10%;
-  margin-right: 10%;
+  background-color: rgb(0, 180, 242);
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+  
+  margin-bottom: 40%;
   
 }
 
@@ -139,6 +142,7 @@ h1 {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
+    gap: none;
     grid-template-areas:
       "app-header"
       "med-nav"
@@ -148,9 +152,10 @@ h1 {
   }
 
   #app-header {
+  background: linear-gradient(90deg, white 80%, rgb(0, 180, 242) 20%);
   height: auto;
   width: 100%;
-  padding: 5;
+  padding: 0;
   justify-content: space-evenly;
   }
 
