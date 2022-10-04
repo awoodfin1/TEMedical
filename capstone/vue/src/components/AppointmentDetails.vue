@@ -28,9 +28,9 @@
                 <div class="reschedule-appointment" v-if="rescheduleAppointment">
                   <form class="reschedule-appointment-form" v-on:submit.prevent="submitUpdatedAppointment(appointment)">
                     <label for="update-appt-date">Appointment Date:</label>
-                    <input type="date" v-model="appointment.appointmentDate" required>
+                    <input type="date" name="date" v-model="appointment.appointmentDate" required>
                     <label for="update-appt-start-time">Appointment Time:</label>
-                    <input type="time" v-model="appointment.apptStartTime" required>
+                    <input type="time" name="time" v-model="appointment.apptStartTime" required>
                     <button type="submit">Save & Submit</button>
                   </form>
                 </div>
