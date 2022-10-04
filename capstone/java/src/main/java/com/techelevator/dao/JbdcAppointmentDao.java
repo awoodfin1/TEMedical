@@ -148,11 +148,11 @@ public class JbdcAppointmentDao implements AppointmentDao {
     public void updateAppointment(Appointment appointment) {
         String sql = "UPDATE appointment " +
                      "SET " +
-                        "appointment_date = ? " +
-                        "appt_start_time = ? " +
-                        "appt_end_time = ? " +
-                        "status = ? " +
-                        "appointment_reason = ? " +
+                        "appointment_date = ?, " +
+                        "appt_start_time = ?, " +
+                        "appt_end_time = ?, " +
+                        "status = ?, " +
+                        "appointment_reason = ?, " +
                         "appointment_details = ? " +
                     "WHERE appointment_id = ?;";
         try {

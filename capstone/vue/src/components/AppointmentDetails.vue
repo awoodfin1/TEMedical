@@ -26,7 +26,7 @@
                 <input type="button" value="CANCEL APPOINTMENT" v-on:click="cancelAppointment(appointment)">
                 <input type="button" value="RESCHEDULE APPOINTMENT" v-on:click.prevent="toggleReschAppt">
                 <div class="reschedule-appointment" v-if="rescheduleAppointment">
-                  <form class="reschedule-appointment-form" v-on:submit="submitUpdatedAppointment">
+                  <form class="reschedule-appointment-form" v-on:submit.prevent="submitUpdatedAppointment">
                     <label for="update-appt-date">Appointment Date:</label>
                     <input type="date" v-model="appointment.appointmentDate" required>
                     <label for="update-appt-start-time">Appointment Time:</label>
@@ -34,6 +34,7 @@
                     <button type="submit">Save & Submit</button>
                   </form>
                 </div>
+                <!-- This section below could be a way to confirm if the appointment status should be changed -->
                 <!-- <div class="confirm-cancel-appointment" v-if="cancelAppt">
                   <h5>Are you SURE you wish to CANCEL this appointment?</h5>
                     <input type="button" value="YES, CANCEL APPT" v-on:click="!cancelAppt">
@@ -58,7 +59,7 @@ export default {
       appointment: {},
       // apptPatient: []
       updateAppt: false,
-      cancelAppt: false,
+      // cancelAppt: false,
       rescheduleAppointment: false
     }
   },
@@ -77,8 +78,10 @@ export default {
     },
     cancelAppointment(appointment) {
       appointment.status = 'Cancelled';
-      ApptService.updateAppointment(appointment);
-      this.$router.push({name: 'my-appointments'})
+      this.toggleUpdateAppt();
+      ApptService.updateAppointment(appointment.id, appointment).then( 
+          this.$router.push({name: 'appointment-details', params: {apptId:appointment.id}})
+      );
     },
     toggleReschAppt() {
       this.rescheduleAppointment = !this.rescheduleAppointment;
@@ -88,7 +91,13 @@ export default {
     },
     submitUpdatedAppointment(appointment) {
       appointment.status = 'Rescheduled';
-      ApptService.updateAppointment(appointment);
+      this.toggleUpdateAppt();
+      this.toggleReschAppt();
+      ApptService.updateAppointment(appointment.id, appointment).then( (response) => {
+        if (response.status === 201) {
+          this.$router.push({name: 'appointment-details', params: {apptId:appointment.id}});
+        }
+      });
     }
   }
 

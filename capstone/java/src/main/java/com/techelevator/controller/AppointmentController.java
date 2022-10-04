@@ -75,6 +75,7 @@ public class AppointmentController {
         return appointmentDao.getApptById(apptId);
     }
 
+    // TODO: make a non void return type? Return the appointment?
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/my-appointments/{apptId}", method = RequestMethod.PUT)
     public void updateAppointment(@RequestBody Appointment appointment, @PathVariable int apptId) {
