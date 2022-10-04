@@ -19,4 +19,9 @@ public class OfficeController {
     public Office getOffice(){
         return officeDao.getOfficeById(1);
     }
+
+    @RequestMapping(value = "/office", method = RequestMethod.PUT)
+    public void updateOffice(@RequestBody Office office){
+        officeDao.updateOfficeInfo(office);
+    }
 }

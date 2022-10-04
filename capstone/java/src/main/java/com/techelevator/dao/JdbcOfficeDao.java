@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Office;
 import com.techelevator.model.OfficeNotFoundException;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -63,6 +64,16 @@ public class JdbcOfficeDao implements OfficeDao{
             offices.add(office);
         }
         return offices;
+    }
+
+    @Override
+    public void updateOfficeInfo(Office office) {
+        String sql = "UPDATE office SET WHERE office_id = ?"; //WAITING FOR DATABASE UPDATE
+        try {
+            jdbcTemplate.update(sql,office.getId());
+        } catch (DataAccessException e) {
+            System.out.println("Unable to update office: " + e.getMessage());
+        }
     }
 
     private Office mapRowToOffice(SqlRowSet rs) {

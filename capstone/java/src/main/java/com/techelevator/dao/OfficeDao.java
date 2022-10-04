@@ -13,4 +13,6 @@ public interface OfficeDao {
     List<Office> getOfficesByState(String state);
 
     List<Office> getOfficesByCity(String city);
+
+    void updateOfficeInfo(Office office);
 }
