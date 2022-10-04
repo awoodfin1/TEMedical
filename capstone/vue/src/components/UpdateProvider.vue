@@ -20,6 +20,8 @@
             <input class="update-provider-field" type="text" v-model="newProvider.phoneNumber" id="update-phone-number" required>
             <label for="update-bio">Update Bio: </label>
             <input class="update-provider-field" type="text" v-model="newProvider.bio" id="update-bio">
+            <label for="update-image-url">Update Image URL: </label>
+            <input class="update-provider-field" type="text" v-model="newProvider.photoUrl" id="update-image-url">
             <button id="providerSubmitBtn" type="submit">Submit</button>
         </form>
         <h4 v-if="!this.showForm">Form Submitted! Thank You!</h4>
