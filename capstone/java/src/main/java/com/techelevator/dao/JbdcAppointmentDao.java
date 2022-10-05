@@ -18,9 +18,11 @@ public class JbdcAppointmentDao implements AppointmentDao {
 
     private final JdbcTemplate jdbcTemplate;
     private List<LocalTime> allPotentialApptStartTimes;
+    private ProviderDao providerDao;
 
-    public JbdcAppointmentDao(DataSource dataSource) {
+    public JbdcAppointmentDao(DataSource dataSource, ProviderDao providerDao) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.providerDao = providerDao;
         allPotentialApptStartTimes = new ArrayList<>();
         populateStartTimesList();
     }
@@ -41,6 +43,7 @@ public class JbdcAppointmentDao implements AppointmentDao {
                 newAppointment.getProviderId(), newAppointment.getAppointmentDate(),
                 newAppointment.getApptStartTime(), newAppointment.getApptEndTime(), newAppointment.getAppointmentReason(),
                 newAppointment.getAppointmentDetails(), newAppointment.isNewPatient());
+        providerDao.toggleOnDisplayApptMessage(newAppointment.getProviderId());
         return getApptById(newId);
     }
 
