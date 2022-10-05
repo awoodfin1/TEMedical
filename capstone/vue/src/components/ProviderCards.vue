@@ -4,15 +4,46 @@
             <table id="filter-table">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Specialty</th>
+                        <th>Gender</th>
+                        <th>Language</th>
+                        <th>Provider Rating</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" id="first-name-filter" v-model="filter.firstName">
+                        </td>
+                        <td>
+                            <input type="text" id="last-name-filter" v-model="filter.lastName">
+                        </td>
+                        <td>
+                            <select name="specialty-filter" id="specialty-filter" v-model="filter.specialty">
+                                <option v-for="provider in $store.state.providers" v-bind:key="provider.id">{{ provider.specialty }}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="gender-filter" id="gender-filter" v-model="filter.gender">
+                                <option v-for="provider in $store.state.providers" v-bind:key="provider.id">{{ provider.gender }}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" id="language-filter" v-model="filter.language">
+                        </td>
+                        <td>
+                            <select name="rating-filter" id="rating-filter" v-model="filter.rating">
+                                <option value=1>1 Star</option>
+                                <option value=2>2 Stars</option>
+                                <option value=3>3 Stars</option>
+                                <option value=4>4 Stars</option>
+                                <option value=5>5 Stars</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
         <router-link class="card" v-for="provider in $store.state.providers" v-bind:key="provider.id" v-bind:to="{name: 'Provider', params: {providerId:provider.id}}">
@@ -30,16 +61,12 @@
         data() {
             return {
                 filter: {
-                    title: "",
                     firstName: "",
                     lastName: "",
-                    postNominals: "",
                     specialty: "",
                     gender: "",
                     language: "",
-                    rating: Number,
-                    phoneNumber: "",
-                    bio: ""
+                    rating: Number
                 }
             }
         },
