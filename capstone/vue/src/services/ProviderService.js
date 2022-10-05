@@ -16,5 +16,9 @@ export default {
 
   updateProvider(updatedProvider){
     return axios.put('/provider/my-profile', updatedProvider)
+  },
+
+  getProviderIdByFullName(fullName) {
+    return axios.get(`/provider/${fullName}`)
   }
 }

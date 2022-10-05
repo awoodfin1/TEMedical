@@ -29,6 +29,7 @@
 
 <script>
 import ReviewService from '../services/ReviewService';
+import ProviderService from '../services/ProviderService';
 
 export default {
     name: "submitForm",
@@ -45,8 +46,15 @@ export default {
         submitForm() {
             ReviewService.createReview(this.review)
             .then(response => {
-                if (response.status === 201) {
-                    this.resetForm();
+                if (response.status === 201) {                                      
+                    ProviderService.getProviderIdByFullName(this.review.provider)
+                    .then(result => {
+                        if (result.status === 200) {
+                            this.$router.push({name: "Provider", params: {providerId: result.data}});
+                            this.resetForm();
+                        }
+                    })
+                    
                 }
             })
         },
