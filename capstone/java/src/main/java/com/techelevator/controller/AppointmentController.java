@@ -31,13 +31,11 @@ public class AppointmentController {
         this.providerDao = providerDao;
     }
 
-    //TODO: going to have to update this method
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/appointment/{dateString}", method = RequestMethod.GET)
-    public List<LocalTime> getAvailApptStartTimesByDate(@PathVariable String dateString) {
-        int providerId = 1;
+    @RequestMapping(value = "/appointment/{providerId}/{dateString}", method = RequestMethod.GET)
+    public List<LocalTime> getAvailApptStartTimesByProviderByDate(@PathVariable int providerId, @PathVariable String dateString) {
         LocalDate date = LocalDate.parse(dateString);
-        return appointmentDao.getAvailability(date, providerId);
+        return appointmentDao.getAvailability(providerId, date);
     }
 
     //TODO: going to have to update this method
@@ -63,7 +61,7 @@ public class AppointmentController {
     public List<Appointment> getAppointmentsByDate(Principal principal, @PathVariable String dateString) {
         LocalDate date = LocalDate.parse(dateString);
         if (userDao.getIsProvider(principal.getName())) {
-            return appointmentDao.getAllApptsByDateByProviderId(date, providerDao.getProviderByProviderId(userDao.findIdByUsername(principal.getName())).getId());
+            return appointmentDao.getAllApptsByProviderIdByDate(providerDao.getProviderByProviderId(userDao.findIdByUsername(principal.getName())).getId(), date);
         } else {
             return appointmentDao.getAllApptsByDateByPatientId(date, patientDao.getPatientIdByUserId(userDao.findIdByUsername(principal.getName())));
         }

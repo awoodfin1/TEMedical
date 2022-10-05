@@ -3,8 +3,8 @@ import axios from 'axios';
 export default {
 
   //going to have to update this method
-  getApptStartTimeByDate(date) {
-    return axios.get(`/appointment/${date}`)
+  getApptStartTimeByProviderByDate(providerId, date) {
+    return axios.get(`/appointment/${providerId}/${date}`)
   },
 
   createAppointment(apptRequest) {

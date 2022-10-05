@@ -107,11 +107,11 @@ public class JbdcAppointmentDao implements AppointmentDao {
     }
 
     @Override
-    public List<Appointment> getAllApptsByDateByProviderId(LocalDate date, int providerId) {
+    public List<Appointment> getAllApptsByProviderIdByDate(int providerId, LocalDate date) {
         List<Appointment> allApptsByDate = new ArrayList<>();
         String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details, is_new_patient " +
                 "FROM appointment " +
-                "WHERE appointment_date = ? AND provider_id = ?;";
+                "WHERE provider_id = ? AND appointment_date = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date, providerId);
         while (results.next()) {
             allApptsByDate.add(mapRowToAppointment(results));
@@ -120,12 +120,12 @@ public class JbdcAppointmentDao implements AppointmentDao {
     }
 
     @Override
-    public List<LocalTime> getApptStartTimes(LocalDate date, int providerId) {
+    public List<LocalTime> getApptStartTimes(int providerId, LocalDate date) {
         List<LocalTime> allApptStartTimes = new ArrayList<>();
         String sql = "SELECT appt_start_time " +
                      "FROM appointment " +
-                     "WHERE appointment_date = ? AND provider_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date, providerId);
+                     "WHERE provider_id = ? AND appointment_date = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, providerId, date);
 
         while(results.next()) {
             allApptStartTimes.add(results.getTime("appt_start_time").toLocalTime());
@@ -134,9 +134,9 @@ public class JbdcAppointmentDao implements AppointmentDao {
     }
 
     @Override
-    public List<LocalTime> getAvailability(LocalDate date, int providerId) {
+    public List<LocalTime> getAvailability(int providerId, LocalDate date) {
         List<LocalTime> temp = this.allPotentialApptStartTimes;
-        List<LocalTime> allApptStartTimes = getApptStartTimes(date, providerId);
+        List<LocalTime> allApptStartTimes = getApptStartTimes(providerId, date);
         for (LocalTime eachStartTime : allApptStartTimes) {
             if (temp.contains(eachStartTime)) {
                 temp.remove(temp.indexOf(eachStartTime));

@@ -13,7 +13,7 @@
             <!-- Implement Book Appointment Form HERE -->
             <div class="appointForm" v-if="!$store.state.user.provider">
                 <h4 id="appt-form-title" v-if="bookAppointment">Please Fill Out This From To Book Your Appointment</h4>
-                <appointment-form v-if="bookAppointment"/>
+                <appointment-form v-if="bookAppointment" v-bind:providerId="providerId"/>
             </div>
             <h4 v-if="!$store.state.user.provider">Provider Reviews: </h4>
             <div class="reviews" v-for="review in this.reviews" v-bind:key="review.id">

@@ -22,11 +22,11 @@ public interface AppointmentDao {
 
     List<Appointment> getAllApptsByDateByPatientId(LocalDate date, int patientId);
 
-    List<Appointment> getAllApptsByDateByProviderId(LocalDate date, int providerId);
+    List<Appointment> getAllApptsByProviderIdByDate(int providerId, LocalDate date);
 
-    List<LocalTime> getApptStartTimes(LocalDate date, int providerId);
+    List<LocalTime> getApptStartTimes(int providerId, LocalDate date);
 
-    List<LocalTime> getAvailability(LocalDate date, int providerId); // take list of start times & compare
+    List<LocalTime> getAvailability(int providerId, LocalDate date); // take list of start times & compare
 
     // update
 
