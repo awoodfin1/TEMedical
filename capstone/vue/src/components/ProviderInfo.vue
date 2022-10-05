@@ -4,7 +4,10 @@
             <h2 class="top-line">{{provider.title}} {{provider.firstName}} {{provider.lastName}} {{provider.postNominals}}</h2>
             <img class="provider-pic" v-bind:src="provider.photoUrl" alt="">
             <h3>{{provider.specialty}}</h3>
-            <h4 class="prev-info-detail" v-if="provider.rating">Provider Rating: {{roundRating()}}</h4>
+            <div id="rating-container" class="prev-info-detail">
+                <h4 v-if="provider.rating">Provider Rating: {{roundRating()}}</h4>
+                <img id="star" src="../images/star.png" alt="star">
+            </div>
             <h4 class="prev-info-detail" v-if="provider.phoneNumber">Contact Info: {{provider.phoneNumber}}</h4>
             <h4 class="prev-info-detail">This provider speaks {{provider.language}}.</h4>
             <p>"{{provider.bio}}"</p>   
@@ -116,6 +119,17 @@
         text-align: start;
         margin: 5px;
         font-size: 12px;
+    }
+
+    #star {
+        height: 16px;
+        margin-left: 5px;
+    }
+
+    #rating-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     @media screen and (max-width: 1000px) {
