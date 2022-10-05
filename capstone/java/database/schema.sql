@@ -56,7 +56,7 @@ CREATE TABLE provider (
 	post_nominals varchar(20),
 	specialty varchar(60),
 	gender varchar(6),
-	"language" varchar(15),
+	"language" varchar(50),
 	rating numeric(4,2),
 	phone_number varchar(12),
 	bio varchar(500),
