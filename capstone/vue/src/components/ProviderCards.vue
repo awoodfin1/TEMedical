@@ -27,7 +27,8 @@
                         </td>
                         <td>
                             <select name="gender-filter" id="gender-filter" v-model="filter.gender">
-                                <option v-for="provider in $store.state.providers" v-bind:key="provider.id">{{ provider.gender }}</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </td>
                         <td>
@@ -50,7 +51,7 @@
             <img class="profile-pic" v-bind:src="provider.photoUrl" alt="">
             <h3>{{provider.title}} {{provider.firstName}} {{provider.lastName}} {{provider.postNominals}}</h3>
             <h3>{{provider.specialty}}</h3>
-            <h4 v-if="provider.rating">Provider Rating: {{roundedRating(provider.rating)}}</h4>
+            <h4 v-if="provider.rating > 0">Provider Rating: {{roundedRating(provider.rating)}}</h4>
         </router-link> 
     </div>
 </template>
@@ -104,8 +105,7 @@
                 if (this.filter.gender !== "") {
                     filteredProviders = filteredProviders.filter((provider) =>
                     provider.gender
-                        .toLowerCase()
-                        .includes(this.filter.gender.toLowerCase())
+                        .includes(this.filter.gender)
                     );
                 }
                 if (this.filter.language !== "") {
