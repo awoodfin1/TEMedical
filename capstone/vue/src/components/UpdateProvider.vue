@@ -17,7 +17,7 @@
             <label for="update-language">Language: </label>
             <input class="update-provider-field" type="text" v-model="newProvider.language" id="update-language">
             <label for="update-phone-number">Phone Number: </label>
-            <input class="update-provider-field" type="text" v-model="newProvider.phoneNumber" id="update-phone-number" required>
+            <input class="update-provider-field" type="text" v-model="newProvider.phoneNumber" id="update-phone-number">
             <label for="update-bio">Update Bio: </label>
             <input class="update-provider-field" type="text" v-model="newProvider.bio" id="update-bio">
             <label for="update-image-url">Update Image URL: </label>

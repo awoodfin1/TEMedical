@@ -4,10 +4,7 @@
             <img class="profile-pic" v-bind:src="provider.photoUrl" alt="">
             <h3>{{provider.title}} {{provider.firstName}} {{provider.lastName}} {{provider.postNominals}}</h3>
             <h3>{{provider.specialty}}</h3>
-            <h4>{{provider.bio}}</h4>
             <h4 v-if="provider.rating">Provider Rating: {{provider.rating}}</h4>
-            <h4 v-if="provider.phoneNumber">Contact Info:</h4>
-            <h4 v-if="provider.phoneNumber">{{provider.phoneNumber}}</h4>
         </router-link> 
     </div>
 </template>
