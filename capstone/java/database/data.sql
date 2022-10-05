@@ -56,6 +56,30 @@ INSERT INTO provider (user_id, title, first_name, last_name, post_nominals, spec
 	VALUES
 		(100007, 'Dr.', 'Abel', 'Garcia', 'MD', 'Gastroenterologist', 'Male', 'English, Spanish, Arabic', 4.55, '832-886-6717', 'Specializing in colorectal surgery.', 'https://as2.ftcdn.net/v2/jpg/03/20/52/31/1000_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg');
 		
+INSERT INTO users (username,password_hash,role,is_provider)
+	VALUES
+('paul','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
+
+INSERT INTO patient (user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description)
+	VALUES
+		(100008, 'Paul', 'Adams', '798-875-9935', 'paul.Adams@gmail.com', '1999-12-01', 'Asthma');
+		
+INSERT INTO users (username,password_hash,role,is_provider)
+	VALUES
+('rachel','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
+
+INSERT INTO patient (user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description)
+	VALUES
+		(100009, 'Rachel', 'Berry', '798-568-7799', 'rachel.Berry@gmail.com', '1997-11-10', 'Depression');
+		
+INSERT INTO users (username,password_hash,role,is_provider)
+	VALUES
+('james','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
+
+INSERT INTO patient (user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description)
+	VALUES
+		(100010, 'James', 'Ordway', '458-968-1122', 'james.Ordway@gmail.com', '1992-05-09', 'Arthritis');
+
 INSERT INTO appointment (patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, appointment_reason, appointment_details, is_new_patient)
 	VALUES (2001, 1001, '2022-10-31', '12:00:00', '12:30:00', 'Other', 'Referred by my primary care physician after my trip to the hospital last week.', true);
 
@@ -67,7 +91,37 @@ INSERT INTO review (office_id, patient_id, provider_id, review_text, review_date
 	VALUES
 		(1, 2001, 1001, 'Patient provides review text here.', '2022-09-27', '10:30:00', 5, 'Provider provides review response text here.', '2022-09-28', '13:45:00');
 
+INSERT INTO review (office_id, patient_id, provider_id, review_text, review_date, review_time, provider_rating, provider_response_text, response_date, response_time)
+	VALUES
+		(1, 2002, 1002, 'Good Doctor.', '2022-09-30', '10:30:00', 4, 'Provider provides review response text here.', '2022-09-28', '13:45:00');
+
+INSERT INTO review (office_id, patient_id, provider_id, review_text, review_date, review_time, provider_rating, provider_response_text, response_date, response_time)
+	VALUES
+		(1, 2002, 1003, 'Arrived late to my appointment.', '2022-10-01', '10:30:00', 2, 'Provider provides review response text here.', '2022-09-28', '13:45:00');
+
+INSERT INTO review (office_id, patient_id, provider_id, review_text, review_date, review_time, provider_rating, provider_response_text, response_date, response_time)
+	VALUES
+		(1, 2001, 1004, 'Great care!', '2022-09-29', '10:30:00', 5, 'Provider provides review response text here.', '2022-09-28', '13:45:00');
+		
+INSERT INTO review (office_id, patient_id, provider_id, review_text, review_date, review_time, provider_rating, provider_response_text, response_date, response_time)
+	VALUES
+		(1, 2003, 1005, 'Would recommend to anyone!', '2022-09-30', '10:30:00', 5, 'Provider provides review response text here.', '2022-09-28', '13:45:00');
+		
+INSERT INTO review (office_id, patient_id, provider_id, review_text, review_date, review_time, provider_rating, provider_response_text, response_date, response_time)
+	VALUES
+		(1, 2003, 1006, 'Barely spoke to me.', '2022-09-30', '10:30:00', 2, 'Provider provides review response text here.', '2022-09-28', '13:45:00');
+		
 INSERT INTO provider_office (provider_id, office_id)
 	VALUES (1001, 1);
+INSERT INTO provider_office (provider_id, office_id)
+	VALUES (1002, 1);
+INSERT INTO provider_office (provider_id, office_id)
+	VALUES (1003, 1);
+INSERT INTO provider_office (provider_id, office_id)
+	VALUES (1004, 1);
+INSERT INTO provider_office (provider_id, office_id)
+	VALUES (1005, 1);
+INSERT INTO provider_office (provider_id, office_id)
+	VALUES (1006, 1);
 
 COMMIT TRANSACTION;
