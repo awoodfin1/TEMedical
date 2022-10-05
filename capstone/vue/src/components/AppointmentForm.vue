@@ -82,8 +82,12 @@ export default {
         },
         resetForm() {
             this.newApptRequest = {
+                providerId: 0,
                 date: '',
-                startTime: ''
+                startTime: '09:00:00',
+                apptReason: '',
+                apptDetails: '',
+                newPatient: false
             }
         }
     }
