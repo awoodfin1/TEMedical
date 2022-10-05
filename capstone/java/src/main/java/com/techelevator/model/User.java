@@ -52,7 +52,6 @@ public class User {
       this.password = password;
    }
 
-   //TODO: can delete this later if needed. Getters & setters as well.
    public boolean isProvider() {
       return this.isProvider;
    }

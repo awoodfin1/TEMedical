@@ -28,7 +28,7 @@ public class JdbcPatientDao implements PatientDao{
     @Override
     public Patient getPatientByUserId(int userId){
         Patient patient = null;
-        String sql = "SELECT patient_id, user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description " +
+        String sql = "SELECT patient_id, user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description, display_appt_update " +
                      "FROM patient WHERE user_id = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, userId);
         if (result.next()) {
@@ -52,12 +52,13 @@ public class JdbcPatientDao implements PatientDao{
         String email_address = newPatient.getEmailAddress();
         LocalDate birthdate = newPatient.getBirthdate();
         String healthText = newPatient.getHealthIssuesDescription();
+        boolean displayApptUpdate = newPatient.isDisplayApptUpdate();
 
         String sql = "UPDATE patient SET first_name = ?, last_name = ?, phone_number = ?, ";
-        sql += "email_address = ?, birthdate = ?, health_issues_description = ? WHERE patient_id = ?;";
+        sql += "email_address = ?, birthdate = ?, health_issues_description = ?, display_appt_update = ? WHERE patient_id = ?;";
 
         try {
-            jdbcTemplate.update(sql, firstName, lastName, phoneNumber, email_address, birthdate, healthText, id);
+            jdbcTemplate.update(sql, firstName, lastName, phoneNumber, email_address, birthdate, healthText, displayApptUpdate, id);
         } catch (DataAccessException e) {
             System.out.println("Unable to update patient: " + e.getMessage());
         }
@@ -66,7 +67,7 @@ public class JdbcPatientDao implements PatientDao{
     @Override
     public Patient getPatientByApptId(int apptId) {
         Patient patient = new Patient();
-        String sql = "SELECT patient.patient_id, user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description " +
+        String sql = "SELECT patient.patient_id, user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description, display_appt_update " +
                 "FROM patient " +
                 "JOIN appointment ON patient.patient_id = appointment.patient_id " +
                 "WHERE appointment_id = ?;";
@@ -87,6 +88,7 @@ public class JdbcPatientDao implements PatientDao{
         patient.setEmailAddress(rs.getString("email_address"));
         patient.setBirthdate(rs.getDate("birthdate").toLocalDate());
         patient.setHealthIssuesDescription(rs.getString("health_issues_description"));
+        patient.setDisplayApptUpdate(rs.getBoolean("display_appt_update"));
         return patient;
     }
 }
