@@ -22,7 +22,7 @@ INSERT INTO users (username, password_hash, "role", is_provider)
 	
 INSERT INTO provider (user_id, title, first_name, last_name, post_nominals, specialty, gender, "language", rating, phone_number, bio, photo_URL)
 	VALUES
-		(100003, 'Dr.', 'Sally', 'Thomas', 'MD', 'Pediatric Physchiatry', 'Female', 'English', 4.55, '713-575-4231', 'A doctor who focuses on getting to know each child at their level and finding ways to build relationships to better their mental and emotional health.', 'https://as2.ftcdn.net/v2/jpg/03/20/52/31/1000_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg');
+		(100003, 'Dr.', 'Sally', 'Thomas', 'MD', 'Pediatric Physchiatry', 'Female', 'English', 4.55, '713-575-4231', 'A doctor who focuses on getting to know each child at their level and finding ways to build relationships to better their mental and emotional health.', 'https://images.squarespace-cdn.com/content/v1/53aa5722e4b0ada1a70119f2/1529694594561-7ERUUT9270RZI2R946J1/CORP20180521-Freeman+%284+of+6%29-Edit.jpg?format=1500w');
 	
 INSERT INTO users (username, password_hash, "role", is_provider)
 	VALUES
@@ -38,7 +38,7 @@ INSERT INTO users (username, password_hash, "role", is_provider)
 	
 INSERT INTO provider (user_id, title, first_name, last_name, post_nominals, specialty, gender, "language", rating, phone_number, bio, photo_URL)
 	VALUES
-		(100005, 'Dr.', 'Pat', 'Kuhn', 'MD', 'Geriatrics', 'Female', 'English', 4.55, '806-874-2515', 'Medical doctor in community care, specializing in seniors.', 'https://as2.ftcdn.net/v2/jpg/03/20/52/31/1000_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg');
+		(100005, 'Dr.', 'Pat', 'Kuhn', 'MD', 'Geriatrics', 'Female', 'English', 4.55, '806-874-2515', 'Medical doctor in community care, specializing in seniors.', 'https://images.squarespace-cdn.com/content/v1/53aa5722e4b0ada1a70119f2/1529694594561-7ERUUT9270RZI2R946J1/CORP20180521-Freeman+%284+of+6%29-Edit.jpg?format=1500w');
 
 INSERT INTO users (username, password_hash, "role", is_provider)
 	VALUES
