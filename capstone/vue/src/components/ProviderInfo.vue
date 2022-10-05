@@ -5,8 +5,7 @@
             <img class="provider-pic" v-bind:src="provider.photoUrl" alt="">
             <h3>{{provider.specialty}}</h3>
             <h4 class="prev-info-detail" v-if="provider.rating">Provider Rating: {{provider.rating}}</h4>
-            <h4 class="prev-info-detail" v-if="provider.phoneNumber">Contact Info:</h4>
-            <h4 class="prev-info-detail" v-if="provider.phoneNumber">{{provider.phoneNumber}}</h4>
+            <h4 class="prev-info-detail" v-if="provider.phoneNumber">Contact Info: {{provider.phoneNumber}}</h4>
             <h4 class="prev-info-detail">This provider speaks {{provider.language}}.</h4>
             <p>"{{provider.bio}}"</p>   
             <input v-if="!bookAppointment && !$store.state.user.provider" v-on:click.prevent="flipBoolean" type="button" name="bookAppointment" id="bookAppointment" value="Book Appointment">
