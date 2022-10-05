@@ -83,6 +83,7 @@ CREATE TABLE appointment (
     status varchar(15) DEFAULT ('Confirmed'),
     appointment_reason varchar(70),
     appointment_details varchar(500),
+	is_new_patient boolean NOT NULL,
 
     CONSTRAINT pk_appointment PRIMARY KEY (appointment_id),
     CONSTRAINT fk_appointment_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),

@@ -12,8 +12,8 @@
             <input v-if="!bookAppointment && !$store.state.user.provider" v-on:click.prevent="flipBoolean" type="button" name="bookAppointment" id="bookAppointment" value="Book Appointment">
             <!-- Implement Book Appointment Form HERE -->
             <div class="appointForm" v-if="!$store.state.user.provider">
-                <h3 id="appt-form-title" v-if="bookAppointment">Please Fill Out This Form To Book Your Appointment</h3>
-                <appointment-form v-if="bookAppointment"/>
+                <h3 id="appt-form-title" v-if="bookAppointment">Please Fill Out This From To Book Your Appointment</h3>
+                <appointment-form v-if="bookAppointment" v-bind:providerId="providerId"/>
             </div>
             <h3 v-if="!$store.state.user.provider">Provider Reviews: </h3>
             <div class="reviews" v-for="review in this.reviews" v-bind:key="review.id">

@@ -16,8 +16,8 @@ INSERT INTO provider (user_id, title, first_name, last_name, post_nominals, spec
 	VALUES
 		(100002, 'Dr.', 'providerAFirst', 'providerALast', 'MD', 'Pediatrics', 'Male', 'English', 4.55, '800-999-4567', 'Insert provider bio here.', 'https://as2.ftcdn.net/v2/jpg/03/20/52/31/1000_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg');
 
-INSERT INTO appointment (patient_id, provider_id, appointment_date, appt_start_time, appt_end_time)
-	VALUES (2001, 1001, '2022-10-31', '12:00:00', '12:30:00');
+INSERT INTO appointment (patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, appointment_reason, appointment_details, is_new_patient)
+	VALUES (2001, 1001, '2022-10-31', '12:00:00', '12:30:00', 'Other', 'Referred by my primary care physician after my trip to the hospital last week.', true);
 
 INSERT INTO office (office_name, tag_line, street_address, city, "state", zipcode, office_open_time, office_close_time, phone_number, cost_per_hour, "message")
 	VALUES

@@ -66,6 +66,7 @@ public class JdbcOfficeDao implements OfficeDao{
         return offices;
     }
 
+    //TODO: Lucas will update on 10/5
     @Override
     public void updateOfficeInfo(Office office) {
         String sql = "UPDATE office SET WHERE office_id = ?"; //WAITING FOR DATABASE UPDATE

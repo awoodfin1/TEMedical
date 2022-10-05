@@ -14,16 +14,18 @@ public class Appointment {
     private String status;            //Appointment is (confirmed, rescheduled, cancelled, completed).
     private String appointmentReason;
     private String appointmentDetails;
+    private boolean isNewPatient;
 
     public Appointment(){
     }
 
-    public Appointment(int patientId, int providerId, LocalDate date, LocalTime apptStartTime) {
+    public Appointment(int patientId, int providerId, LocalDate date, LocalTime apptStartTime, boolean isNewPatient) {
         this.patientId = patientId;
         this.providerId = providerId;
         this.appointmentDate = date;
         this.apptStartTime = apptStartTime;
         this.apptEndTime = apptStartTime.plusMinutes(30);
+        this.isNewPatient = isNewPatient;
     }
 
     public int getId() {
@@ -96,6 +98,14 @@ public class Appointment {
 
     public void setAppointmentDetails(String appointmentDetails) {
         this.appointmentDetails = appointmentDetails;
+    }
+
+    public boolean isNewPatient() {
+        return this.isNewPatient;
+    }
+
+    public void setNewPatient(boolean newPatient) {
+        isNewPatient = newPatient;
     }
 
     @Override

@@ -38,9 +38,13 @@
 <script>
 import ApptService from '../services/ApptService';
 export default {
+    props: {
+        'providerId' : Number
+    },
     data() {
         return {
             newApptRequest: {
+                providerId: 0,
                 date: '',
                 startTime: '09:00:00',
                 newPatient: false
@@ -49,9 +53,12 @@ export default {
             
         }
     },
+    created() {
+        this.newApptRequest.providerId = this.providerId;
+    },
     methods: {
         getTimes() {
-            ApptService.getApptStartTimeByDate(this.newApptRequest.date)
+            ApptService.getApptStartTimeByProviderByDate(this.newApptRequest.providerId, this.newApptRequest.date)
             .then((response) => {
                 if (response.status === 200) {
                     this.apptTimes = response.data;

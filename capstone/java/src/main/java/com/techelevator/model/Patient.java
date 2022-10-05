@@ -12,6 +12,7 @@ public class Patient {
     private String emailAddress;
     private LocalDate birthdate;
     private String healthIssuesDescription;
+    private boolean displayApptUpdate;
 
     public Patient() {
 
@@ -79,6 +80,14 @@ public class Patient {
 
     public void setHealthIssuesDescription(String healthIssuesDescription) {
         this.healthIssuesDescription = healthIssuesDescription;
+    }
+
+    public boolean isDisplayApptUpdate() {
+        return this.displayApptUpdate;
+    }
+
+    public void setDisplayApptUpdate(boolean displayApptUpdate) {
+        this.displayApptUpdate = displayApptUpdate;
     }
 
     @Override
