@@ -11,7 +11,7 @@
             </select>
             <label for="isNewPatient">Are You a New Patient?</label>
             <input v-model="newApptRequest.newPatient" type="checkbox" name="isNewPatient" id="isNewPatient" value= true>
-            <label for="apptReason">Reason for Visit:  </label>
+            <label for="apptReason">Reason for Visit:</label>
             <select id="apptReason" name="apptReason">
                 <option value="">--Please choose an option--</option>
                 <option value="prescriptionRefill">Prescription Refill</option>
@@ -27,7 +27,7 @@
                 <option value="diabetes">Diabetes</option>
                 <option value="other">Other</option>
             </select>
-            <label for="apptDescription">Brief Description:  </label>
+            <label for="apptDescription">Brief Description:</label>
             <textarea name="apptDescription" id="apptDescription" cols="30" rows="10"></textarea>
             <button id="apptFormBtn" type="submit">Submit</button>
             <br />
@@ -97,7 +97,7 @@ export default {
 
 #apptFormBtn {
     margin: 10px 150px 0 0;
-    background-color: rgb(174, 255, 174);;
+    background-color: rgb(174, 255, 174);
 
 }
 

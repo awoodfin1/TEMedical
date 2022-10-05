@@ -31,6 +31,7 @@ public class ReviewController {
         this.patientDao = patientDao;
         this.userDao = userDao;
     }
+
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/reviews", method = RequestMethod.GET)
     public List<Review> getAllReviews(){

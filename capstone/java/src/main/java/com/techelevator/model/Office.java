@@ -18,7 +18,8 @@ public class Office {
     private String phoneNumber;
     @Min(0)
     private BigDecimal costPerHour;
-    private boolean hasApptDelay;
+    private String message;
+    private boolean displayMessage;
 
     public Office() { }
 
@@ -94,14 +95,6 @@ public class Office {
         this.costPerHour = costPerHour;
     }
 
-    public boolean isHasApptDelay() {
-        return this.hasApptDelay;
-    }
-
-    public void setHasApptDelay(boolean hasApptDelay) {
-        this.hasApptDelay = hasApptDelay;
-    }
-
     public String getName() {
         return this.name;
     }
@@ -118,6 +111,22 @@ public class Office {
         this.tagLine = tagLine;
     }
 
+    public String getMessage() {
+        return this.message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public boolean isDisplayMessage() {
+        return this.displayMessage;
+    }
+
+    public void setDisplayMessage(boolean displayMessage) {
+        this.displayMessage = displayMessage;
+    }
+
     @Override
     public String toString() {
         return "Office{" +
@@ -132,7 +141,8 @@ public class Office {
                 ", closeTime=" + closeTime +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", costPerHour=" + costPerHour +
-                ", hasApptDelay=" + hasApptDelay +
+                ", message='" + message + '\'' +
+                ", displayMessage=" + displayMessage +
                 '}';
     }
 }

@@ -24,7 +24,7 @@ public class JdbcProviderDao implements ProviderDao{
     @Override
     public List<Provider> getAllProviders() {
         List<Provider> providerList = new ArrayList<>();
-        String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, specialty, gender, language, rating, phone_number, bio, photo_URL " +
+        String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, specialty, gender, language, rating, phone_number, bio, photo_URL, display_appt_update " +
                      "FROM provider;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
@@ -43,7 +43,7 @@ public class JdbcProviderDao implements ProviderDao{
     @Override
     public Provider getProviderByProviderId(int id) {
         Provider provider = null;
-        String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, specialty, gender, language, rating, phone_number, bio, photo_URL " +
+        String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, specialty, gender, language, rating, phone_number, bio, photo_URL, display_appt_update " +
                      "FROM provider " +
                      "WHERE provider_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
@@ -56,7 +56,7 @@ public class JdbcProviderDao implements ProviderDao{
     @Override
     public Provider getProviderByUserId(int id) {
         Provider provider = null;
-        String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, specialty, gender, language, rating, phone_number, bio, photo_URL " +
+        String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, specialty, gender, language, rating, phone_number, bio, photo_URL, display_appt_update " +
                 "FROM provider " +
                 "WHERE user_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
@@ -80,10 +80,11 @@ public class JdbcProviderDao implements ProviderDao{
                         "rating = ?, " +
                         "phone_number = ?, " +
                         "bio = ?, " +
-                        "photo_URL = ? " +
+                        "photo_URL = ?, " +
+                        "display_appt_update = ? " +
                      "WHERE provider_id = ?;";
         try {
-            jdbcTemplate.update(sql, provider.getTitle(), provider.getFirstName(), provider.getLastName(), provider.getPostNominals(), provider.getSpecialty(), provider.getGender(), provider.getLanguage(), provider.getRating(), provider.getPhoneNumber(), provider.getBio(), provider.getPhotoUrl(), provider.getId());
+            jdbcTemplate.update(sql, provider.getTitle(), provider.getFirstName(), provider.getLastName(), provider.getPostNominals(), provider.getSpecialty(), provider.getGender(), provider.getLanguage(), provider.getRating(), provider.getPhoneNumber(), provider.getBio(), provider.getPhotoUrl(), provider.isDisplayApptUpdate(), provider.getId());
         } catch (DataAccessException e) {
             System.out.println("Unable to update provider: " + e.getMessage());
         }
@@ -153,6 +154,7 @@ public class JdbcProviderDao implements ProviderDao{
         provider.setPhoneNumber(rs.getString("phone_number"));
         provider.setBio(rs.getString("bio"));
         provider.setPhotoUrl(rs.getString("photo_URL"));
+        provider.setDisplayApptUpdate(rs.getBoolean("display_appt_update"));
         return provider;
     }
 }
