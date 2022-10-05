@@ -50,7 +50,7 @@
             <img class="profile-pic" v-bind:src="provider.photoUrl" alt="">
             <h3>{{provider.title}} {{provider.firstName}} {{provider.lastName}} {{provider.postNominals}}</h3>
             <h3>{{provider.specialty}}</h3>
-            <h4 v-if="provider.rating">Provider Rating: {{provider.rating}}</h4>
+            <h4 v-if="provider.rating">Provider Rating: {{roundedRating(provider.rating)}}</h4>
         </router-link> 
     </div>
 </template>
@@ -68,6 +68,12 @@
                     language: "",
                     rating: 0
                 }
+            }
+        },
+        methods: {
+            roundedRating(rating) {
+                rating = rating.toFixed(2);
+                return rating;
             }
         },
         computed: {
@@ -116,7 +122,6 @@
                 }
                 return filteredProviders;
             }
-
         }
     }
 </script>
