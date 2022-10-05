@@ -20,5 +20,9 @@ export default {
 
   getProviderIdByFullName(fullName) {
     return axios.get(`/provider/${fullName}`)
+  },
+
+  updateOffice(office){
+    return axios.put('/office', office)
   }
 }
