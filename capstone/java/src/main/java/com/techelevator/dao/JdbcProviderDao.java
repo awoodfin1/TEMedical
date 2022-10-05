@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Provider;
+import com.techelevator.model.Review;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -15,9 +16,11 @@ import java.util.List;
 public class JdbcProviderDao implements ProviderDao{
 
     private JdbcTemplate jdbcTemplate;
+    private ReviewDao reviewDao;
 
-    public JdbcProviderDao(DataSource dataSource) {
+    public JdbcProviderDao(DataSource dataSource, ReviewDao reviewDao) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.reviewDao = reviewDao;
     }
 
 
@@ -90,6 +93,19 @@ public class JdbcProviderDao implements ProviderDao{
         }
     }
 
+    public double updateRating(List<Review> reviewList, int providerId){
+        double sum = 0.0;
+        int count = 0;
+        for (Review review:reviewList) {
+            sum += review.getProviderRating();
+            count++;
+        }
+        double avg = sum / count;
+        String sql = "UPDATE provider SET rating = ? WHERE provider_id = ?;";
+        jdbcTemplate.update(sql, avg, providerId);
+        return avg;
+    }
+
 
 
     @Override
@@ -150,7 +166,7 @@ public class JdbcProviderDao implements ProviderDao{
         provider.setSpecialty(rs.getString("specialty"));
         provider.setGender(rs.getString("gender"));
         provider.setLanguage(rs.getString("language"));
-        provider.setRating(rs.getDouble("rating"));
+        provider.setRating(updateRating(reviewDao.getAllReviewsByProvider(provider.getId()), provider.getId()));
         provider.setPhoneNumber(rs.getString("phone_number"));
         provider.setBio(rs.getString("bio"));
         provider.setPhotoUrl(rs.getString("photo_URL"));
