@@ -17,7 +17,7 @@
                 <h3 id="appt-form-title" v-if="bookAppointment">Please Fill Out This From To Book Your Appointment</h3>
                 <appointment-form v-if="bookAppointment" v-bind:providerId="providerId"/>
             </div>
-            <h3 v-if="!$store.state.user.provider">Provider Reviews: </h3>
+            <h3 v-if="!$store.state.user.provider && reviews.length !== 0">Provider Reviews: </h3>
             <div class="reviews" v-for="review in this.reviews" v-bind:key="review.id">
                 <h4 id="prov-rate-text">Provider Rating: {{review.providerRating}}/5</h4>
                 <h4 id="review-text">Review: {{review.reviewText}}</h4>

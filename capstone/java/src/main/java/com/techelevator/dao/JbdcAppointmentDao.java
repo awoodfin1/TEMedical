@@ -43,7 +43,7 @@ public class JbdcAppointmentDao implements AppointmentDao {
                 newAppointment.getProviderId(), newAppointment.getAppointmentDate(),
                 newAppointment.getApptStartTime(), newAppointment.getApptEndTime(), newAppointment.getAppointmentReason(),
                 newAppointment.getAppointmentDetails(), newAppointment.isNewPatient());
-        providerDao.toggleOnDisplayApptMessage(newAppointment.getProviderId());
+        providerDao.toggleOnDisplayApptUpdate(newAppointment.getProviderId());
         return getApptById(newId);
     }
 

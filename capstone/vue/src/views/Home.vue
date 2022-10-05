@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <h1>Welcome To Our Home Page</h1>
-    <p>About Us: We do medical scheduling!</p>
+    <h1>Welcome To Your Home Page!</h1>
+    <p v-if="!$store.state.user.provider">Schedule an appointment with one of our prized providers!</p>
+    <p v-if="$store.state.user.provider">Below are your upcoming appointments!</p>
     <br>
     <providers v-if="!$store.state.user.provider"/>
     <my-appointments v-if="$store.state.user.provider"/>

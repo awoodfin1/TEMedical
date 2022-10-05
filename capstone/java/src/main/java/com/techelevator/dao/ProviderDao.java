@@ -30,7 +30,9 @@ public interface ProviderDao {
 
     // update
 
-    boolean toggleOnDisplayApptMessage(int providerId);
+    void toggleOnDisplayApptUpdate(int providerId);
+
+    void toggleOffDisplayApptUpdate(int providerId);
 
     // delete
 

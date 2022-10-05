@@ -63,8 +63,15 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
+            
+            authService.getDisplayApptUpdate().then( (result) => {
+              if (result.status === 200) {
+                this.$store.commit("SET_DISPLAY_APPT_UPDATE", result.data);
+                this.$router.push("/");
+              }
+
+            });
             // this.$store.commit("SET_ISPROVIDER", response.data.provider);
-            this.$router.push("/");
           }
         })
         .catch(error => {

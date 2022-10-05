@@ -21,9 +21,7 @@
                             <input type="text" id="last-name-filter" v-model="filter.lastName">
                         </td>
                         <td>
-                            <select name="specialty-filter" id="specialty-filter" v-model="filter.specialty">
-                                <option v-for="provider in $store.state.providers" v-bind:key="provider.id">{{ provider.specialty }}</option>
-                            </select>
+                            <input type="text" id="specialty-filter" v-model="filter.specialty">
                         </td>
                         <td>
                             <select name="gender-filter" id="gender-filter" v-model="filter.gender">

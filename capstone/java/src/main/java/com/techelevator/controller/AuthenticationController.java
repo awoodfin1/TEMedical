@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import com.techelevator.dao.PatientDao;
 import com.techelevator.dao.ProviderDao;
+import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.LoginDTO;
-import com.techelevator.model.RegisterUserDTO;
-import com.techelevator.model.User;
-import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
@@ -78,9 +75,39 @@ public class AuthenticationController {
         }
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public boolean getIsProvider(Principal principal) {
-        return userDao.getIsProvider(principal.getName());
+    public boolean getDisplayApptUpdate(Principal principal) {
+        boolean displayApptUpdate = false;
+        if (userDao.getIsProvider(principal.getName())) {
+            Provider provider = providerDao.getProviderByUserId(userDao.findIdByUsername(principal.getName()));
+            displayApptUpdate = provider.isDisplayApptUpdate();
+        } else {
+            Patient patient = patientDao.getPatientByUserId(userDao.findIdByUsername(principal.getName()));
+            displayApptUpdate = patient.isDisplayApptUpdate();
+        }
+        return displayApptUpdate;
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
+    public boolean flipDisplayApptUpdate(@RequestBody boolean displayApptUpdate, Principal principal) {
+        if (userDao.getIsProvider(principal.getName())) {
+            Provider provider = providerDao.getProviderByUserId(userDao.findIdByUsername(principal.getName()));
+            if (displayApptUpdate) {
+                providerDao.toggleOnDisplayApptUpdate(provider.getId());
+            } else {
+                providerDao.toggleOffDisplayApptUpdate(provider.getId());
+            }
+        } else {
+            Patient patient = patientDao.getPatientByUserId(userDao.findIdByUsername(principal.getName()));
+            if (displayApptUpdate) {
+//                patientDao.toggleOnDisplayApptUpdate(patient.getId());
+            } else {
+//                patientDao.toggleOffDisplayApptUpdate(patient.getId());
+            }
+        }
+        return displayApptUpdate;
     }
 
     /**

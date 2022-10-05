@@ -23,7 +23,8 @@ export default new Vuex.Store({
     providers: [],
     // isProvider: false,
     apptPatient: [],
-    myAppointments: []
+    myAppointments: [],
+    displayApptUpdate: false
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -53,6 +54,9 @@ export default new Vuex.Store({
     },
     SET_APPT_PATIENT(state, patient) {
       state.apptPatient = patient;
+    },
+    SET_DISPLAY_APPT_UPDATE(state, displayApptUpdate) {
+      state.displayApptUpdate = displayApptUpdate;
     }
   }
 })

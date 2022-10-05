@@ -156,19 +156,25 @@ public class JdbcProviderDao implements ProviderDao{
     }
 
     @Override
-    public boolean toggleOnDisplayApptMessage(int providerId) {
-        boolean currentDisplay = false;
-        String updateSql = "UPDATE provider SET display_appt_message = ? WHERE provider_id = ?;";
+    public void toggleOnDisplayApptUpdate(int providerId) {
+        String updateSql = "UPDATE provider SET display_appt_update = ? WHERE provider_id = ?;";
         try {
             jdbcTemplate.update(updateSql, true, providerId);
-            Provider provider = getProviderByProviderId(providerId);
-            currentDisplay = provider.isDisplayApptUpdate();
 
         } catch (DataAccessException e) {
             System.out.println("Appointment notification will not be displayed at this moment " + e.getMessage());
         }
+    }
 
-        return currentDisplay;
+    @Override
+    public void toggleOffDisplayApptUpdate(int providerId) {
+        String updateSql = "UPDATE provider SET display_appt_update = ? WHERE provider_id = ?;";
+        try {
+            jdbcTemplate.update(updateSql, false, providerId);
+
+        } catch (DataAccessException e) {
+            System.out.println("Appointment notification will still be displayed at this moment " + e.getMessage());
+        }
     }
 
     private Provider mapRowToProvider(SqlRowSet rs) {
