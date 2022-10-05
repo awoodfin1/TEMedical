@@ -60,7 +60,7 @@
                 });
             },
             roundRating() {
-                this.provider.rating = this.provider.rating.toFixed(2);
+                this.provider.rating = Number.parseFloat(this.provider.rating).toFixed(2);
                 return this.provider.rating;
             }
         }
