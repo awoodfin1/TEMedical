@@ -1,6 +1,6 @@
 <template>
     <div class="appointment-form">
-        <form v-on:submit.prevent="addAppointment()" class="apptSelect">
+        <form v-on:submit.prevent="addAppointment()" class="apptSelect" v-if="this.showForm">
             <label for="dateInput">Please Select a Date</label>
             <input type="date" name="date" min="2022-09-28" max="2022-12-31" v-model="newApptRequest.date" v-on:change="getTimes()" required>
             <label for="timeSelect">Please Select a Time</label>
@@ -32,6 +32,7 @@
             <button id="apptFormBtn" type="submit">Submit</button>
             <br />
         </form>
+        <h4 v-if="!this.showForm">Form Submitted! Thank You!</h4>
     </div>
 </template>
 
@@ -50,6 +51,7 @@ export default {
                 newPatient: false
             },
             apptTimes: [],
+            showForm: true
             
         }
     },
@@ -62,6 +64,7 @@ export default {
             .then((response) => {
                 if (response.status === 200) {
                     this.apptTimes = response.data;
+                    
                 }
             })
         },
@@ -69,7 +72,9 @@ export default {
             ApptService.createAppointment(this.newApptRequest)
             .then(response => {
                 if(response.status === 201) {
+                    this.showForm = false;
                     this.resetForm();
+                    
                 }
             })
         },
