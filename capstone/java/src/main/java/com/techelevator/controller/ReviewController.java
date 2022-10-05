@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @RestController
@@ -53,6 +54,7 @@ public class ReviewController {
         String reviewText = reviewDTO.getReviewText();
         LocalDate today = java.time.LocalDate.now();
         LocalTime now = java.time.LocalTime.now();
+//        LocalTime now = java.time.LocalTime.now().truncatedTo(ChronoUnit.MINUTES);
         int providerRating = reviewDTO.getStarRating();
         Review newReview = new Review(officeId, patientId, providerId, reviewText, today, now, providerRating);
         if(providerId != 0) {
