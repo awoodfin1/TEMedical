@@ -46,12 +46,12 @@ export default {
         submitForm() {
             ReviewService.createReview(this.review)
             .then(response => {
-                if (response.status === 201) {                   
-                    this.resetForm();
+                if (response.status === 201) {                                      
                     ProviderService.getProviderIdByFullName(this.review.provider)
                     .then(result => {
                         if (result.status === 200) {
-                            this.$router.push('/providers/:providerId');
+                            this.$router.push({name: "Provider", params: {providerId: result.data}});
+                            this.resetForm();
                         }
                     })
                     
