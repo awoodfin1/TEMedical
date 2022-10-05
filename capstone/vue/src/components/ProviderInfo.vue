@@ -17,7 +17,7 @@
             </div>
             <h3 v-if="!$store.state.user.provider">Provider Reviews: </h3>
             <div class="reviews" v-for="review in this.reviews" v-bind:key="review.id">
-                <h4>Provider Rating: {{review.providerRating}}/5</h4>
+                <h4 id="prov-rate-text">Provider Rating: {{review.providerRating}}/5</h4>
                 <h4 id="review-text">Review: {{review.reviewText}}</h4>
             </div>
         </div>
@@ -88,7 +88,7 @@
         border: 2px;
         border-radius: 10px;
         border-style: solid;
-        margin: 0 15vw 10px 15vw;
+        margin: 0 10vw 10px 10vw;
     }
 
     #appt-form-title{
@@ -104,8 +104,15 @@
         margin: 3% 14% 3% 14%;
     }
 
+    #prov-rate-text {
+        font-size: 15px;
+    }
+
     #review-text {
-        font-style: normal;
+        font-weight: normal;
+        text-align: start;
+        margin: 5px;
+        font-size: 12px;
     }
 
     @media screen and (max-width: 1000px) {
