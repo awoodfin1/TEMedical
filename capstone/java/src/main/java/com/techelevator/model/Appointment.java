@@ -19,12 +19,14 @@ public class Appointment {
     public Appointment(){
     }
 
-    public Appointment(int patientId, int providerId, LocalDate date, LocalTime apptStartTime, boolean isNewPatient) {
+    public Appointment(int patientId, int providerId, LocalDate date, LocalTime apptStartTime, String appointmentReason, String appointmentDetails, boolean isNewPatient) {
         this.patientId = patientId;
         this.providerId = providerId;
         this.appointmentDate = date;
         this.apptStartTime = apptStartTime;
         this.apptEndTime = apptStartTime.plusMinutes(30);
+        this.appointmentReason = appointmentReason;
+        this.appointmentDetails = appointmentDetails;
         this.isNewPatient = isNewPatient;
     }
 

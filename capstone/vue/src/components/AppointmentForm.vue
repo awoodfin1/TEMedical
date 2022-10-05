@@ -12,23 +12,23 @@
             <label for="isNewPatient">Are You a New Patient?</label>
             <input v-model="newApptRequest.newPatient" type="checkbox" name="isNewPatient" id="isNewPatient" value= true>
             <label for="apptReason">Reason for Visit:</label>
-            <select id="apptReason" name="apptReason">
-                <option value="">--Please choose an option--</option>
-                <option value="prescriptionRefill">Prescription Refill</option>
-                <option value="skin">Skin Disorder</option>
-                <option value="jointsOsteoarthritis">Joint Pain And Osteoarthritis</option>
-                <option value="backPain">Back Problems</option>
-                <option value="cholesterol">Cholesterol Problem</option>
-                <option value="upperRespiratory">Upper Respiratory Problems</option>
-                <option value="anxietyBipolarDepression">Anxiety, Bipolar Disorder and/or Depression</option>
-                <option value="neurologyDisorder">Chronic Neurology Disorder</option>
-                <option value="highBloodPressure">High Blood Pressure</option>
-                <option value="headacheMigraine">Headaches And Migraines</option>
-                <option value="diabetes">Diabetes</option>
-                <option value="other">Other</option>
+            <select id="apptReason" name="apptReason" v-model="newApptRequest.apptReason" required>
+                <!-- <option value="">--Please choose an option--</option> -->
+                <option >Prescription Refill</option>
+                <option >Skin Disorder</option>
+                <option >Joint Pain And Osteoarthritis</option>
+                <option >Back Problems</option>
+                <option >Cholesterol Problem</option>
+                <option >Upper Respiratory Problems</option>
+                <option >Anxiety, Bipolar Disorder and/or Depression</option>
+                <option >Chronic Neurology Disorder</option>
+                <option >High Blood Pressure</option>
+                <option >Headaches And Migraines</option>
+                <option >Diabetes</option>
+                <option >Other</option>
             </select>
             <label for="apptDescription">Brief Description:</label>
-            <textarea name="apptDescription" id="apptDescription" cols="30" rows="10"></textarea>
+            <textarea name="apptDescription" id="apptDescription" cols="30" rows="10" v-model="newApptRequest.apptDetails" required></textarea>
             <button id="apptFormBtn" type="submit">Submit</button>
             <br />
         </form>
@@ -47,6 +47,8 @@ export default {
                 providerId: 0,
                 date: '',
                 startTime: '09:00:00',
+                apptReason: '',
+                apptDetails: '',
                 newPatient: false
             },
             apptTimes: [],

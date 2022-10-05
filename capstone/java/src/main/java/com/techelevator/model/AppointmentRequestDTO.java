@@ -1,14 +1,29 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class AppointmentRequestDTO {
+
+    private int providerId;
     private LocalDate date;
     private LocalTime startTime;
+    @JsonProperty("apptReason")
     private String appointmentReason;
+    @JsonProperty("apptDetails")
     private String appointmentDetails;
+    @JsonProperty("newPatient")
     private boolean isNewPatient;
+
+    public int getProviderId() {
+        return this.providerId;
+    }
+
+    public void setProviderId(int providerId) {
+        this.providerId = providerId;
+    }
 
     public LocalDate getDate() {
         return date;

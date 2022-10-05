@@ -42,8 +42,8 @@ public class AppointmentController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/appointment", method = RequestMethod.POST)
     public Appointment createAppointment(Principal principal, @RequestBody AppointmentRequestDTO appointmentRequestDTO) {
-        int providerId = 1001;
-        return appointmentDao.createAppointment(new Appointment(patientDao.getPatientIdByUserId(userDao.findIdByUsername(principal.getName())), providerId, appointmentRequestDTO.getDate(), appointmentRequestDTO.getStartTime(), appointmentRequestDTO.isNewPatient()));
+        Appointment newAppt = new Appointment(patientDao.getPatientIdByUserId(userDao.findIdByUsername(principal.getName())), appointmentRequestDTO.getProviderId(), appointmentRequestDTO.getDate(), appointmentRequestDTO.getStartTime(), appointmentRequestDTO.getAppointmentReason(), appointmentRequestDTO.getAppointmentDetails(), appointmentRequestDTO.isNewPatient());
+        return appointmentDao.createAppointment(newAppt);
     }
 
     @ResponseStatus(HttpStatus.OK)
