@@ -4,7 +4,7 @@
             <h2 class="top-line">{{provider.title}} {{provider.firstName}} {{provider.lastName}} {{provider.postNominals}}</h2>
             <img class="provider-pic" v-bind:src="provider.photoUrl" alt="">
             <h3>{{provider.specialty}}</h3>
-            <h4 class="prev-info-detail" v-if="provider.rating">Provider Rating: {{provider.rating}}</h4>
+            <h4 class="prev-info-detail" v-if="provider.rating">Provider Rating: {{roundRating()}}</h4>
             <h4 class="prev-info-detail" v-if="provider.phoneNumber">Contact Info: {{provider.phoneNumber}}</h4>
             <h4 class="prev-info-detail">This provider speaks {{provider.language}}.</h4>
             <p>"{{provider.bio}}"</p>   
@@ -55,6 +55,10 @@
                 ReviewService.getReviewByProviderId(this.providerId).then((response) =>{
                     this.reviews = response.data;
                 });
+            },
+            roundRating() {
+                this.provider.rating = this.provider.rating.toFixed(2);
+                return this.provider.rating;
             }
         }
     }
