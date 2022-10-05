@@ -46,7 +46,7 @@
                 </tbody>
             </table>
         </div>
-        <router-link class="card" v-for="provider in $store.state.providers" v-bind:key="provider.id" v-bind:to="{name: 'Provider', params: {providerId:provider.id}}">
+        <router-link class="card" v-for="provider in filteredList" v-bind:key="provider.id" v-bind:to="{name: 'Provider', params: {providerId:provider.id}}">
             <img class="profile-pic" v-bind:src="provider.photoUrl" alt="">
             <h3>{{provider.title}} {{provider.firstName}} {{provider.lastName}} {{provider.postNominals}}</h3>
             <h3>{{provider.specialty}}</h3>
@@ -66,20 +66,14 @@
                     specialty: "",
                     gender: "",
                     language: "",
-                    rating: Number
+                    rating: 0
                 }
             }
         },
         computed: {
             filteredList() {
-                let filteredProviders = this.$state.store.providers;
-                if (this.filter.title !== "") {
-                    filteredProviders = filteredProviders.filter((provider) =>
-                    provider.title
-                        .toLowerCase()
-                        .includes(this.filter.title.toLowerCase())
-                    );
-                }
+                let filteredProviders = this.$store.state.providers;
+                console.log(filteredProviders);
                 if (this.filter.firstName !== "") {
                     filteredProviders = filteredProviders.filter((provider) =>
                     provider.firstName
@@ -92,13 +86,6 @@
                     provider.lastName
                         .toLowerCase()
                         .includes(this.filter.lastName.toLowerCase())
-                    );
-                }
-                if (this.filter.postNominals !== "") {
-                    filteredProviders = filteredProviders.filter((provider) =>
-                    provider.postNominals
-                        .toLowerCase()
-                        .includes(this.filter.postNominals.toLowerCase())
                     );
                 }
                 if (this.filter.specialty !== "") {
@@ -122,25 +109,9 @@
                         .includes(this.filter.language.toLowerCase())
                     );
                 }
-                if (this.filter.rating !== "") {
+                if (this.filter.rating !== 0) {
                     filteredProviders = filteredProviders.filter((provider) =>
-                    provider.rating
-                        .toLowerCase()
-                        .includes(this.filter.rating.toLowerCase())
-                    );
-                }
-                if (this.filter.phoneNumber !== "") {
-                    filteredProviders = filteredProviders.filter((provider) =>
-                    provider.phoneNumber
-                        .toLowerCase()
-                        .includes(this.filter.phoneNumber.toLowerCase())
-                    );
-                }
-                if (this.filter.bio !== "") {
-                    filteredProviders = filteredProviders.filter((provider) =>
-                    provider.bio
-                        .toLowerCase()
-                        .includes(this.filter.bio.toLowerCase())
+                    provider.rating >= this.filter.rating
                     );
                 }
                 return filteredProviders;
