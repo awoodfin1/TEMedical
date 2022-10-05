@@ -15,17 +15,10 @@ public class Provider {
     private String phoneNumber;
     private String bio;
     private String photoUrl;
+    private boolean displayApptUpdate;
     private String fullName;
 
     public Provider() { }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
 
     public int getId() {
         return this.id;
@@ -129,6 +122,22 @@ public class Provider {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public boolean isDisplayApptUpdate() {
+        return this.displayApptUpdate;
+    }
+
+    public void setDisplayApptUpdate(boolean displayApptUpdate) {
+        this.displayApptUpdate = displayApptUpdate;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     @Override

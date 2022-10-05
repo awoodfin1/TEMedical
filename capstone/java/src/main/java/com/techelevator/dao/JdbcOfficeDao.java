@@ -90,7 +90,8 @@ public class JdbcOfficeDao implements OfficeDao{
         office.setCloseTime(rs.getTime("office_close_time"));
         office.setPhoneNumber(rs.getString("phone_number"));
         office.setCostPerHour(rs.getBigDecimal("cost_per_hour"));
-        office.setHasApptDelay(rs.getBoolean("has_appt_delay"));
+        office.setMessage(rs.getString("message"));
+        office.setDisplayMessage(rs.getBoolean("display_message"));
         return office;
     }
 }
