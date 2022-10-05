@@ -73,7 +73,7 @@
         },
         methods: {
             roundedRating(rating) {
-                rating = rating.toFixed(2);
+                rating = Number.parseFloat(rating).toFixed(2);
                 return rating;
             }
         },
