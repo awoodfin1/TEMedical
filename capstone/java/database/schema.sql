@@ -31,10 +31,11 @@ CREATE TABLE patient (
     user_id int,
     first_name varchar(30) NOT NULL,
 	last_name varchar(40) NOT NULL,
-	phone_number varchar(10),
+	phone_number varchar(12),
 	email_address varchar(60),
 	birthdate date,
 	health_issues_description varchar(500),
+	display_appt_update boolean NOT NULL default (false),
 
     CONSTRAINT pk_patient PRIMARY KEY (patient_id),
 	CONSTRAINT fk_patient FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -57,9 +58,10 @@ CREATE TABLE provider (
 	gender varchar(6),
 	"language" varchar(15),
 	rating numeric(4,2),
-	phone_number varchar(10),
+	phone_number varchar(12),
 	bio varchar(500),
-	photo_URL varchar(200),	
+	photo_URL varchar(200),
+	display_appt_update boolean NOT NULL default (false),
     
     CONSTRAINT pk_provider PRIMARY KEY (provider_id),
     CONSTRAINT fk_provider FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -80,7 +82,7 @@ CREATE TABLE appointment (
     appt_end_time TIME,
     status varchar(15) DEFAULT ('Confirmed'),
     appointment_reason varchar(70),
-    appointment_details varchar(100),
+    appointment_details varchar(500),
 
     CONSTRAINT pk_appointment PRIMARY KEY (appointment_id),
     CONSTRAINT fk_appointment_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
@@ -103,9 +105,10 @@ CREATE TABLE office (
     zipcode int,
     office_open_time time,
     office_close_time time,
-    phone_number varchar(10),
+    phone_number varchar(12),
     cost_per_hour numeric(4,2),
-    has_appt_delay boolean NOT NULL default (false),
+	"message" varchar(200),
+    display_message boolean NOT NULL default (false),
 
     CONSTRAINT pk_office PRIMARY KEY (office_id)
 );
