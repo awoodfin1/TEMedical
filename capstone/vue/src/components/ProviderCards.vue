@@ -136,6 +136,7 @@
     height: 400px;
     margin: 20px;
     padding-top: 20px;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.7), 0 2px 4px -1px rgba(0,0,0,0.9);
 }
 .profile-pic{
     max-width: 250px;
@@ -147,12 +148,21 @@
     display:flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    
 }
 
 #card-rating-container {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#gender-filter {
+    height: 21px;
+}
+
+#rating-filter {
+    height: 21px;
 }
 
 @media screen and (max-width: 1000px) {

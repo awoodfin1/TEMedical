@@ -27,6 +27,7 @@ export default {
     margin: 20px;
     padding-top: 20px;
     text-align: center;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.7), 0 2px 4px -1px rgba(0,0,0,0.9);
     
 }
 .appt-pic{
