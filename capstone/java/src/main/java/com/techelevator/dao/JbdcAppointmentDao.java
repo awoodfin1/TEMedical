@@ -140,7 +140,10 @@ public class JbdcAppointmentDao implements AppointmentDao {
 
     @Override
     public List<LocalTime> getAvailability(int providerId, LocalDate date) {
-        List<LocalTime> temp = this.allPotentialApptStartTimes;
+        List<LocalTime> temp = new ArrayList<>();
+        for (LocalTime tempStart :this.allPotentialApptStartTimes) {
+            temp.add(tempStart);
+        }
         List<LocalTime> allApptStartTimes = getApptStartTimes(providerId, date);
         for (LocalTime eachStartTime : allApptStartTimes) {
             if (temp.contains(eachStartTime)) {
