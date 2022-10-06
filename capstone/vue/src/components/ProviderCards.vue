@@ -25,6 +25,7 @@
                         </td>
                         <td class="table-gender">
                             <select name="gender-filter" id="gender-filter" v-model="filter.gender">
+                                <option value=""></option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
@@ -34,6 +35,7 @@
                         </td>
                         <td class="table-rating">
                             <select name="rating-filter" id="rating-filter" v-model="filter.rating">
+                                <option value=""></option>
                                 <option value=1>1 Star</option>
                                 <option value=2>2 Stars</option>
                                 <option value=3>3 Stars</option>
