@@ -113,7 +113,7 @@ export default {
 }
 
 #apptFormBtn {
-    margin: 10px 150px 0 0;
+    margin: 10px 0 0 0;
     background-color: rgb(174, 255, 174);
 
 }
