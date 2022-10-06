@@ -9,6 +9,7 @@
             
         </div>
         <p>Additional information: Our current rate for seeing a provider is at ${{office.costPerHour}} per hour.</p>
+        <h4 class ="office-message" v-if="office.displayMessage">{{office.message}}</h4>
     </div>
 </template>
 
@@ -58,5 +59,10 @@
             display: none;
             
         }
+    }
+
+    .office-message{
+        color: red;
+        text-align: center;
     }
 </style>
