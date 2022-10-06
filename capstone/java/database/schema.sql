@@ -33,7 +33,7 @@ CREATE TABLE patient (
 	last_name varchar(40) NOT NULL,
 	phone_number varchar(12),
 	email_address varchar(60),
-	birthdate date,
+	birthdate date default '1900-01-01',
 	health_issues_description varchar(500),
 	display_appt_update boolean NOT NULL default (false),
 
