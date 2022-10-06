@@ -7,9 +7,9 @@
                         <th class="table-first-name">First Name</th>
                         <th class="table-last-name">Last Name</th>
                         <th class="table-special">Specialty</th>
-                        <th class="table-gender">Gender</th>
                         <th class="table-language">Language</th>
-                        <th class="table-rating">Provider Rating</th>
+                        <th class="table-gender">Gender</th>
+                        <th class="table-rating">Rating</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,17 +23,17 @@
                         <td class="table-special">
                             <input type="text" id="specialty-filter" v-model="filter.specialty">
                         </td>
-                        <td class="table-gender">
+                        <td class="table-language">
+                            <input type="text" id="language-filter" v-model="filter.language">
+                        </td>
+                        <td class="table-gender" id="table-gender">
                             <select name="gender-filter" id="gender-filter" v-model="filter.gender">
                                 <option value=""></option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </td>
-                        <td class="table-language">
-                            <input type="text" id="language-filter" v-model="filter.language">
-                        </td>
-                        <td class="table-rating">
+                        <td class="table-rating" id="table-rating">
                             <select name="rating-filter" id="rating-filter" v-model="filter.rating">
                                 <option value=""></option>
                                 <option value=1>1 Star</option>
@@ -159,5 +159,13 @@
     .card {
         max-width: 300px;
     }
+}
+
+#table-gender{
+    padding-top: 15px;
+}
+
+#table-rating{
+    padding-top: 15px;
 }
 </style>
