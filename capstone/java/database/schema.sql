@@ -60,7 +60,7 @@ CREATE TABLE provider (
 	rating numeric(4,2),
 	phone_number varchar(12),
 	bio varchar(500),
-	photo_URL varchar(200),
+	photo_URL varchar(200) DEFAULT ('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'),
 	display_appt_update boolean NOT NULL default (false),
     
     CONSTRAINT pk_provider PRIMARY KEY (provider_id),
