@@ -62,11 +62,11 @@ export default {
     },
     methods: {
         getTimes() {
+            this.appTimes = [];
             ApptService.getApptStartTimeByProviderByDate(this.newApptRequest.providerId, this.newApptRequest.date)
             .then((response) => {
                 if (response.status === 200) {
                     this.apptTimes = response.data;
-                    
                 }
             })
         },
@@ -89,6 +89,7 @@ export default {
                 apptDetails: '',
                 newPatient: false
             }
+            this.appTimes = [];
         }
     }
 }
