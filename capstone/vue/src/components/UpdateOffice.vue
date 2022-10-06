@@ -3,9 +3,14 @@
         <h2 class="update-office-title">Please Update Our Office Info</h2>
         <form class="update-office-form" v-on:submit.prevent="updateOffice()" v-if="this.showForm">
             <label for="update-message" class="display-message">Update Office Message?</label>
-            <input type="checkbox" id="update-message" v-model="office.displayMessage" required>
+            <select name="update-message" id="update-message" v-model="showMessageField" required>
+                <option value=""></option>
+                <option value=true>Yes</option>
+                <option value=false>No</option>
+            </select>
+            <!-- <input type="checkbox" id="update-message" v-model="office.displayMessage" required> -->
             <label for="message" v-if="office.display_message">Type Message To Be Displayed Here.</label>
-            <input type="textarea"  v-model="office.message" id="message" v-if="office.display_message" required>
+            <input type="textarea"  v-model="office.message" id="message" v-if="showMessageField" required>
             <button id="officeSubmitBtn" type="submit">Submit</button>
         </form>
         <h4 v-if="!this.showForm">Form Submitted! Thank You!</h4>
@@ -20,7 +25,8 @@
         data(){
             return{
                 office: {},
-                showForm: true
+                showForm: true,
+                showMessageField: false
             }
         },
         created() {

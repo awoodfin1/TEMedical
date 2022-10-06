@@ -13,7 +13,11 @@
             <label for="update-specialty">Specialty: </label>
             <input class="update-provider-field" type="text" v-model="newProvider.specialty" id="update-specialty" required>
             <label for="update-gender">Gender: </label>
-            <input class="update-provider-field" type="text" v-model="newProvider.gender" id="update-gender">
+            <select name="update-provider-gender" id="update-gender" class="update-provider-field" required>
+                <option value=""></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
             <label for="update-language">Language: </label>
             <input class="update-provider-field" type="text" v-model="newProvider.language" id="update-language">
             <label for="update-phone-number">Phone Number: </label>
