@@ -134,9 +134,11 @@
 
     @media screen and (max-width: 1000px) {
         .appointForm {
-            
-            margin: 3% 15% 5% 15%;
+            padding: 0 3vw 5px 3vw;
+            margin: 5% 10px 5% 10px;
         }
+
+        
 
     }
 

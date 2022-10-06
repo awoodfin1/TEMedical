@@ -100,6 +100,11 @@ export default {
     flex-direction: column;
     max-width: 25vw;
 }
+
+.apptSelect input,select {
+    margin-bottom: 15px;
+}
+
 .appointment-form{
     display: flex;
     justify-content: center;
@@ -113,6 +118,10 @@ export default {
 }
 
 @media screen and (max-width: 1000px) {
+    /* .appointment-form {
+        max-width: 500px;
+    } */
+
     .apptSelect {
         max-width: 80vw;
     }

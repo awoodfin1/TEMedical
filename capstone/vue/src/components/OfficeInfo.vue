@@ -2,9 +2,9 @@
     <div class="office-container">
         <div class = "office-info">
             <h4 class="top-line">Address: {{office.streetAddress}}, {{office.city}}, {{office.stateAbbr}} {{office.zipcode}}</h4>
-            <h3>||</h3>
+            <h3 class="pipe-decor">||</h3>
             <h4 class="top-line">Hours: {{office.openTime}} - {{office.closeTime}}</h4>
-            <h3>||</h3>
+            <h3 class="pipe-decor">||</h3>
             <h4 class="top-line">Phone: {{office.phoneNumber}}</h4>           
             
         </div>
@@ -50,7 +50,7 @@
         margin-left: 5vw;
         }
 
-        h3 {
+        .pipe-decor {
             display: none;
         }
 

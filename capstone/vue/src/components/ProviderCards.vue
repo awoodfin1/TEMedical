@@ -4,35 +4,35 @@
             <table id="filter-table">
                 <thead>
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Specialty</th>
-                        <th>Gender</th>
-                        <th>Language</th>
-                        <th>Provider Rating</th>
+                        <th class="table-first-name">First Name</th>
+                        <th class="table-last-name">Last Name</th>
+                        <th class="table-special">Specialty</th>
+                        <th class="table-gender">Gender</th>
+                        <th class="table-language">Language</th>
+                        <th class="table-rating">Provider Rating</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
+                        <td class="table-first-name">
                             <input type="text" id="first-name-filter" v-model="filter.firstName">
                         </td>
-                        <td>
+                        <td class="table-last-name">
                             <input type="text" id="last-name-filter" v-model="filter.lastName">
                         </td>
-                        <td>
+                        <td class="table-special">
                             <input type="text" id="specialty-filter" v-model="filter.specialty">
                         </td>
-                        <td>
+                        <td class="table-gender">
                             <select name="gender-filter" id="gender-filter" v-model="filter.gender">
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </td>
-                        <td>
+                        <td class="table-language">
                             <input type="text" id="language-filter" v-model="filter.language">
                         </td>
-                        <td>
+                        <td class="table-rating">
                             <select name="rating-filter" id="rating-filter" v-model="filter.rating">
                                 <option value=1>1 Star</option>
                                 <option value=2>2 Stars</option>

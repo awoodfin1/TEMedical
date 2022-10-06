@@ -1,9 +1,9 @@
 <template>
     <div class="my-profile-provider">
         <MyInfoProvider/>
-        <input v-on:click.prevent="flipUpdate()" v-if="!isUpdate" type="button" name="updateProvider" value="Update Profile" class="updateProfileBtn">
+        <input id="provider-update-btn" v-on:click.prevent="flipUpdate()" v-if="!isUpdate" type="button" name="updateProvider" value="Update Profile" class="updateProfileBtn">
         <update-provider v-if="isUpdate"/>
-        <input v-on:click.prevent="flipOfficeUpdate()" v-if="!officeUpdate" type="button" name="updateOffice" value="Update Office Info" class="updateOfficeBtn">
+        <input id="office-update-btn" v-on:click.prevent="flipOfficeUpdate()" v-if="!officeUpdate" type="button" name="updateOffice" value="Update Office Info" class="updateOfficeBtn">
         <update-office v-if="officeUpdate"/>
     </div>
 </template>
@@ -36,5 +36,14 @@
 .my-profile-provider{
     display: flex;
     flex-direction: column;
+}
+
+#provider-update-btn, #office-update-btn {
+        margin-bottom: 10px;
+        margin-left: 325px;
+        margin-right: 325px;
+        padding: 20px 40px 20px 40px;
+        background-color: rgb(174, 255, 174);
+        border-radius: 10px;
 }
 </style>

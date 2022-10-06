@@ -33,7 +33,7 @@
           required
         />
         <br>
-        <router-link :to="{ name: 'register' }">Need an account?</router-link>
+        <router-link id="login-link" :to="{ name: 'register' }">Need an account?</router-link>
         <br>
         <button type="submit">Sign in</button>
       </form>
@@ -92,13 +92,17 @@ export default {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
-    margin: 3% 26% 12% 26%;
+    margin: 3% 5% 12% 5%;
+}
+
+#login-link {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 1000px) {
   .text-center {
-    padding: 0 40px 30px 40px;
-    margin: 3% 15% 12% 15%;
+    padding: 0 35px 30px 35px;
+    margin: 3% 8% 8% 8%;
   }
 }
   

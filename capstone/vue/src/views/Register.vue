@@ -63,7 +63,7 @@
         required
       />
       <br>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <router-link id="register-link" :to="{ name: 'login' }">Have an account?</router-link>
       <br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
@@ -128,5 +128,9 @@ export default {
 <style>
   .form-register{
     text-align: center;
+  }
+
+  #register-link {
+    text-decoration: underline;
   }
 </style>

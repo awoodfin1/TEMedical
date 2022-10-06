@@ -1,7 +1,7 @@
 <template>
     <div class="my-profile-patient">
         <my-info-patient/>
-        <input v-on:click.prevent="flipUpdate()" v-if="!isUpdate" type="button" name="updatePatient" value="Update Profile" class="updateProfileBtn">
+        <input id="update-patient-btn" v-on:click.prevent="flipUpdate()" v-if="!isUpdate" type="button" name="updatePatient" value="Update Profile" class="updateProfileBtn">
         <update-patient v-if="isUpdate"/>
     </div>
 </template>
@@ -29,5 +29,14 @@
     .my-profile-patient{
         display: flex;
         flex-direction: column;
+    }
+
+    #update-patient-btn {
+        margin-left: 325px;
+        margin-right: 325px;
+        padding: 20px 40px 20px 40px;
+        background-color: rgb(174, 255, 174);
+        border-radius: 10px;
+        
     }
     </style>
