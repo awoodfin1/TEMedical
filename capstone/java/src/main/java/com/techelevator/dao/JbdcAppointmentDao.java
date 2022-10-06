@@ -52,7 +52,8 @@ public class JbdcAppointmentDao implements AppointmentDao {
     public List<Appointment> getAllAppointments() {
         List<Appointment> allAppts = new ArrayList<>();
         String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details, is_new_patient " +
-                "FROM appointment;";
+                     "FROM appointment " +
+                     "ORDER BY appt_start_time, appointment_date;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             allAppts.add(mapRowToAppointment(results));
@@ -75,8 +76,9 @@ public class JbdcAppointmentDao implements AppointmentDao {
     public List<Appointment> getAllApptsByPatientId(int patientId) {
         List<Appointment> allAppts = new ArrayList<>();
         String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details, is_new_patient " +
-                "FROM appointment " +
-                "WHERE patient_id = ?;";
+                     "FROM appointment " +
+                     "WHERE patient_id = ? " +
+                     "ORDER BY appt_start_time, appointment_date;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
         while (results.next()) {
             allAppts.add(mapRowToAppointment(results));
@@ -88,8 +90,9 @@ public class JbdcAppointmentDao implements AppointmentDao {
     public List<Appointment> getAllApptsByProviderId(int providerId) {
         List<Appointment> allAppts = new ArrayList<>();
         String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details, is_new_patient " +
-                "FROM appointment " +
-                "WHERE provider_id = ?;";
+                     "FROM appointment " +
+                     "WHERE provider_id = ? " +
+                     "ORDER BY appt_start_time, appointment_date;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, providerId);
         while (results.next()) {
             allAppts.add(mapRowToAppointment(results));
@@ -102,7 +105,8 @@ public class JbdcAppointmentDao implements AppointmentDao {
         List<Appointment> allApptsByDate = new ArrayList<>();
         String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details, is_new_patient " +
                      "FROM appointment " +
-                     "WHERE appointment_date = ? AND patient_id = ?;";
+                     "WHERE appointment_date = ? AND patient_id = ? " +
+                     "ORDER BY appt_start_time, appointment_date;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date, patientId);
         while (results.next()) {
             allApptsByDate.add(mapRowToAppointment(results));
@@ -114,8 +118,9 @@ public class JbdcAppointmentDao implements AppointmentDao {
     public List<Appointment> getAllApptsByProviderIdByDate(int providerId, LocalDate date) {
         List<Appointment> allApptsByDate = new ArrayList<>();
         String sql = "SELECT appointment_id, patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details, is_new_patient " +
-                "FROM appointment " +
-                "WHERE provider_id = ? AND appointment_date = ?;";
+                     "FROM appointment " +
+                     "WHERE provider_id = ? AND appointment_date = ? " +
+                     "ORDER BY appt_start_time, appointment_date;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date, providerId);
         while (results.next()) {
             allApptsByDate.add(mapRowToAppointment(results));

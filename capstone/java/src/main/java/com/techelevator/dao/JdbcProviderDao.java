@@ -28,7 +28,8 @@ public class JdbcProviderDao implements ProviderDao{
     public List<Provider> getAllProviders() {
         List<Provider> providerList = new ArrayList<>();
         String sql = "SELECT provider_id, user_id, title, first_name, last_name, post_nominals, specialty, gender, language, rating, phone_number, bio, photo_URL, display_appt_update " +
-                     "FROM provider;";
+                     "FROM provider " +
+                     "ORDER BY first_name;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
             providerList.add(mapRowToProvider(results));
