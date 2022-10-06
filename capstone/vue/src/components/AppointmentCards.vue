@@ -6,7 +6,13 @@
             <h2 class="link-text">{{ appointment.appointmentDate }}</h2>
             <h3 class="link-text">Time: {{ appointment.apptStartTime }}</h3>
             <h4 class="link-text">Appointment Id: {{ appointment.id }} </h4>
-            <h4 class="link-text">Status: {{ appointment.status }}</h4>
+            <h4
+                class="link-text"
+                v-bind:class="{ confirmed: appointment.status === 'Confirmed' } ||
+                              { rescheduled: appointment.status === 'Rescheduled' } ||
+                              { cancelled: appointment.status === 'Cancelled'}"
+            >
+                Status: {{ appointment.status }}</h4>
         <!-- </div> -->
         </router-link>
     </div>
@@ -19,6 +25,18 @@ export default {
 </script>
 
 <style>
+.confirmed {
+    background-color: rgb(174, 255, 174);
+}
+
+.rescheduled {
+    background-color: yellow;
+}
+
+.cancelled {
+    background-color: red;
+}
+
 .appt-card {
     border: 2px solid black;
     border-radius: 10px;

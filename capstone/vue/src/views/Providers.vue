@@ -13,6 +13,7 @@ export default {
     created() {
         ProviderService.getAllProviders().then((response) => {
             this.$store.commit("SET_PROVIDERS", response.data);
+            scroll(0,0);
         });
     },
     components: { ProviderCards }

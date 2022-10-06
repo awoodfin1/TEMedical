@@ -5,6 +5,7 @@
       <span class="closebtn" v-on:click="toggleOffDisplayApptUpdate()">&times;</span>
       A patient booked a new appointment with you!
     </div> -->
+    <h1 v-if="!$store.state.user.provider">My Appointments</h1>
     <AppointmentCards/>
   </div>
 </template>
@@ -19,6 +20,7 @@ export default {
   created() {
     ApptService.getAppointments().then( (response) => {
       this.$store.commit("SET_APPOINTMENTS", response.data);
+      scroll(0,0);
     });
   },
   components: {
@@ -37,6 +39,9 @@ export default {
 </script>
 
 <style>
+h1 {
+  text-align: center;
+}
 /* Styling for the notification banner
 /* The alert message box */
 /* .alert {

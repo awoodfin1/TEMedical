@@ -77,6 +77,7 @@ export default {
       ProviderService.getProvider(this.appointment.providerId).then((response2) =>{
         this.provider = response2.data;
       });
+      scroll(0,0);
     });
     PatientService.getPatientByApptId(this.apptId).then( (response) => {
       // this.apptPatient = response.data;
@@ -108,6 +109,8 @@ export default {
       ApptService.updateAppointment(appointment.id, appointment).then( (response) => {
         if (response.status === 201) {
           this.$router.push({name: 'appointment-details', params: {apptId:appointment.id}});
+          location.reload();
+          scroll(0,0);
         }
       });
     }

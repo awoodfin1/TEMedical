@@ -17,6 +17,9 @@
                 isUpdate: false
             }
         },
+        created() {
+            scroll(0,0);
+        },
         methods:{
             flipUpdate(){
                 this.isUpdate = !this.isUpdate;

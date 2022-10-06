@@ -1,12 +1,13 @@
 <template>
     <div class="patient-container">
         <div class = "patient-info">
+            <h1>My Profile</h1>
             <h4 class="top-line">{{patient.firstName}} {{patient.lastName}}</h4>
-            <h4>HEALTH HISTORY </h4>
-            <h4>{{patient.healthIssuesDescription}}</h4>
-            <h4 v-if="patient.phoneNumber || patient.emailAddress">CONTACT INFO</h4>
+            <h3 class="sub-title" v-if="patient.phoneNumber || patient.emailAddress">Contact Info</h3>
             <h4 v-if="patient.phoneNumber">Phone Number: {{patient.phoneNumber}}</h4>
-            <h4>Email Address: {{patient.emailAddress}}</h4>
+            <h4 v-if="patient.emailAddress">Email Address: {{patient.emailAddress}}</h4>
+            <h3 class="sub-title">Health History</h3>
+            <h4>{{patient.healthIssuesDescription}}</h4>
         </div>
     </div>
 </template>
@@ -32,5 +33,8 @@
 <style>
     .patient-container{
         text-align: center;
+    }
+    .sub-title {
+        color:rgb(0, 180, 242);
     }
 </style>

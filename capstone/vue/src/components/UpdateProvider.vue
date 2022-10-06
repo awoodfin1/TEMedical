@@ -13,7 +13,7 @@
             <label for="update-specialty">Specialty: </label>
             <input class="update-provider-field" type="text" v-model="newProvider.specialty" id="update-specialty" required>
             <label for="update-gender">Gender: </label>
-            <select name="update-provider-gender" id="update-gender" class="update-provider-field" required>
+            <select name="update-provider-gender" id="update-gender" class="update-provider-field" v-model="newProvider.gender" required>
                 <option value=""></option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -54,6 +54,8 @@
                 ProviderService.updateProvider(this.newProvider).then((response)=>{
                     if(response.status === 200 || response.status === 204){
                         this.showForm = false;
+                        location.reload();
+                        scroll(0,0);
                     }
                 });
             },

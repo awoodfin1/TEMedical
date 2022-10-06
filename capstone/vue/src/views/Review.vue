@@ -15,6 +15,9 @@ export default {
     components: {
         ReviewForm
     },
+    created() {
+      scroll(0,0);
+    }
 }
 </script>
 
