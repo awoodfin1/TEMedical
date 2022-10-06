@@ -19,6 +19,12 @@
               <h4>Health Issues Description:</h4>
               <p>{{ $store.state.apptPatient.healthIssuesDescription }}</p>
             </div>
+            <div class="provider-info" v-if="!$store.state.user.provider">
+              <h1>Provider Information</h1>
+              <h3>Name: {{this.provider.title}} {{this.provider.firstName}} {{this.provider.lastName}} {{this.provider.postNominals}}</h3>
+              <h4>Specialty: {{this.provider.specialty}}</h4>
+              <h4>Phone Number: {{this.provider.phoneNumber}}</h4>
+            </div>
             <input v-if="$store.state.user.provider && !updateAppt" v-on:click.prevent="toggleUpdateAppt" type="button" name="updateAppt" id="updateAppt" value="Update Appointment">
             <!-- Implement Update Appointment Form HERE -->
             <div class="update-appointment" v-if="updateAppt">
@@ -47,7 +53,8 @@
 
 <script>
 import ApptService from "../services/ApptService";
-import PatientService from '../services/PatientService'
+import PatientService from '../services/PatientService';
+import ProviderService from "../services/ProviderService";
 
 export default {
   name: 'appointment-details',
@@ -60,17 +67,22 @@ export default {
       // apptPatient: []
       updateAppt: false,
       // cancelAppt: false,
-      rescheduleAppointment: false
+      rescheduleAppointment: false,
+      provider: {}
     }
   },
   created() {
     ApptService.getAppointmentById(this.apptId).then( (response) => {
       this.appointment = response.data
+      ProviderService.getProvider(this.appointment.providerId).then((response2) =>{
+        this.provider = response2.data;
+      });
     });
     PatientService.getPatientByApptId(this.apptId).then( (response) => {
       // this.apptPatient = response.data;
       this.$store.commit('SET_APPT_PATIENT', response.data);
     });
+    
   },
   methods: {
     toggleUpdateAppt() {
