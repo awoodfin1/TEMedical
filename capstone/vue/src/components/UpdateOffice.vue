@@ -33,6 +33,8 @@
                 ProviderService.updateOffice(this.office).then((response)=>{
                     if(response.status === 200 || response.status === 204){
                         this.showForm = false;
+                        location.reload();
+                        scroll(0,0);
                     }
                 });
             }
