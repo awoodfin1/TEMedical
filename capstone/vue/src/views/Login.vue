@@ -55,6 +55,9 @@ export default {
       invalidCredentials: false
     };
   },
+  created() {
+    scroll(0,0);
+  },
   methods: {
     login() {
       authService
