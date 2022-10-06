@@ -12,6 +12,14 @@ export default {
 
   getOfficeInfo(){
     return axios.get('/office')
+  },
+
+  getDisplayApptUpdate() {
+    return axios.get('/user')
+  },
+
+  flipDisplayApptUpdate() {
+    return axios.put('/user', false)
   }
 
 }

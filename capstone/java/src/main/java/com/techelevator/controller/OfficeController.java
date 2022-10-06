@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@PreAuthorize("isAuthenticated()")
 public class OfficeController {
     private OfficeDao officeDao;
 
@@ -20,8 +19,13 @@ public class OfficeController {
         return officeDao.getOfficeById(1);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/office", method = RequestMethod.PUT)
     public void updateOffice(@RequestBody Office office){
         officeDao.updateOfficeInfo(office);
     }
 }
+
+
+
+

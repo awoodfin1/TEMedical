@@ -30,6 +30,10 @@ public interface ProviderDao {
 
     // update
 
+    void toggleOnDisplayApptUpdate(int providerId);
+
+    void toggleOffDisplayApptUpdate(int providerId);
+
     // delete
 
 }
