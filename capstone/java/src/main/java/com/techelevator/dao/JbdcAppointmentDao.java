@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,6 +130,7 @@ public class JbdcAppointmentDao implements AppointmentDao {
 
         while(results.next()) {
             allApptStartTimes.add(results.getTime("appt_start_time").toLocalTime());
+//            allApptStartTimes.add(results.getTime("appt_start_time").toLocalTime().truncatedTo(ChronoUnit.MINUTES));
         }
         return allApptStartTimes;
     }
@@ -173,9 +175,11 @@ public class JbdcAppointmentDao implements AppointmentDao {
         }
         if(rowSet.getTime("appt_start_time") != null) {
             appointment.setApptStartTime(rowSet.getTime("appt_start_time").toLocalTime());
+//            appointment.setApptStartTime(rowSet.getTime("appt_start_time").toLocalTime().truncatedTo(ChronoUnit.MINUTES));
         }
         if(rowSet.getTime("appt_end_time") != null) {
             appointment.setApptEndTime(rowSet.getTime("appt_end_time").toLocalTime());
+//            appointment.setApptEndTime(rowSet.getTime("appt_end_time").toLocalTime().truncatedTo(ChronoUnit.MINUTES));
         }
         appointment.setStatus(rowSet.getString("status"));
         appointment.setAppointmentReason(rowSet.getString("appointment_reason"));

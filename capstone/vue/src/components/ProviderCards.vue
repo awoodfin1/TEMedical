@@ -51,7 +51,10 @@
             <img class="profile-pic" v-bind:src="provider.photoUrl" alt="">
             <h3>{{provider.title}} {{provider.firstName}} {{provider.lastName}} {{provider.postNominals}}</h3>
             <h3>{{provider.specialty}}</h3>
-            <h4 v-if="provider.rating > 0">Provider Rating: {{roundedRating(provider.rating)}}</h4>
+            <div id="card-rating-container">
+                <h4 v-if="provider.rating > 0">Provider Rating: {{roundedRating(provider.rating)}}</h4>
+                <img id="star" src="../images/star.png" alt="star">
+            </div>
         </router-link> 
     </div>
 </template>
@@ -144,5 +147,17 @@
     display:flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+#card-rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .card {
+        max-width: 300px;
+    }
 }
 </style>

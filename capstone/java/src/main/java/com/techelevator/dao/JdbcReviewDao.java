@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,6 +78,7 @@ public class JdbcReviewDao implements ReviewDao{
         review.setReviewText(rs.getString("review_text"));
         review.setReviewDate(rs.getDate("review_date").toLocalDate());
         review.setReviewTime(rs.getTime("review_time").toLocalTime());
+//        review.setReviewTime(rs.getTime("review_time").toLocalTime().truncatedTo(ChronoUnit.MINUTES));
         review.setProviderRating(rs.getInt("provider_rating"));
 //        review.setProviderResponseText(rs.getString("provider_response_text"));
 //        review.setResponseDate(rs.getDate("response_date").toLocalDate());

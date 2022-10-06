@@ -1,6 +1,6 @@
 <template>
   <div class="cards">
-        <router-link class="card" v-for="appointment in $store.state.myAppointments" v-bind:key="appointment.id" v-bind:to="{name: 'appointment-details', params: {apptId:appointment.id}}">
+        <router-link class="appt-card" v-for="appointment in $store.state.myAppointments" v-bind:key="appointment.id" v-bind:to="{name: 'appointment-details', params: {apptId:appointment.id}}">
         <!-- <div class="card" v-for="appointment in $store.state.myAppointments" v-bind:key="appointment.id"> Change To Router Link When AppointmentDetails View Is Implemented -->
             <img class="appt-pic" src="@/images/Appointment.png" alt="Appointment-Image">
             <h2>{{ appointment.appointmentDate }}</h2>
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style>
-.card {
+.appt-card {
     border: 2px solid black;
     border-radius: 10px;
     width: 250px;
@@ -27,6 +27,7 @@ export default {
     margin: 20px;
     padding-top: 20px;
     text-align: center;
+    
 }
 .appt-pic{
     max-width: 250px;
@@ -39,4 +40,11 @@ export default {
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+@media screen and (max-width: 1000px) {
+    .appt-card {
+        max-width: 500px;
+    }
+}
+
 </style>

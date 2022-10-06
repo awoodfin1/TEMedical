@@ -181,6 +181,10 @@ h1 {
     padding: 0 7px; 
   }
 
+  /* .office {
+    height: 100%;
+  } */
+
   #app-footer {
     width: 100%;
     height: 30vh;
