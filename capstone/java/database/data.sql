@@ -54,7 +54,7 @@ INSERT INTO users (username, password_hash, "role", is_provider)
 
 INSERT INTO provider (user_id, title, first_name, last_name, post_nominals, specialty, gender, "language", rating, phone_number, bio, photo_URL)
 	VALUES
-		(100007, 'Dr.', 'Abel', 'Garcia', 'MD', 'Gastroenterologist', 'Male', 'English, Spanish, Arabic', 4.55, '832-886-6717', 'Specializing in colorectal surgery.', 'https://t3.ftcdn.net/jpg/02/97/95/66/360_F_297956690_OMymV1MsaWkAPYOeVVLsR6B5QD1jnp62.jpg');
+		(100007, 'Dr.', 'Abel', 'Garcia', 'MD', 'Gastroenterology', 'Male', 'English, Spanish, Arabic', 4.55, '832-886-6717', 'Specializing in colorectal surgery.', 'https://t3.ftcdn.net/jpg/02/97/95/66/360_F_297956690_OMymV1MsaWkAPYOeVVLsR6B5QD1jnp62.jpg');
 		
 INSERT INTO users (username,password_hash,role,is_provider)
 	VALUES

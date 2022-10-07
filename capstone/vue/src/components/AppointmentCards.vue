@@ -8,9 +8,10 @@
             <h4 class="link-text">Appointment Id: {{ appointment.id }} </h4>
             <h4
                 class="link-text"
-                v-bind:class="{ confirmed: appointment.status === 'Confirmed' } ||
-                              { rescheduled: appointment.status === 'Rescheduled' } ||
-                              { cancelled: appointment.status === 'Cancelled'}"
+                v-bind:class="{ confirmed: appointment.status === 'Confirmed',
+                                rescheduled: appointment.status === 'Rescheduled',
+                                cancelled: appointment.status === 'Cancelled'
+                              }"
             >
                 Status: {{ appointment.status }}</h4>
         <!-- </div> -->
