@@ -80,11 +80,11 @@ INSERT INTO patient (user_id, first_name, last_name, phone_number, email_address
 	VALUES
 		(100010, 'James', 'Ordway', '458-968-1122', 'james.Ordway@gmail.com', '1992-05-09', 'Arthritis');
 
-INSERT INTO appointment (patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, appointment_reason, appointment_details, is_new_patient)
-	VALUES (2001, 1001, '2022-10-31', '12:00:00', '12:30:00', 'Other', 'Referred by my primary care physician after my trip to the hospital last week.', true);
+INSERT INTO appointment (patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, status, appointment_reason, appointment_details, is_new_patient)
+	VALUES (2001, 1001, '2022-10-31', '12:00:00', '12:30:00', 'Cancelled', 'Other', 'Referred by my primary care physician after my trip to the hospital last week.', true);
 	
 INSERT INTO appointment (patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, appointment_reason, appointment_details, is_new_patient)
-	VALUES (2001, 1001, '2022-10-31', '09:00:00', '09:30:00', 'Other', 'Yearly checkup.', true);
+	VALUES (2001, 1002, '2022-10-31', '09:00:00', '09:30:00', 'Other', 'Yearly checkup.', true);
 	
 INSERT INTO appointment (patient_id, provider_id, appointment_date, appt_start_time, appt_end_time, appointment_reason, appointment_details, is_new_patient)
 	VALUES (2002, 1001, '2022-10-31', '10:00:00', '10:30:00', 'Other', 'Yearly checkup.', false);
