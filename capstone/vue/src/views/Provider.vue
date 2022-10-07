@@ -10,6 +10,9 @@
     
     export default {
         name: "Provider",
-        components: { ProviderInfo }
+        components: { ProviderInfo },
+        created() {
+            scroll(0,0);
+        }
     };
     </script>
