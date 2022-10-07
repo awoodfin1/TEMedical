@@ -6,7 +6,7 @@ INSERT INTO users (username,password_hash,role,is_provider)
 
 INSERT INTO patient (user_id, first_name, last_name, phone_number, email_address, birthdate, health_issues_description)
 	VALUES
-		(100001, 'patientAFirst', 'patientALast', '800-555-1234', 'first.last@gmail.com', '1994-01-01', 'Insert health issues desc. here');
+		(100001, 'Jane', 'Doe', '800-555-1234', 'jane.doe@gmail.com', '1994-01-01', 'Just trying to stay healthy!');
 
 INSERT INTO users (username, password_hash, "role", is_provider)
 	VALUES
@@ -14,7 +14,7 @@ INSERT INTO users (username, password_hash, "role", is_provider)
 	
 INSERT INTO provider (user_id, title, first_name, last_name, post_nominals, specialty, gender, "language", rating, phone_number, bio, photo_URL)
 	VALUES
-		(100002, 'Dr.', 'providerAFirst', 'providerALast', 'MD', 'Pediatrics', 'Male', 'English', 4.55, '800-999-4567', 'Insert provider bio here.', 'https://as2.ftcdn.net/v2/jpg/03/20/52/31/1000_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg');
+		(100002, 'Dr.', 'John', 'Doe', 'DO', 'Pediatrics', 'Male', 'English', 4.55, '800-999-4567', 'I''m a good doctor.', 'https://as2.ftcdn.net/v2/jpg/03/20/52/31/1000_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg');
 
 INSERT INTO users (username, password_hash, "role", is_provider)
 	VALUES
@@ -98,7 +98,7 @@ INSERT INTO office (office_name, tag_line, street_address, city, "state", zipcod
 
 INSERT INTO review (office_id, patient_id, provider_id, review_text, review_date, review_time, provider_rating, provider_response_text, response_date, response_time)
 	VALUES
-		(1, 2001, 1001, 'Patient provides review text here.', '2022-09-27', '10:30:00', 5, 'Provider provides review response text here.', '2022-09-28', '13:45:00');
+		(1, 2001, 1001, 'Highly recommend!', '2022-09-27', '10:30:00', 5, 'Provider provides review response text here.', '2022-09-28', '13:45:00');
 
 INSERT INTO review (office_id, patient_id, provider_id, review_text, review_date, review_time, provider_rating, provider_response_text, response_date, response_time)
 	VALUES
