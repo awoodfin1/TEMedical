@@ -106,12 +106,9 @@ export default {
       appointment.status = 'Rescheduled';
       this.toggleUpdateAppt();
       this.toggleReschAppt();
-      ApptService.updateAppointment(appointment.id, appointment).then( (response) => {
-        if (response.status === 201) {
-          this.$router.push({name: 'appointment-details', params: {apptId:appointment.id}});
-          location.reload();
-          scroll(0,0);
-        }
+      ApptService.updateAppointment(appointment.id, appointment).then( () => {
+        location.reload();
+        scroll(0,0);
       });
     }
   }
